@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/hint_job"
+        android:id="@+id/nav_job"
+        android:icon="@drawable/icon_job">
+    </item>
+    <item
+        android:title="@string/hint_my_appli"
+        android:id="@+id/nav_my_appli"
+        android:icon="@drawable/icon_my_appli">
+    </item>
+</menu>
