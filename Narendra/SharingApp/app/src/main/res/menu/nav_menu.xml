@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/hint_post"
+        android:id="@+id/nav_post"
+        android:icon="@drawable/icon_post">
+    </item>
+    <item
+        android:title="@string/hint_add_post"
+        android:id="@+id/nav_add_post"
+        android:icon="@drawable/icon_add_post">
+    </item>
+    <item
+        android:title="@string/hint_my_post"
+        android:id="@+id/nav_my_post"
+        android:icon="@drawable/icon_my_post">
+    </item>
+    <item
+        android:title="@string/hint_search"
+        android:id="@+id/nav_search"
+        android:icon="@drawable/icon_search">
+    </item>
+</menu>

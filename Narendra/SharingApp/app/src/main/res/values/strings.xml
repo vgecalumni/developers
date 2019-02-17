@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SharingApp</string>
+    <string name="hint_post">POST</string>
+    <string name="hint_add_post">ADD\u0020 POST</string>
+    <string name="hint_my_post">MY\u0020 POST</string>
+    <string name="hint_search">SEARCH</string>
+    <string name="hint_pos">POSTS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="postfragment">PostFragment</string>
+    <string name="my_post_framgment">My Post Framgment</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="add_post_fragment">Add Post Fragment</string>
+</resources>
