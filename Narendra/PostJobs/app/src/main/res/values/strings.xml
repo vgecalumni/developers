@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Post Jobs</string>
+    <string name="hint_post_job">POST JOB</string>
+    <string name="hint_posted_job">POSTED JOBS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post_job_fragment">Post Job Fragment</string>
+</resources>
