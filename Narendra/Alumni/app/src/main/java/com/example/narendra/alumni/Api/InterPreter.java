@@ -45,7 +45,7 @@ public interface InterPreter {
             @Field("lname") String lname,
             @Field("address") String address,
             @Field("district") String district,
-            @Field("pin") String pin,
+            @Field("pincode") String pin,
             @Field("city") String city,
             @Field("state") String state
     );

@@ -141,27 +141,10 @@ public class Function {
         String res=null;
         if(string.isEmpty()){
             res="Field Should Not be Empty";
-        }else if (!string.matches("^[\\s0-9a-zA-Z._'-]*$")){
+        }else if (!string.matches("^[\\s0-9a-zA-Z._'-,]*$")){
             res="Invalid Address Inputs";
         }
         return res;
-    }
-
-    public static String datePick(Context context){
-        final String[] res = {null};
-        final Calendar c = Calendar.getInstance();
-        int y, m, d;
-        y = c.get(Calendar.YEAR);
-        m = c.get(Calendar.MONTH);
-        d = c.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                res[0] = (dayOfMonth + "/" + (month + 1) + "/" + year);
-            }
-        }, y, m, d);
-        datePickerDialog.show();
-        return res[0];
     }
 
     public static String setNotSpecify(@Nullable String string){
