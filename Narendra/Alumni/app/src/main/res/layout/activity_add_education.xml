@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_Education"
+    android:background="@color/main_back">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_degree"
+            app:errorEnabled="true"
+            android:id="@+id/lay_degree">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_degree"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_inst"
+            app:errorEnabled="true"
+            android:id="@+id/lay_inst">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_inst"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_field"
+            app:errorEnabled="true"
+            android:id="@+id/lay_user_stream">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_stream"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/TextInput"
+                android:layout_weight="1"
+                android:hint="@string/hint_join"
+                app:errorEnabled="true"
+                android:id="@+id/lay_edu_join">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/user_edu_join"
+                    style="@style/TextEdit"
+                    android:inputType="number"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlineBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:hint="@string/hint_end"
+                app:errorEnabled="true"
+                android:id="@+id/lay_edu_end">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/user_edu_end"
+                    style="@style/TextEdit"
+                    android:inputType="number"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/back"
+        android:id="@+id/lay_progress"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</FrameLayout>

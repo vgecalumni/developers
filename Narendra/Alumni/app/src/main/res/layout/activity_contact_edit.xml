@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Contact_Edit"
+    android:background="@color/main_back">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp">
+
+       <!-- <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_mobile"
+            app:errorEnabled="true"
+            android:id="@+id/lay_mobile">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_mobile"
+                style="@style/TextEdit"
+                android:inputType="number"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_email"
+            app:errorEnabled="true"
+            android:id="@+id/lay_email">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_email"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout> -->
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_flat"
+            app:errorEnabled="true"
+            android:id="@+id/lay_flat">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_flat"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_landmark"
+            app:errorEnabled="true"
+            android:id="@+id/lay_landmark">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_landmark"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/TextInput"
+            android:hint="@string/hint_area"
+            app:errorEnabled="true"
+            android:id="@+id/lay_area">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/user_area"
+                style="@style/TextEdit" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/user_city"
+                style="@style/Spinner"
+                android:layout_weight="1"
+                android:entries="@array/cityarr" />
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlineBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:hint="@string/hint_pin"
+                app:errorEnabled="true"
+                android:id="@+id/lay_pincode">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/user_pincode"
+                    style="@style/TextEdit"
+                    android:inputType="number"/>
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/user_state"
+            style="@style/Spinner"
+            android:entries="@array/statearr" />
+    </LinearLayout>
+</ScrollView>
