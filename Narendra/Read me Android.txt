@@ -1,0 +1,6 @@
+1.Put andorid.zip on filemanager under hostname
+2.Extract the folder and make it as (android)->(under all content)
+e.g:
+	https://narendra1520.000webhostapp.com/(here)
+3. change the file android->includes->dbconnn.php
+	chande username, password and db only.
