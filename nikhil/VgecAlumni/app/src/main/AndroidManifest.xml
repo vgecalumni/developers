@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.vgecalumni">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA2" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/vgec_applauncher_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/vgec_applauncher_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <!--
+        <activity
+            android:name=".WelcomeActivity">
+
+        </activity>
+        -->
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:saveEnabled="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login2Activity"
+            android:saveEnabled="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:theme="@style/SettingsTheme"
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".OfflineActivity"
+
+            android:screenOrientation="portrait">
+            <intent-filter>
+
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".reveal"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:theme="@style/AppTheme1"
+            android:name=".joboffersmain"
+            android:label="Job Offers"
+            android:screenOrientation="portrait" />
+        <activity
+            android:theme="@style/AppTheme1"
+            android:name=".sharingmain"
+            android:label="Sharing Platform"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".TicketActivity" />
+
+        <activity android:name=".QRCodeActivity" />
+
+    </application>
+
+</manifest> <!-- android:noHistory="true" -->
