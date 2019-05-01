@@ -4,24 +4,21 @@ import com.example.narendra.alumni.Model.DefaultResponse;
 import com.example.narendra.alumni.Model.EduResponse;
 import com.example.narendra.alumni.Model.ExprResponse;
 import com.example.narendra.alumni.Model.UserResponse;
-import com.example.narendra.alumni.Model.Test;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface InterPreter {
-
-    @GET("/app_getuserdata.php")
-    Call<Test> fetchuser(
-    );
 
     @FormUrlEncoded
     @POST("/android/getUser.php")
     Call<UserResponse> getUser(
-            @Field("email") String email
+            @Field("uname") String uname
     );
 
     @FormUrlEncoded
@@ -36,6 +33,13 @@ public interface InterPreter {
             @Field("id") String id
     );
 
+    @Multipart
+    @POST("/android/uploadImage.php")
+    Call<DefaultResponse> uploadImage(
+            @Part("image\";filename=\"myfile.jpg\" ")RequestBody file,
+            @Part("id") RequestBody id
+    );
+
     @FormUrlEncoded
     @POST("/android/editInfo.php")
     Call<DefaultResponse> editInfo(
@@ -47,8 +51,11 @@ public interface InterPreter {
             @Field("district") String district,
             @Field("pincode") String pin,
             @Field("city") String city,
-            @Field("state") String state
-    );
+            @Field("state") String state,
+            @Field("pic") String s_pic,
+            @Field("intro") String S_intro,
+            @Field("gender") String s_gen,
+            @Field("dob") String s_dob);
 
     @FormUrlEncoded
     @POST("/android/editEdu.php")

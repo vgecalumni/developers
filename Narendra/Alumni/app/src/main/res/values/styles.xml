@@ -8,12 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Spinner" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_marginRight">15dp</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_marginTop">5dp</item>
+    <style name="ProfileTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#1f2161</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/pr_back</item>
+        <item name="elevation">0dp</item>
     </style>
 
     <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlineBox">
@@ -21,14 +24,37 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginLeft">15dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorTextAppearance">@style/TextError</item>
+        <item name="hintTextAppearance">@style/TextHelper</item>
+    </style>
+
+    <style name="TextError" parent="@style/TextAppearance.Design.Error">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextHelper" parent="@style/TextAppearance.Design.HelperText">
+        <item name="android:textSize">10sp</item>
     </style>
 
     <style name="TextEdit">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:maxLines">1</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="TextEditBig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:lines">2</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 
     <style name="Button">
         <item name="android:layout_width">100dp</item>
@@ -37,16 +63,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Divider">
-        <item name="android:layout_marginRight">15dp</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:src">@drawable/divide</item>
-    </style>
-
     <style name="Text">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -59,5 +76,4 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

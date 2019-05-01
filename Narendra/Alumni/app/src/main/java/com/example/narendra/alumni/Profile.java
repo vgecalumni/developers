@@ -1,187 +1,130 @@
 package com.example.narendra.alumni;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.narendra.alumni.Adpater.EducationAdpater;
-import com.example.narendra.alumni.Adpater.ExperienceAdpater;
+import com.example.narendra.alumni.Adapter.ViewPagerAdapter;
 import com.example.narendra.alumni.Api.RetrofitClient;
-import com.example.narendra.alumni.Model.EduResponse;
-import com.example.narendra.alumni.Model.Education;
-import com.example.narendra.alumni.Model.Experience;
-import com.example.narendra.alumni.Model.ExprResponse;
-import com.example.narendra.alumni.Model.SharedUser;
+import com.example.narendra.alumni.Fragment.BasicInfo;
+import com.example.narendra.alumni.Fragment.EducationInfo;
+import com.example.narendra.alumni.Fragment.ExperienceInfo;
+import com.example.narendra.alumni.Model.Myinterface;
 import com.example.narendra.alumni.Model.User;
 import com.example.narendra.alumni.Model.UserResponse;
 import com.example.narendra.alumni.SharedMemory.SharedPrefManager;
 
-import java.util.List;
+import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Profile extends AppCompatActivity implements View.OnClickListener {
+public class Profile extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
-    String s_email = "divyesha29@gmail.com";
-    String s_fname, s_mname, s_lname, s_enroll, s_id,  s_branch, s_gender, s_dob;
-    String s_mob,s_address, s_district, s_pincode, s_city, s_state;
-    String s_fullname, s_addr1, s_addr2;
-    TextView t_fullname, t_enroll, t_branch, t_gender, t_dob, t_mob, t_email, t_addr1, t_addr2;
-    RelativeLayout layout;
-    RecyclerView recyclerViewEdu, recyclerViewExpr;
-    static List<Education> educationList;
-    static List<Experience> experienceList;
+    private String s_uname = "rajbalat53@gmail.com";
+
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private FloatingActionButton fab,fab1,fab2;
+
+    public CircleImageView imageView;
+    public TextView t_mob, t_email;
+    ViewPagerAdapter viewPagerAdapter;
+
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    AppBarLayout appBarLayout;
+    Toolbar toolbar;
+
+    Myinterface myinterface,myinterface2,myinterface3;
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        getEducation();
-        getExperience();
-        getDetails();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        toolbar=findViewById(R.id.tool);
+        appBarLayout=findViewById(R.id.appbar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (Math.abs(verticalOffset)==appBarLayout.getTotalScrollRange()){
+                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(),R.drawable.pr_back));
+                }
+            }
+        });
+        collapsingToolbarLayout=findViewById(R.id.colltoolbar);
+        collapsingToolbarLayout.setExpandedTitleColor(Color.argb(0,0,0,0));
+        setSupportActionBar(toolbar);
         setTitle(R.string.hint_profile);
 
-        layout = findViewById(R.id.lay_progress);
-        findViewById(R.id.basic_edit).setOnClickListener(this);
-        findViewById(R.id.edu_edit).setOnClickListener(this);
-        findViewById(R.id.expr_edit).setOnClickListener(this);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        recyclerViewEdu = findViewById(R.id.recyler_education);
-        recyclerViewEdu.hasFixedSize();
-        recyclerViewEdu.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewExpr = findViewById(R.id.recyler_experience);
-        recyclerViewExpr.hasFixedSize();
-        recyclerViewExpr.setLayoutManager(new LinearLayoutManager(this));
+        t_email = findViewById(R.id.user_email);
+        t_mob = findViewById(R.id.user_mobile);
+        imageView = findViewById(R.id.img_profile);
 
-        t_fullname=findViewById(R.id.user_name);
-        t_email=findViewById(R.id.user_email);
-        t_mob=findViewById(R.id.user_mobile);
-        t_enroll=findViewById(R.id.user_enroll);
-        t_branch=findViewById(R.id.user_branch);
-        t_gender=findViewById(R.id.user_gender);
-        t_dob=findViewById(R.id.user_dob);
-        t_addr1=findViewById(R.id.user_addr);
-        t_addr2=findViewById(R.id.user_addr2);
+        tabLayout = findViewById(R.id.tablay);
+        viewPager = findViewById(R.id.viewPager);
 
+        fab = findViewById(R.id.fab0);
+        fab.setOnClickListener(this);
+        fab1 = findViewById(R.id.fab1);
+        fab1.setOnClickListener(this);
+        fab2 = findViewById(R.id.fab2);
+        fab2.setOnClickListener(this);
+
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new BasicInfo(), "Basic Info");
+        viewPagerAdapter.addFragment(new EducationInfo(), "Education");
+        viewPagerAdapter.addFragment(new ExperienceInfo(), "Experience");
+
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        viewPager.addOnPageChangeListener(this);
+        onPageSelected(0);
         getUser();
     }
 
     private void getUser() {
-        showProgress();
+        s_uname = "rajbalat53@gmail.com";
 
-        Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_email);
+        Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_uname);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                endProgress();
+
                 UserResponse userResponse = response.body();
                 if (userResponse.isError()) {
                     Toast.makeText(Profile.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     User user = userResponse.getUser();
-                    s_id=user.getId();
-                    s_fname = user.getFname();
-                    s_mname = user.getMname();
-                    s_lname = user.getLname();
-                    s_mob = user.getMob();
-                    s_enroll = user.getEnroll();
-                    s_branch = user.getBranch();
-                    s_gender = user.getGender();
-                    s_dob = user.getDob();
-                    s_address = user.getAddress();
-                    s_city = user.getCity();
-                    s_district = user.getDistrict();
-                    s_state = user.getState();
-                    s_pincode = user.getPincode();
-                    getEducation();
-                    getExperience();
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getmInstance(getApplicationContext());
                     sharedPrefManager.saveUser(user);
-                    getDetails();
                 }
             }
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                endProgress();
-            }
-        });
-    }
-
-    private void getDetails() {
-        SharedPrefManager sharedPrefManager= SharedPrefManager.getmInstance(getApplicationContext());
-        SharedUser sharedUser=sharedPrefManager.getSharedUser();
-
-        s_fullname= sharedUser.getFname() +" "+ sharedUser.getMname() +" "+ sharedUser.getLname();
-        s_addr1=sharedUser.getAddress()+" "+sharedUser.getCity();
-        s_addr2= sharedUser.getDistrict() +"-"+ sharedUser.getPincode() +","+ sharedUser.getState();
-        setField();
-    }
-
-    private void setField() {
-        t_fullname.setText(s_fullname);
-        t_email.setText(s_email);
-        t_mob.setText(s_mob);
-        t_enroll.setText(s_enroll);
-        t_branch.setText(s_branch);
-        t_gender.setText(s_gender);
-        t_dob.setText(s_dob);
-        t_addr1.setText(s_addr1);
-        t_addr2.setText(s_addr2);
-    }
-
-    private void getEducation() {
-        Call<EduResponse> eduResponseCall = RetrofitClient.getInstance().getInterPreter().getAllEdu(s_id);
-        eduResponseCall.enqueue(new Callback<EduResponse>() {
-            @Override
-            public void onResponse(Call<EduResponse> call, Response<EduResponse> response) {
-                EduResponse eduResponse=response.body();
-                if(eduResponse.isError()){
-                    //Toast.makeText(Profile.this,eduResponse.getMessage(),Toast.LENGTH_SHORT).show();
-                }else {
-                    educationList=eduResponse.getEducation();
-                    recyclerViewEdu.setAdapter(new EducationAdpater(educationList,Profile.this));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<EduResponse> call, Throwable t) {
-                //
-            }
-        });
-    }
-
-    private void getExperience() {
-        Call<ExprResponse> exprResponseCall = RetrofitClient.getInstance().getInterPreter().getAllExpr(s_id);
-        exprResponseCall.enqueue(new Callback<ExprResponse>() {
-            @Override
-            public void onResponse(Call<ExprResponse> call, Response<ExprResponse> response) {
-                ExprResponse exprResponse=response.body();
-                if(exprResponse.isError()){
-                    //
-                }else {
-                    experienceList=exprResponse.getExperience();
-                    recyclerViewExpr.setAdapter(new ExperienceAdpater(experienceList,Profile.this));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ExprResponse> call, Throwable t) {
-               //
             }
         });
     }
@@ -189,36 +132,100 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.edu_edit:
-                Intent intent = new Intent(this, Education_List.class);
-                startActivity(intent);
+            case R.id.fab0:
+                Intent intent = new Intent(this, Profile_Edit.class);
+                startActivityForResult(intent,300);
                 break;
-            case R.id.expr_edit:
-                Intent intent2 = new Intent(this, Experience_List.class);
-                startActivity(intent2);
+            case R.id.fab1:
+                Intent intent1 = new Intent(this, Add_Education.class);
+                intent1.putExtra("for",0);
+                startActivityForResult(intent1,100);
                 break;
-            case R.id.basic_edit:
-                Intent intent3 = new Intent(this, Profile_Edit.class);
-                startActivity(intent3);
+            case R.id.fab2:
+                Intent intent2 = new Intent(this, Add_Experience.class);
+                intent2.putExtra("for",0);
+                startActivityForResult(intent2,200);
                 break;
         }
     }
 
-    private void showProgress() {
-        layout.setVisibility(View.VISIBLE);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
     }
 
-    private void endProgress() {
-        layout.setVisibility(View.GONE);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    @Override
+    public void onPageSelected(int position) {
+        if(position==0){
+            fab.setVisibility(View.VISIBLE);
+            fab1.setVisibility(View.GONE);
+            fab2.setVisibility(View.GONE);
+        } if(position==1) {
+            fab.setVisibility(View.GONE);
+            fab1.setVisibility(View.VISIBLE);
+            fab2.setVisibility(View.GONE);
+        } if(position==2) {
+            fab.setVisibility(View.GONE);
+            fab1.setVisibility(View.GONE);
+            fab2.setVisibility(View.VISIBLE);
+        }
     }
 
-    public static List<Education> getEducationList() {
-        return educationList;
+    @Override
+    public void onPageScrollStateChanged(int state) {
     }
 
-    public static List<Experience> getExperienceList() {
-        return experienceList;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==100){
+            myinterface.myAction(requestCode);
+        }if (requestCode==200) {
+            myinterface2.myAction(requestCode);
+        }if (requestCode==300){
+            myinterface3.myAction(requestCode);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void setListner(Myinterface myinterface){
+        this.myinterface=myinterface;
+    }
+    public void setListner2(Myinterface myinterface){
+        this.myinterface2=myinterface;
+    }
+    public void setListner3(Myinterface myinterface){
+        this.myinterface3=myinterface;
+    }
+
+    public int getFabState(){
+        return fab.isShown()?fab.getId():fab1.isShown()?fab1.getId():fab2.getId();
+    }
+
+    public void hideFab() {
+        fab.hide();
+    }
+
+    public void showFab() {
+        fab.show();
+    }
+
+    public CircleImageView getImageView() {
+        return imageView;
+    }
+
+    public TextView getT_mob() {
+        return t_mob;
+    }
+
+    public TextView getT_email() {
+        return t_email;
     }
 }

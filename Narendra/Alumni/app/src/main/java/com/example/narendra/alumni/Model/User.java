@@ -1,10 +1,13 @@
 package com.example.narendra.alumni.Model;
 
 public class User {
-    String id, fname, mname,lname, enroll, branch, gender, dob;
-    String mob, address, pincode, city, district, state;
+    String id, fname, mname, lname, enroll, branch, gender, dob;
+    String email, mob, address, pincode, city, district, state;
+    String pic,intro;
 
-    public User(String id,String fname, String mname, String lname, String enroll, String branch, String gender, String dob, String mob, String address, String city, String pincode, String district, String state) {
+    public User(String id,String fname, String mname, String lname, String enroll, String branch,
+                String gender, String dob, String email, String mob, String address, String city,
+                String pincode, String district, String state, String pic, String intro) {
         this.id=id;
         this.fname = fname;
         this.mname = mname;
@@ -13,12 +16,15 @@ public class User {
         this.branch = branch;
         this.gender = gender;
         this.dob = dob;
+        this.email=email;
         this.mob = mob;
         this.address = address;
         this.pincode = pincode;
         this.city = city;
         this.district=district;
         this.state = state;
+        this.pic=pic;
+        this.intro=intro;
     }
 
     public String getMob() {
@@ -73,7 +79,19 @@ public class User {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public String getIntro() {
+        return intro;
     }
 }

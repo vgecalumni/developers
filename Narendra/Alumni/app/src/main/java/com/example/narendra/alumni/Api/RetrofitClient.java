@@ -10,7 +10,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    //Todo: add auth, base string
     private static String BASE_URL="https://narendra1520.000webhostapp.com/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;

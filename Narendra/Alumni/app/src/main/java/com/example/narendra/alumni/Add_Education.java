@@ -2,7 +2,6 @@ package com.example.narendra.alumni;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,43 +10,48 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.narendra.alumni.Api.RetrofitClient;
 import com.example.narendra.alumni.Model.DefaultResponse;
+import com.example.narendra.alumni.Model.EduHolder;
 import com.example.narendra.alumni.Model.Education;
 import com.example.narendra.alumni.Model.Function;
-import com.example.narendra.alumni.Model.SharedUser;
+import com.example.narendra.alumni.Model.User;
 import com.example.narendra.alumni.SharedMemory.SharedPrefManager;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Add_Education extends AppCompatActivity implements View.OnClickListener {
+public class Add_Education extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private AppCompatEditText degree, inst, joindate, enddate, stream;
     private TextInputLayout l_degree, l_inst, l_joindate, l_enddate, l_stream;
-    private String s_degree, s_inst, s_joindate, s_enddate, s_stream, s_email;
-    List<Education> educationList;
+    private String s_degree, s_inst, s_joindate, s_enddate, s_stream;
+    CheckBox curstudy;
     RelativeLayout layout;
     Intent intent;
     private String s_tag, s_id;
-    Snackbar snackbar;
     private int i;
+    Education education;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_education);
         setTitle(getString(R.string.hint_edu));
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         degree = findViewById(R.id.user_degree);
         inst = findViewById(R.id.user_inst);
@@ -62,30 +66,38 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         l_joindate = findViewById(R.id.lay_edu_join);
         l_enddate = findViewById(R.id.lay_edu_end);
 
-        joindate.setOnClickListener(this);
-        enddate.setOnClickListener(this);
+        curstudy =findViewById(R.id.chek_current);
+        curstudy.setOnCheckedChangeListener(this);
+
+        //joindate.setOnClickListener(this);
+        //enddate.setOnClickListener(this);
 
         layout = findViewById(R.id.lay_progress);
-        educationList = Profile.getEducationList();
 
-        SharedUser sharedUser = SharedPrefManager.getmInstance(getApplicationContext()).getSharedUser();
-        s_id = sharedUser.getId();
+        User user = SharedPrefManager.getmInstance(getApplicationContext()).getUser();
+        s_id = user.getId();
 
         intent = getIntent();
         i = intent.getIntExtra("for", 0);
         if (i == 1) {
+            education = EduHolder.getInstance().getEducation();
             getDetails();
         }
     }
 
     private void getDetails() {
-        s_tag = intent.getStringExtra("tag");
-        s_degree = intent.getStringExtra("degree");
-        s_stream = intent.getStringExtra("stream");
-        s_inst = intent.getStringExtra("inst");
-        s_joindate = intent.getStringExtra("join");
-        s_enddate = intent.getStringExtra("end");
 
+        s_tag = education.getTag();
+        s_degree = education.getDegree();
+        s_stream = education.getStream();
+        s_inst = education.getInst();
+        s_joindate = education.getJoin();
+        s_enddate = education.getEnd();
+
+        if(s_enddate.equals(getResources().getString(R.string.hint_present))){
+            disableEdit();
+            curstudy.setChecked(true);
+        }
 
         degree.setText(s_degree);
         inst.setText(s_inst);
@@ -103,16 +115,21 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                onBackPressed();
+                break;
             case R.id.menu_save:
                 if (validate()) {
                     clearError();
                     showProgress();
-                    Call<DefaultResponse> responseCall=null;
+                    Call<DefaultResponse> responseCall = null;
+
                     if (i == 1) {
                         responseCall = RetrofitClient.getInstance()
                                 .getInterPreter().editEdu(s_id, s_tag, s_inst, s_degree, s_stream, s_joindate, s_enddate);
                     } else {
-                        s_tag= String.valueOf(TimeUnit.MILLISECONDS.toMillis(System.currentTimeMillis()));
+                        s_tag = String.valueOf(TimeUnit.MILLISECONDS.toMillis(System.currentTimeMillis()));
                         responseCall = RetrofitClient.getInstance()
                                 .getInterPreter().addEdu(s_id, s_tag, s_inst, s_degree, s_stream, s_joindate, s_enddate);
                     }
@@ -123,9 +140,11 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
                             endProgress();
                             DefaultResponse response1 = response.body();
                             if (response1.isError()) {
-                                //todo
+                                Toast.makeText(Add_Education.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Add_Education.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
+                                Education nw = new Education(s_degree, s_stream, s_inst, s_joindate, s_enddate, s_tag);
+                                EduHolder.getInstance().setEducation(nw);
                                 finish();
                             }
                         }
@@ -133,7 +152,7 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onFailure(Call<DefaultResponse> call, Throwable t) {
                             endProgress();
-                            //todo
+                            Toast.makeText(Add_Education.this, "Failure Occurred", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -163,8 +182,9 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         String er_degree = Function.checkAddress(s_degree);
         String er_inst = Function.checkAddress(s_inst);
         String er_stream = Function.checkAddress(s_stream);
-        String er_join = Function.checkDOB(s_joindate);
-        String er_end = Function.checkDOB(s_enddate);
+        String er_join = Function.checkYr(s_joindate);
+        //String er_end = Function.checkYr(s_enddate);
+        String er_end=null;
 
         if (er_degree != null) {
             l_degree.setError(er_degree);
@@ -181,16 +201,25 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         if (er_end != null) {
             l_enddate.setError(er_end);
             x = false;
-        }if (er_stream != null) {
+        }
+        if (er_stream != null) {
             l_stream.setError(er_stream);
             x = false;
-        }if(er_end==null && er_join==null){
+        }
+        if(!curstudy.isChecked()){
+            er_end = Function.checkYr(s_enddate);
+            if (er_end != null) {
+                l_enddate.setError(er_end);
+                x = false;
+            }
+        }
+        /*if(er_end==null && er_join==null){
             String er_gap=Function.checkDateGap(s_joindate,s_enddate);
             if(er_gap!=null){
                 l_enddate.setError(er_gap);
                 x = false;
             }
-        }
+        }*/
 
         return x;
     }
@@ -226,10 +255,32 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String dt= (year + "-" + (month + 1) + "-" + dayOfMonth);
+                String dt = (year + "-" + (month + 1) + "-" + dayOfMonth);
                 date.setText(dt);
             }
         }, y, m, d);
         datePickerDialog.show();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked){
+            disableEdit();
+        }else {
+            enableEdit();
+        }
+    }
+
+    private void enableEdit() {
+        enddate.setText("");
+        enddate.setFocusableInTouchMode(true);
+        enddate.setFocusable(true);
+    }
+
+    private void disableEdit() {
+        l_enddate.setError(null);
+        enddate.setText(R.string.hint_present);
+        enddate.setOnClickListener(null);
+        enddate.setFocusable(false);
     }
 }

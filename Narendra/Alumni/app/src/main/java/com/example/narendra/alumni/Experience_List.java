@@ -10,13 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import com.example.narendra.alumni.Adpater.ExperienceListAdpater;
+import com.example.narendra.alumni.Adapter.ExperienceListAdapter;
 import com.example.narendra.alumni.Api.RetrofitClient;
 import com.example.narendra.alumni.Model.Experience;
 import com.example.narendra.alumni.Model.ExprResponse;
 import com.example.narendra.alumni.Model.SharedUser;
+import com.example.narendra.alumni.Model.User;
 import com.example.narendra.alumni.SharedMemory.SharedPrefManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,8 +44,8 @@ public class Experience_List extends AppCompatActivity {
         setContentView(R.layout.activity_experience_list);
         setTitle(R.string.hint_expr);
         SharedPrefManager sharedPrefManager= SharedPrefManager.getmInstance(getApplicationContext());
-        SharedUser sharedUser=sharedPrefManager.getSharedUser();
-        s_id =sharedUser.getId();
+        User user=sharedPrefManager.getUser();
+        s_id =user.getId();
         //experienceList=Profile.getExperienceList();
         snackbar= Snackbar.make(findViewById(R.id.expr_lay),"Refreshing...",Snackbar.LENGTH_INDEFINITE);
         recyclerView=findViewById(R.id.recyler_experience);
@@ -57,7 +59,7 @@ public class Experience_List extends AppCompatActivity {
 
     private void setData() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ExperienceListAdpater(experienceList,Experience_List.this));
+        recyclerView.setAdapter(new ExperienceListAdapter(experienceList,Experience_List.this));
     }
 
     private void getExperience() {
@@ -73,7 +75,7 @@ public class Experience_List extends AppCompatActivity {
                 }else {
                     endProgress();
                     experienceList=exprResponse.getExperience();
-                    recyclerView.setAdapter(new ExperienceListAdpater(experienceList,Experience_List.this));
+                    recyclerView.setAdapter(new ExperienceListAdapter(experienceList,Experience_List.this));
                 }
             }
 

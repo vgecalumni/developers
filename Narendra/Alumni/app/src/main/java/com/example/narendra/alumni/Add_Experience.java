@@ -18,13 +18,18 @@ import android.widget.Toast;
 
 import com.example.narendra.alumni.Api.RetrofitClient;
 import com.example.narendra.alumni.Model.DefaultResponse;
+import com.example.narendra.alumni.Model.EduHolder;
+import com.example.narendra.alumni.Model.Education;
 import com.example.narendra.alumni.Model.Experience;
+import com.example.narendra.alumni.Model.ExprHolder;
 import com.example.narendra.alumni.Model.Function;
 import com.example.narendra.alumni.Model.SharedUser;
+import com.example.narendra.alumni.Model.User;
 import com.example.narendra.alumni.SharedMemory.SharedPrefManager;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
@@ -37,16 +42,19 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
     private String s_company, s_designation, s_descri, s_joindate, s_enddate;
     CheckBox curwork;
     RelativeLayout layout;
-    List<Experience> experienceList;
     Intent intent;
     private String s_tag, s_id;
     private int i;
+    private Experience experience;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_experience);
         setTitle(getString(R.string.hint_expr));
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         company=findViewById(R.id.user_expr_comp);
         designation=findViewById(R.id.user_expr_desig);
@@ -65,32 +73,31 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
 
         layout=findViewById(R.id.lay_progress);
 
-        joindate.setOnClickListener(this);
-        enddate.setOnClickListener(this);
+        // joindate.setOnClickListener(this);
+        // enddate.setOnClickListener(this);
 
-        experienceList = Profile.getExperienceList();
-        SharedUser sharedUser = SharedPrefManager.getmInstance(getApplicationContext()).getSharedUser();
-        s_id=sharedUser.getId();
+        User user = SharedPrefManager.getmInstance(getApplicationContext()).getUser();
+        s_id=user.getId();
 
         intent = getIntent();
         i = intent.getIntExtra("for", 0);
         if (i == 1) {
+            experience = ExprHolder.getInstance().getExperience();
             getDetails();
         }
-
-       // new DateInput(joindate);
-       // new DateInput(enddate);
     }
 
     private void getDetails() {
-        s_tag = intent.getStringExtra("tag");
-        s_company = intent.getStringExtra("company");
-        s_designation = intent.getStringExtra("desig");
-        s_descri = intent.getStringExtra("desc");
-        s_joindate = intent.getStringExtra("join");
-        s_enddate = intent.getStringExtra("end");
+        s_tag = experience.getTag();
+        s_company = experience.getCompany();
+        s_designation = experience.getDesig();
+        s_descri = experience.getDesc();
+        s_joindate = experience.getJoin();
+        s_enddate = experience.getEnd();
+
         if(s_enddate.equals(getResources().getString(R.string.hint_present))){
             disableEdit();
+            curwork.setChecked(true);
         }
 
         company.setText(s_company);
@@ -109,6 +116,9 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
             case R.id.menu_save:
                 if (validate()) {
                     clearError();
@@ -118,7 +128,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
                         responseCall = RetrofitClient.getInstance()
                                 .getInterPreter().editExpr(s_id, s_tag, s_company, s_designation, s_descri, s_joindate, s_enddate);
                     } else {
-                        s_tag= String.valueOf(TimeUnit.MILLISECONDS.toMillis(System.currentTimeMillis()));
+                        s_tag = String.valueOf(TimeUnit.MILLISECONDS.toMillis(System.currentTimeMillis()));
                         responseCall = RetrofitClient.getInstance()
                                 .getInterPreter().addExpr(s_id, s_tag, s_company, s_designation, s_descri, s_joindate, s_enddate);
                     }
@@ -128,9 +138,11 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
                             endProgress();
                             DefaultResponse response1 = response.body();
                             if (response1.isError()) {
-                                //todo
+                                Toast.makeText(Add_Experience.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Add_Experience.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
+                                Experience nw = new Experience(s_company,s_designation,s_descri,s_joindate, s_enddate,s_tag);
+                                ExprHolder.getInstance().setExperience(nw);
                                 finish();
                             }
                         }
@@ -138,7 +150,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onFailure(Call<DefaultResponse> call, Throwable t) {
                             endProgress();
-                            //todo
+                            Toast.makeText(Add_Experience.this, "Failure Occurred", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -182,7 +194,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
         String er_desc = Function.checkAddress(s_descri);
         String er_end=null;
 
-        String er_join = Function.checkDOB(s_joindate);
+        String er_join = Function.checkYr(s_joindate);
 
         if (er_company != null) {
             l_company.setError(er_company);
@@ -202,28 +214,20 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
         }
 
         if(!curwork.isChecked()){
-            er_end = Function.checkDOB(s_enddate);
+            er_end = Function.checkYr(s_enddate);
             if (er_end != null) {
                 l_enddate.setError(er_end);
                 x = false;
             }
         }
-        if (curwork.isChecked()){
-            String er_today = Function.checkPresent(s_joindate);
-            if (er_end==null||er_today!=null){
-                l_joindate.setError(er_today);
-                x = false;
-            }
-        }
 
-        if(er_end==null && er_join==null){
+        /*if(er_end==null && er_join==null){
             String er_gap=Function.checkDateGap(s_joindate,s_enddate);
             if(er_gap!=null){
                 l_enddate.setError(er_gap);
                 x = false;
             }
-        }
-
+        }*/
         return x;
     }
 
@@ -264,12 +268,15 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
 
     private void enableEdit() {
         enddate.setText("");
-        enddate.setOnClickListener(this);
+        enddate.setFocusableInTouchMode(true);
+        enddate.setFocusable(true);
     }
 
     private void disableEdit() {
+        l_enddate.setError(null);
         enddate.setText(R.string.hint_present);
         enddate.setOnClickListener(null);
+        enddate.setFocusable(false);
     }
 
 }

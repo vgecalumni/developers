@@ -8,17 +8,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
-import com.example.narendra.alumni.Adpater.EducationListAdpater;
+import com.example.narendra.alumni.Adapter.EducationListAdapter;
 import com.example.narendra.alumni.Api.RetrofitClient;
 import com.example.narendra.alumni.Model.EduResponse;
 import com.example.narendra.alumni.Model.Education;
 import com.example.narendra.alumni.Model.SharedUser;
+import com.example.narendra.alumni.Model.User;
 import com.example.narendra.alumni.SharedMemory.SharedPrefManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,8 +44,8 @@ public class Education_List extends AppCompatActivity{
         setContentView(R.layout.activity_education_list);
         setTitle(R.string.hint_edu);
         SharedPrefManager sharedPrefManager= SharedPrefManager.getmInstance(getApplicationContext());
-        SharedUser sharedUser=sharedPrefManager.getSharedUser();
-        s_id =sharedUser.getId();
+        User user=sharedPrefManager.getUser();
+        s_id =user.getId();
         //educationList=Profile.getEducationList();
         snackbar= Snackbar.make(findViewById(R.id.edu_lay),"Refreshing...",Snackbar.LENGTH_INDEFINITE);
         recyclerView=findViewById(R.id.recyler_education);
@@ -70,7 +70,7 @@ public class Education_List extends AppCompatActivity{
                 }else {
                     endProgress();
                     educationList=eduResponse.getEducation();
-                    recyclerView.setAdapter(new EducationListAdpater(educationList,Education_List.this));
+                    recyclerView.setAdapter(new EducationListAdapter(educationList,Education_List.this));
                 }
             }
 
@@ -84,7 +84,7 @@ public class Education_List extends AppCompatActivity{
 
     private void setData() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new EducationListAdpater(educationList,Education_List.this));
+        recyclerView.setAdapter(new EducationListAdapter(educationList,Education_List.this));
     }
 
     @Override

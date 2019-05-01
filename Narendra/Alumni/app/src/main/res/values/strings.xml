@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Alumni</string>
+
     <string name="hint_fname">First Name</string>
     <string name="hint_lname">Last Name</string>
     <string name="hint_mobile">Mobile</string>
@@ -7,72 +8,44 @@
     <string name="hint_enroll">Enrollment</string>
     <string name="hint_basicinfo">Basic Info</string>
     <string name="hint_contact">Contact Info</string>
-    <string name="hint_add1">Address Line 1</string>
-    <string name="hint_add2">Address Line 2</string>
     <string name="city">City</string>
     <string name="hint_pin">Pincode</string>
     <string name="hint_edu">Education</string>
-    <string name="hint_join">Joining Date</string>
-    <string name="hint_end">Ending Date</string>
+    <string name="hint_join">Join Year</string>
+    <string name="hint_end">End Year</string>
     <string name="hint_expr">Experience</string>
-    <string name="Ahemedabad">Ahmedabad</string>
-    <string name="Surat">Surat</string>
-    <string name="Vadodara">Vadodara</string>
-    <string name="Computer">Computer</string>
-    <string name="IT">IT</string>
-    <string name="Civil">Civil</string>
-    <string name="hint_clg">College</string>
-    <string name="hint_copmany">Organization Name</string>
+    <string name="hint_org">Organization Name</string>
     <string name="hint_work">Worked As</string>
     <string name="hint_name">Narendra Metaliya</string>
     <string name="hint_save">Save</string>
     <string name="hint_add">ADD</string>
     <string name="hint_profile">Profile</string>
-    <string name="hint_addedu">Add Education</string>
     <string name="hint_inst">Institute</string>
     <string name="hint_degree">Degree</string>
-    <string name="hint_desig">Desigantion</string>
-    <string name="hint_flat">FlatName</string>
-    <string name="hint_landmark">Landmark</string>
-    <string name="hint_area">Area</string>
+    <string name="hint_desig">Designation</string>
     <string name="hint_state">State</string>
-
-    <string-array name="cityarr">
-        <item>@string/Ahemedabad</item>
-        <item>@string/Surat</item>
-        <item>@string/Vadodara</item>
-    </string-array>
-    <string-array name="branch">
-        <item>@string/Computer</item>
-        <item>@string/IT</item>
-        <item>@string/Civil</item>
-    </string-array>
-    <string-array name="program">
-    <item>BE</item>
-    <item>Science</item>
-    </string-array>
-    <string-array name="gender">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
-    </string-array>
-    <string-array name="statearr">
-        <item>Gujrat</item>
-        <item>Haryana</item>
-        <item>Maharastra</item>
-    </string-array>
     <string name="title_activity_contact">Contact</string>
-    <string name="hint_midle">MidleName</string>
+    <string name="hint_midle">MiddleName</string>
     <string name="hint_program">Program</string>
     <string name="hint_dob">DOB</string>
     <string name="hint_description">Description</string>
-    <string name="date_from">Form: </string>
-    <string name="date_to">\u0020To:</string>
-    <string name="hint_nospeci">Not Specified</string>
+    <string name="date_from">From: </string>
+    <string name="date_to">\u0020To: </string>
     <string name="hint_field">Field of Education</string>
     <string name="hint_city">City</string>
-    <string name="hint_curwork">I currently work on this role</string>
+    <string name="hint_curwork">Currently working on this</string>
     <string name="hint_present">Present</string>
     <string name="hint_address">Address</string>
     <string name="hint_district">District</string>
+    <string name="hint_branch">Computer</string>
+    <string name="intro">No Introduction</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_intro">Introduction</string>
+    <string name="hint_rmpic">Remove Profile Picture</string>
+    <string name="hint_curstudy">Currently pursuing the study</string>
+    <string name="hint_course">Course</string>
+    <string name="hint_gen">Gender</string>
+    <string name="hint_org2">Organization</string>
+    <string name="hint_noexpr">No experience found</string>
+    <string name="hint_noedu">No education found</string>
 </resources>

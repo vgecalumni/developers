@@ -20,7 +20,6 @@ public class ExprResponse {
     }
 
     public ExprResponse(boolean error, String message, List<Experience> dat) {
-
         this.error = error;
         this.message = message;
         this.data = data;

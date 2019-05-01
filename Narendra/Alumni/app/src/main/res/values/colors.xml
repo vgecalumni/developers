@@ -5,7 +5,18 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
     <color name="red">#ff0000</color>
-    <color name="back">#5a000000</color>
+    <color name="back">#6aa4a4a4</color>
     <color name="black">#000000</color>
-    <color name="main_back">#ebebeb</color>
+    <color name="main_back">#e8e8e8</color>
+
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen5">#c5f1ff</color>
+
+    <color name="start">#125baa</color>
+    <color name="center">#025867</color>
+    <color name="tabtext">#4a9cfa</color>
+    <color name="notext">#525252</color>
 </resources>
