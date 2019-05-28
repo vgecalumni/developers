@@ -17,35 +17,11 @@ class Main extends CI_Controller {
 
 		$this->dashboard();
 	}
-	public function event_details(){
-		require('events/Details.php');
-  		$obj = new Details();
-  		$obj->index();
-	}
-	public function event_proposals(){
-		require('events/Proposals.php');
-  		$obj = new Proposals();
-  		$obj->index();
-	}
-	public function event_reports(){
-		require('events/Reports.php');
-  		$obj = new Reports();
-  		$obj->index();
-	}
-	public function event_photos(){
-		require('events/Photos.php');
-  		$obj = new Photos();
-  		$obj->index();
-	}
-	public function event_registrations(){
-		require('events/Event_registrations.php');
-  		$obj = new Event_registrations();
-  		$obj->index();
-	}
-	public function event_coupons(){
-		require('events/Coupons.php');
-  		$obj = new Coupons();
-  		$obj->index();
+	//main/events/farewell/event_details
+	public function events($event_id=null,$event_op=null){
+		require('events/Events.php');
+  		$obj = new Events();
+  		$obj->index($event_id,$event_op);
 	}
 	public function alumni_registrations(){
 		require('alumni/Alumni_registrations.php');

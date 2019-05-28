@@ -204,22 +204,22 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_details'; ?>">Details</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_details'; ?>">Details</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_proposals'; ?>">Proposals</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_proposals'; ?>">Proposals</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_reports'; ?>">Reports</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_reports'; ?>">Reports</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_photos'; ?>" >Photos</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_photos'; ?>" >Photos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_registrations'; ?>" >Registration</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_registrations'; ?>" >Registration</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url().'main/event_coupons'; ?>" >Coupons</a>
+                  <a class="nav-link" href="<?php echo base_url().'main/events/get/event_coupons'; ?>" >Coupons</a>
                 </li>
               </ul>
             </div>

@@ -36,16 +36,36 @@ if($request == "dashboard"){
     } 
   });
 </script>
+<?php }elseif ($request == "events") {
+?>
+<script type="text/javascript">
+  $("#data").addClass('hidden');
+  $user = "<?php echo $designation; ?>";
+  $event_op = "<?php echo $event_op; ?>";
+  jQuery.ajax({
+    type: "POST",
+    url: "<?php echo base_url(); ?>" + "events/events/load_data",
+    // dataType: 'json',
+    data: {user: $user,event_op: $event_op},
+    success: function(res){
+
+      $("#data").html(res);
+      $("#loader").addClass('hidden');
+      $("#data").removeClass('hidden');
+    } 
+  });
+</script>
 <?php }elseif ($request == "event_details") {
 ?>
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/details/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
@@ -59,11 +79,12 @@ if($request == "dashboard"){
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/proposals/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
@@ -77,11 +98,12 @@ if($request == "dashboard"){
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/reports/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
@@ -95,11 +117,12 @@ if($request == "dashboard"){
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/photos/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
@@ -113,11 +136,13 @@ if($request == "dashboard"){
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
+
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/event_registrations/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
@@ -131,11 +156,12 @@ if($request == "dashboard"){
 <script type="text/javascript">
   $("#data").addClass('hidden');
   $user = "<?php echo $designation; ?>";
+  $event_id = "<?php echo $event_id; ?>";
   jQuery.ajax({
     type: "POST",
     url: "<?php echo base_url(); ?>" + "events/coupons/load_data",
     // dataType: 'json',
-    data: {user: $user},
+    data: {user: $user,event_id: $event_id},
     success: function(res){
 
       $("#data").html(res);
