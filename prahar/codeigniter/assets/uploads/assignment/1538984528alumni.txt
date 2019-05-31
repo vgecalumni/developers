@@ -1,2 +1,0 @@
-login:alumni@vgecg.gmail.ocm
-pass:alumni123456

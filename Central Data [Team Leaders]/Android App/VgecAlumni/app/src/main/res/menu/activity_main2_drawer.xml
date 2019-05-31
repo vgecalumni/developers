@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/house"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/calendar"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_portfolio"
+            android:icon="@drawable/gallary"
+            android:title="Portfolio" />
+        <item
+            android:id="@+id/nav_job"
+            android:icon="@drawable/jobseeker"
+            android:title="Job Offers" />
+        <item
+            android:id="@+id/nav_discuss"
+            android:icon="@drawable/news"
+            android:title="Sharing Platform" />
+    </group>
+    <item
+        android:checkable="true"
+        android:title=""
+        android:id="@+id/nav_userTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_myprofile"
+                android:checkable="true"
+                android:icon="@drawable/my_post"
+                android:title="My Profile" />
+            <item
+                android:id="@+id/nav_search"
+                android:checkable="true"
+                android:icon="@drawable/group"
+                android:title="Search Alumni" />
+            <item
+                android:id="@+id/nav_postjob"
+                android:checkable="true"
+                android:icon="@drawable/customer"
+                android:title="Post Job Offers" />
+
+            <item
+                android:id="@+id/nav_success"
+                android:checkable="true"
+                android:icon="@drawable/trophy"
+                android:title="Success Stories" />
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="QR CODE"
+        android:id="@+id/nav_qr">
+        <menu>
+            <item
+                android:id="@+id/nav_qrcode"
+                android:checkable="true"
+                android:icon="@drawable/my_post"
+                android:title="" />
+            <item
+                android:id="@+id/nav_qrcode1"
+                android:checkable="true"
+                android:visible="false"
+                android:icon="@drawable/my_post"
+                android:title="" />
+
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="Magazines"
+        android:id="@+id/nav_magTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_vrutant"
+                android:checkable="true"
+                android:icon="@drawable/my_post"
+                android:title="VAA VRUTANT" />
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="Our Committee">
+        <menu>
+            <item
+                android:id="@+id/nav_committee"
+                android:checkable="true"
+                android:icon="@drawable/committe"
+                android:title="Alumni Committee" />
+            <item
+                android:id="@+id/nav_appteam"
+                android:checkable="true"
+                android:icon="@drawable/description"
+                android:title="Developers" />
+            <item
+                android:id="@+id/nav_about"
+                android:checkable="true"
+                android:icon="@drawable/aboutnew"
+                android:title="About Us" />
+            <item
+                android:id="@+id/nav_contact"
+                android:checkable="true"
+                android:icon="@drawable/contact"
+                android:title="Contact Us" />
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:checkable="true"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_rate"
+                android:checkable="true"
+                android:icon="@drawable/star"
+                android:title="Rate Us" />
+            <item
+                android:id="@+id/nav_logout"
+                android:checkable="true"
+                android:icon="@drawable/logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
