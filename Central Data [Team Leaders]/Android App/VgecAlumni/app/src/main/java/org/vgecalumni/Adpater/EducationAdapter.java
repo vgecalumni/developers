@@ -8,25 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.vgecalumni.Api.RetrofitClient;
-import org.vgecalumni.Components.Profile.Education_List;
-import org.vgecalumni.Model.DefaultResponse;
 import org.vgecalumni.Model.Education;
 import org.vgecalumni.R;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class EducationAdpter extends RecyclerView.Adapter<EducationAdpter.EducationViewHolder> {
+public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.EducationViewHolder> {
 
     List<Education> educationList;
     Context context;
 
-    public EducationAdpter(List<Education> educationList, Context context) {
+    public EducationAdapter(List<Education> educationList, Context context) {
         this.educationList = educationList;
         this.context = context;
     }

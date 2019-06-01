@@ -118,12 +118,6 @@
             android:theme="@style/ProfileTheme">
         </activity>
         <activity
-            android:name=".Components.Profile.Education_List"
-            android:theme="@style/AppTheme1" />
-        <activity
-            android:name=".Components.Profile.Experience_List"
-            android:theme="@style/AppTheme1" />
-        <activity
             android:name=".Components.QRCode.Qr_generate_photo"
             android:theme="@style/AppTheme1" />
         <activity

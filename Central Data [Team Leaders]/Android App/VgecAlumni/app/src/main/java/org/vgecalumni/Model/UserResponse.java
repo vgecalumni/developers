@@ -1,7 +1,5 @@
 package org.vgecalumni.Model;
 
-import retrofit2.http.Url;
-
 public class UserResponse {
     private boolean error;
     private String message;

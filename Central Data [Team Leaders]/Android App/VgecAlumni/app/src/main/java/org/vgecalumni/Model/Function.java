@@ -1,6 +1,4 @@
 package org.vgecalumni.Model;
-import android.support.annotation.Nullable;
-import android.util.Patterns;
 
 import org.vgecalumni.R;
 

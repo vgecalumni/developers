@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.vgecalumni.Adpater.ViewPagerAdpter;
+import org.vgecalumni.Adpater.ViewPagerAdapter;
 import org.vgecalumni.Api.RetrofitClient;
 import org.vgecalumni.Fragment.BasicInfo;
 import org.vgecalumni.Fragment.EducationInfo;
@@ -37,22 +37,20 @@ import retrofit2.Response;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
-
     private String s_uname;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private static final String MY_PREFS_NAME = "VgecAlumni";
-
     private FloatingActionButton fab,fab1,fab2;
 
     public CircleImageView imageView;
     public TextView t_mob, t_email;
-    ViewPagerAdpter viewPagerAdapter;
+    ViewPagerAdapter viewPagerAdapter;
 
     CollapsingToolbarLayout collapsingToolbarLayout;
     AppBarLayout appBarLayout;
     Toolbar toolbar;
+    private static final String MY_PREFS_NAME = "VgecAlumni";
 
     Myinterface myinterface,myinterface2,myinterface3;
 
@@ -66,11 +64,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity_profile);
 
-        toolbar=findViewById(R.id.tool);
-
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         s_uname = prefs.getString("uname", null);
 
+        toolbar=findViewById(R.id.tool);
         appBarLayout=findViewById(R.id.appbar);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -102,26 +99,25 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         fab2 = findViewById(R.id.fab2);
         fab2.setOnClickListener(this);
 
-        viewPagerAdapter = new ViewPagerAdpter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new BasicInfo(), "BASIC INFO");
-        viewPagerAdapter.addFragment(new EducationInfo(), "EDUCATION");
-        viewPagerAdapter.addFragment(new ExperienceInfo(), "EXPERIENCE");
+        getUser();
+
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new BasicInfo(), "Basic Info");
+        viewPagerAdapter.addFragment(new EducationInfo(), "Education");
+        viewPagerAdapter.addFragment(new ExperienceInfo(), "Experience");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         viewPager.addOnPageChangeListener(this);
         onPageSelected(0);
-        getUser();
     }
 
     private void getUser() {
-
         Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_uname);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-
                 UserResponse userResponse = response.body();
                 if (userResponse.isError()) {
                     Toast.makeText(Profile.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();

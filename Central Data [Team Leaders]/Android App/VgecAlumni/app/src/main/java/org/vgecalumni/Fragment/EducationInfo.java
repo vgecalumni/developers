@@ -14,9 +14,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.vgecalumni.Adpater.EducationAdpter;
-import org.vgecalumni.Components.Profile.Add_Education;
+import org.vgecalumni.Adpater.EducationAdapter;
 import org.vgecalumni.Api.RetrofitClient;
+import org.vgecalumni.Components.Profile.Add_Education;
+import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.Model.CustomDialog;
 import org.vgecalumni.Model.DefaultResponse;
 import org.vgecalumni.Model.EduHolder;
@@ -24,13 +25,10 @@ import org.vgecalumni.Model.EduResponse;
 import org.vgecalumni.Model.Education;
 import org.vgecalumni.Model.Myinterface;
 import org.vgecalumni.Model.RecyclerTouchHelper;
-import org.vgecalumni.Model.SharedUser;
 import org.vgecalumni.Model.User;
-import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.R;
 import org.vgecalumni.SharedMemory.SharedPrefManager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,7 +42,7 @@ public class EducationInfo extends Fragment implements RecyclerTouchHelper.Recyc
     RecyclerView recyclerView;
     LinearLayout linearLayout;
     String s_id;
-    private EducationAdpter adapter;
+    private EducationAdapter adapter;
     private int pos = -1;
     private CustomDialog customDialog;
 
@@ -89,7 +87,7 @@ public class EducationInfo extends Fragment implements RecyclerTouchHelper.Recyc
                     recyclerView.setVisibility(View.VISIBLE);
 
                     educationList = eduResponse.getEducation();
-                    adapter = new EducationAdpter(educationList, getContext());
+                    adapter = new EducationAdapter(educationList, getContext());
                     recyclerView.setAdapter(adapter);
                 }
             }

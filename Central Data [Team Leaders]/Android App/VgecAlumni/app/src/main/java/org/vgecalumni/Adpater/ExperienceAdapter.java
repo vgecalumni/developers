@@ -9,30 +9,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.vgecalumni.Model.Education;
 import org.vgecalumni.Model.Experience;
 import org.vgecalumni.R;
 
 import java.util.List;
 
-public class ExperienceAdpter extends RecyclerView.Adapter<ExperienceAdpter.ExperienceViewHolder> {
+public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.ExperienceViewHolder> {
     List<Experience> experienceList;
     Context context;
 
-    public ExperienceAdpter(List<Experience> experienceList, Context context) {
+    public ExperienceAdapter(List<Experience> experienceList, Context context) {
         this.experienceList = experienceList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ExperienceAdpter.ExperienceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ExperienceAdapter.ExperienceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.profile_experiance_card,parent,false);
-        return new ExperienceAdpter.ExperienceViewHolder(view);
+        return new ExperienceViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExperienceAdpter.ExperienceViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExperienceViewHolder holder, int position) {
         Experience experience= experienceList.get(position);
         holder.comp.setText(experience.getCompany());
         holder.desig.setText(experience.getDesig());

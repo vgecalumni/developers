@@ -7,15 +7,13 @@ import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import org.vgecalumni.Model.Myinterface;
-import org.vgecalumni.Model.SharedUser;
-import org.vgecalumni.Model.User;
+
 import org.vgecalumni.Components.Profile.Profile;
+import org.vgecalumni.Model.Myinterface;
+import org.vgecalumni.Model.User;
 import org.vgecalumni.R;
 import org.vgecalumni.SharedMemory.SharedPrefManager;
 
@@ -107,7 +105,14 @@ public class BasicInfo extends Fragment implements Myinterface {
 
         s_fullname = s_fname + " " + s_mname + " " + s_lname;
         s_addr2 = s_district + "," + s_state + "-" + s_pincode;
-        setField();
+
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                setField();
+            }
+        });
+
     }
 
     private void setField() {
@@ -127,10 +132,9 @@ public class BasicInfo extends Fragment implements Myinterface {
 
         t_addr.setText(s_city);
         t_addr2.setText(s_addr2);
-
         t_addr3.setText(s_address);
 
-        if (s_intro != null && !s_intro.equals("")) {
+        if(s_intro!=null && !s_intro.equals("")){
             t_intro.setText(s_intro);
         }
     }

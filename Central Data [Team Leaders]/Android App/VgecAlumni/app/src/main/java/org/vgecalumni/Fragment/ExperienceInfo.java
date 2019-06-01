@@ -3,7 +3,6 @@ package org.vgecalumni.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,28 +14,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.vgecalumni.Components.Profile.Add_Education;
-import org.vgecalumni.Components.Profile.Add_Experience;
-import org.vgecalumni.Adpater.ExperienceAdpter;
+import org.vgecalumni.Adpater.ExperienceAdapter;
 import org.vgecalumni.Api.RetrofitClient;
-import org.vgecalumni.Components.Profile.Education_List;
-import org.vgecalumni.Components.Profile.Experience_List;
+import org.vgecalumni.Components.Profile.Add_Experience;
+import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.Model.CustomDialog;
 import org.vgecalumni.Model.DefaultResponse;
-import org.vgecalumni.Model.EduHolder;
-import org.vgecalumni.Model.Education;
 import org.vgecalumni.Model.Experience;
 import org.vgecalumni.Model.ExprHolder;
 import org.vgecalumni.Model.ExprResponse;
 import org.vgecalumni.Model.Myinterface;
 import org.vgecalumni.Model.RecyclerTouchHelper;
-import org.vgecalumni.Model.SharedUser;
 import org.vgecalumni.Model.User;
-import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.R;
 import org.vgecalumni.SharedMemory.SharedPrefManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,7 +41,7 @@ public class ExperienceInfo extends Fragment implements RecyclerTouchHelper.Recy
     RecyclerView recyclerView;
     LinearLayout linearLayout;
     String s_id;
-    private ExperienceAdpter adapter;
+    private ExperienceAdapter adapter;
     private CustomDialog customDialog;
     private int pos = -1;
 
@@ -94,7 +86,7 @@ public class ExperienceInfo extends Fragment implements RecyclerTouchHelper.Recy
                     linearLayout.setVisibility(View.GONE);
 
                     experienceList = exprResponse.getExperience();
-                    adapter = new ExperienceAdpter(experienceList, getContext());
+                    adapter = new ExperienceAdapter(experienceList, getContext());
                     recyclerView.setAdapter(adapter);
                 }
             }

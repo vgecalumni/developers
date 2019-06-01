@@ -24,7 +24,7 @@
                 android:paddingTop="?actionBarSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorBlueDark"
+                android:background="@drawable/pr_back"
                 app:layout_collapseMode="pin">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -32,7 +32,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_margin="15dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:background="@mipmap/vgec_applauncher_logo" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,9 +47,9 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/email"
-                        android:text=""
+                        android:text="metaliyanaxxxx@gmail.com"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                        android:textColor="@color/colorWhite" />
+                        android:textColor="@color/main_back" />
 
                     <TextView
                         android:id="@+id/user_mobile"
@@ -58,9 +58,9 @@
                         android:layout_marginTop="5dp"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/phone"
-                        android:text=""
+                        android:text="+91901621****"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                        android:textColor="@color/colorWhite" />
+                        android:textColor="@color/main_back" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -77,17 +77,16 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablay"
-            app:tabTextAppearance="@style/TabLayoutTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlueDark"
+            android:background="@drawable/pr_back"
             android:minHeight="?attr/actionBarSize"
             app:elevation="0dp"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorLight"
+            app:tabIndicatorColor="@color/colorWhite"
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorLight" />
+            app:tabTextColor="@color/tabtext" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -95,7 +94,7 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorLight"
+        android:background="@color/back"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton

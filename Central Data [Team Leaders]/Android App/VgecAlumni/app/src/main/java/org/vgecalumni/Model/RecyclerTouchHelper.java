@@ -13,6 +13,7 @@ import android.view.View;
 
 import org.vgecalumni.R;
 
+
 public class RecyclerTouchHelper extends ItemTouchHelper.SimpleCallback {
     private RecyclerTouchHelperListener listener;
     private Drawable delete,edit;
@@ -24,7 +25,7 @@ public class RecyclerTouchHelper extends ItemTouchHelper.SimpleCallback {
         colorDrawableRed = new ColorDrawable(Color.parseColor("#FF0000"));
         colorDrawableGreen = new ColorDrawable(Color.parseColor("#2E7D32"));
         delete= ContextCompat.getDrawable(context,R.drawable.delete);
-        edit= ContextCompat.getDrawable(context,R.drawable.editwhite);
+        edit= ContextCompat.getDrawable(context, R.drawable.editwhite);
     }
 
     @Override

@@ -150,56 +150,64 @@
 
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin nibh. Euismod elementum nisi quis eleifend. Fames ac turpis egestas maecenas pharetra convallis. Vel orci porta non pulvinar neque laoreet suspendisse. Mattis pellentesque id nibh tortor id aliquet lectus proin. Cursus metus aliquam eleifend mi in nulla posuere. Mattis nunc sed blandit libero volutpat sed cras. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat. Sit amet facilisis magna etiam tempor orci eu lobortis. Ullamcorper malesuada proin libero nunc consequat interdum. Nulla malesuada pellentesque elit eget gravida cum. Turpis massa tincidunt dui ut ornare lectus sit amet. Pellentesque nec nam aliquam sem et tortor consequat id. Turpis egestas sed tempus urna. Magna ac placerat vestibulum lectus mauris ultrices. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Congue quisque egestas diam in arcu cursus euismod quis. In iaculis nunc sed augue lacus viverra vitae congue. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. In fermentum posuere urna nec. Interdum consectetur libero id faucibus nisl tincidunt eget. Aenean et tortor at risus viverra adipiscing. A cras semper auctor neque vitae tempus. Ullamcorper malesuada proin libero nunc. Vel risus commodo viverra maecenas accumsan.</string>
 
+    <!-- Profile section-->
+    <string name="hint_profile">Profile</string>
 
+    <string name="hint_basicinfo">Basic Info</string>
     <string name="hint_fname">First Name</string>
+    <string name="hint_midle">MiddleName</string>
     <string name="hint_lname">Last Name</string>
     <string name="hint_mobile">Mobile</string>
     <string name="hint_email">Email</string>
-    <string name="hint_enroll">Enrollment :</string>
-    <string name="hint_basicinfo">BASIC INFO</string>
-    <string name="hint_contact">Contact Info</string>
-    <string name="hint_landmark">Landmark</string>
-    <string name="hint_area">Area</string>
-    <string name="city">City</string>
-    <string name="hint_pin">Pincode</string>
-    <string name="hint_edu">EDUCATION</string>
-    <string name="hint_join">Join Year</string>
-    <string name="hint_end">End Year</string>
-    <string name="hint_expr">EXPERIENCE</string>
-    <string name="hint_org">Organization Name</string>
-    <string name="hint_work">Worked As</string>
-    <string name="hint_name">Narendra Metaliya</string>
-    <string name="hint_save">Save</string>
-    <string name="hint_add">ADD</string>
-    <string name="hint_profile">Profile</string>
-    <string name="hint_inst">Institute</string>
-    <string name="hint_degree">Degree</string>
-    <string name="hint_desig">Designation</string>
-    <string name="hint_state">State</string>
-    <string name="title_activity_contact">Contact</string>
-    <string name="hint_midle">MiddleName</string>
-    <string name="hint_program">Program</string>
-    <string name="hint_dob">DOB :</string>
-    <string name="hint_description">Description</string>
-    <string name="date_from">From: </string>
-    <string name="date_to">\u0020To: </string>
-    <string name="hint_field">Field of Education</string>
+    <string name="hint_enroll">Enrollment</string>
+    <string name="hint_enroll2">Enrollment:</string>
+    <string name="hint_gen">Gender</string>
+    <string name="hint_gen2">Gender:</string>
+    <string name="hint_dob">DOB</string>
+    <string name="hint_dob2">DOB:</string>
+
     <string name="hint_city">City</string>
-    <string name="hint_curwork">Currently working on this</string>
-    <string name="hint_present">Present</string>
-    <string name="hint_address">Address :</string>
+    <string name="hint_city2">City:</string>
+    <string name="hint_address">Address</string>
     <string name="hint_district">District</string>
-    <string name="hint_branch">Computer</string>
-    <string name="intro">No Introduction</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_pin">Pincode</string>
+    <string name="hint_state">State</string>
+
     <string name="hint_intro">Introduction</string>
+    <string name="hint_intro2">No Introduction Found</string>
+
+    <string name="hint_edu">Education</string>
+    <string name="hint_degree">Degree</string>
+    <string name="hint_degree2">Degree:</string>
+    <string name="hint_field">Field of Education</string>
+    <string name="hint_field2">Field of Education:</string>
+    <string name="hint_inst">Institute</string>
+    <string name="hint_inst2">Institute:</string>
+    <string name="date_from">From: </string>
+    <string name="hint_join">Join Year</string>
+    <string name="date_to">\u0020To: </string>
+    <string name="hint_end">End Year</string>
+
+    <string name="hint_expr">Experience</string>
+    <string name="hint_org">Organization</string>
+    <string name="hint_org2">Organization:</string>
+    <string name="hint_desig">Designation</string>
+    <string name="hint_desig2">Designation:</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_description2">Description:</string>
+
+    <string name="hint_save">Save</string>
+
     <string name="hint_rmpic">Remove Profile Picture</string>
-    <string name="hint_curstudy">Currently pursuing the study</string>
-    <string name="hint_course">Course :</string>
-    <string name="hint_gen">Gender :</string>
-    <string name="hint_org2">Organization</string>
+
+    <string name="hint_curwork">Currently working</string>
+    <string name="hint_curstudy">Currently pursuing</string>
+    <string name="hint_present">Present</string>
+
     <string name="hint_noexpr">No experience found</string>
     <string name="hint_noedu">No education found</string>
 
+    <string name="swipe_to_delete"><![CDATA[Swipe -> (to delete)]]></string>
+    <string name="swipe_to_edit"><![CDATA[Swipe <- (to edit)]]></string>
 
 </resources>

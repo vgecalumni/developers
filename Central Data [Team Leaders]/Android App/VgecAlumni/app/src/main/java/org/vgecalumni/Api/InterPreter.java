@@ -17,12 +17,6 @@ import retrofit2.http.Part;
 public interface InterPreter {
 
     @FormUrlEncoded
-    @POST("/android/getUser.php")
-    Call<UserResponse> getUser(
-            @Field("uname") String uname
-    );
-
-    @FormUrlEncoded
     @POST("/android/getRegisteredEvents.php")
     Call<RegEventResponse> getRegEvents(
             @Field("uname") String uname
@@ -33,6 +27,12 @@ public interface InterPreter {
     Call<DefaultResponse> updatecoupon(
             @Field("uname") String uname,
             @Field("coupon") String coupon
+    );
+
+    @FormUrlEncoded
+    @POST("/android/getUser.php")
+    Call<UserResponse> getUser(
+            @Field("uname") String uname
     );
 
     @FormUrlEncoded
@@ -50,7 +50,7 @@ public interface InterPreter {
     @Multipart
     @POST("/android/uploadImage.php")
     Call<DefaultResponse> uploadImage(
-            @Part("image\";filename=\"myfile.jpg\" ")RequestBody file,
+            @Part("image\";filename=\"myfile.jpg\" ") RequestBody file,
             @Part("id") RequestBody id
     );
 

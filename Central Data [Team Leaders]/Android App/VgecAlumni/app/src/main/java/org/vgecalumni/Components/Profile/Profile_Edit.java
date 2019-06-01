@@ -1,15 +1,20 @@
 package org.vgecalumni.Components.Profile;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
 import org.vgecalumni.Api.RetrofitClient;
 import org.vgecalumni.Model.DefaultResponse;
 import org.vgecalumni.Model.Function;
@@ -46,7 +52,7 @@ import retrofit2.Response;
 public class Profile_Edit extends AppCompatActivity implements View.OnClickListener {
 
     private AppCompatEditText fname, mname, lname, address, district, pin, city, state, intro, dob;
-    private TextInputLayout l_fname, l_mname, l_lname, l_address, l_district, l_pin, l_city, l_state, l_intro,l_dob;
+    private TextInputLayout l_fname, l_mname, l_lname, l_address, l_district, l_pin, l_city, l_state, l_intro, l_dob;
     private String s_id, s_fname, s_mname, s_lname, s_address, s_district, s_pin, s_city, s_state, s_pic, s_intro, s_gen, s_dob;
     private CircleImageView profile;
     RadioGroup gender;
@@ -163,7 +169,7 @@ public class Profile_Edit extends AppCompatActivity implements View.OnClickListe
 
     private void uploadData() {
         Call<DefaultResponse> responseCall = RetrofitClient.getInstance()
-                .getInterPreter().editInfo(s_id, s_fname, s_mname, s_lname, s_address, s_district, s_pin, s_city, s_state, s_pic, s_intro , s_gen, s_dob);
+                .getInterPreter().editInfo(s_id, s_fname, s_mname, s_lname, s_address, s_district, s_pin, s_city, s_state, s_pic, s_intro, s_gen, s_dob);
         responseCall.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
@@ -359,9 +365,19 @@ public class Profile_Edit extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.user_profile:
-                Intent intent;
-                intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 101);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        Intent intent;
+                        intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(intent, 101);
+                    } else {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                    }
+                } else {
+                    Intent intent;
+                    intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 101);
+                }
                 break;
             case R.id.rm_profile:
                 s_pic = "";
@@ -389,5 +405,10 @@ public class Profile_Edit extends AppCompatActivity implements View.OnClickListe
             }
         }, y, m, d);
         datePickerDialog.show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
