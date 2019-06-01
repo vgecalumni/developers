@@ -307,9 +307,9 @@ public class Main2Activity extends AppCompatActivity
             myWebView.loadUrl("https://www.vgecalumni.org/index.jsp");
         }
 
-        list = new String[]{"Create Blog", "View Blog", "Create Profile", "View Profile",
+        list = new String[]{"create post", "view post", "create profile", "view profile",
                 "Vishwasmruti 2.0", "View All Events", "Events","Contact Us","About Us","Home","Portfolio",
-                "Event Portfolio","My Profile","My Blog","Search ALumni","Success Stories","Alumni Committe",
+                "Event Portfolio","My Profile","My Post","Search Alumni","Success Stories","Alumni Committee",
                 "Share","Settings","Rate Us","Application Developer(Prahar)","Contact Application Developer(Prahar)",
                 "App Team","Vishwakarma Government Engineering College" };
 
@@ -324,39 +324,55 @@ public class Main2Activity extends AppCompatActivity
                 String name = prefs.getString("name", null);
                 String pw = prefs.getString("password", null);
 
-                //Here Create your filtering
-//                if(query.contains("search")){
-//                    myWebView.loadUrl("https://vgecalumni.org/srchalumni.jsp");
-//
-//                }else if (query.contains("home")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/index.jsp");
-//                } else if (query.contains("about")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
-//                }else if (query.contains("events")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/events.jsp");
-//                }else if (query.contains("portfolio")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/portfolio.jsp");
-//                }else if (query.contains("job off ers")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_joboffers.jsp");
-//                }else if (query.contains("posts") || query.contains("share")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_discuss.jsp");
-//                }else if (query.contains("post job")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_postjob.jsp");
-//                }else if (query.contains("my post")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_mypost.jsp");
-//                }else if (query.contains("success")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/successStories.jsp");
-//                }else if (query.contains("alumni")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/alumnicommitee.jsp");
-//                }else if (query.contains("about")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
-//                }else if (query.contains("contact")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/contact.jsp");
-//                }else if (query.contains("developer")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_developers.jsp");
 
-                    TastyToast.makeText(getApplicationContext(), "This feature is under maintenance !", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                if(query.contains("search")){
+                    myWebView.loadUrl("https://www.vgecalumni.org/srchalumni.jsp");
 
+                }else if (query.contains("home")) {
+                    myWebView.loadUrl("https://www..vgecalumni.org/index.jsp");
+                } else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                }else if (query.contains("events")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+                }else if (query.contains("portfolio") || query.contains("photos")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
+                }else if (query.contains("job")) {
+                    Intent joboffers = new Intent(Main2Activity.this,joboffersmain.class);
+                    startActivity(joboffers);
+                    return true;
+                }else if (query.contains("post") || query.contains("share")) {
+                    Intent sharing = new Intent(Main2Activity.this,sharingmain.class);
+                    startActivity(sharing);
+                    return true;
+                }else if (query.contains("success")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/successStories.jsp");
+                }else if (query.contains("alumni") || query.contains("developers") ) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/alumnicommitee.jsp");
+                }else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                }else if (query.contains("contact")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
+                }else if (query.contains("developer")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_developers.jsp");
+                }else if (query.contains("education") || query.contains("profile") || query.contains("experience")) {
+                    Intent profile = new Intent(Main2Activity.this,Profile.class);
+                    startActivity(profile);
+                    return true;
+                }else if (query.contains("magazine") || query.contains("vrutant")) {
+                    Intent magintent = new Intent(Main2Activity.this, MagazineActivity.class);
+                    startActivity(magintent);
+                    return true;
+                }else if (query.contains("setting")) {
+                    Intent settingsintent = new Intent(Main2Activity.this, SettingsActivity.class);
+                    startActivity(settingsintent);
+                    return true;
+                }else if (query.contains("rate")){
+                    try{startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));}catch(Exception e){}
+                }else if (query.contains("logout")){
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_logout.jsp");
+                }else {
+                    TastyToast.makeText(getApplicationContext(), "Sorry ! No result found !", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                }
                 return false;
             }
 
