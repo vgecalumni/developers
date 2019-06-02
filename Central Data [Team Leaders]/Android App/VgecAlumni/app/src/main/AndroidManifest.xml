@@ -124,6 +124,8 @@
             android:name=".Components.QRCode.Qr_generate_food"
             android:theme="@style/AppTheme1" />
 
+
+
     </application>
 
 </manifest> <!-- android:noHistory="true" -->

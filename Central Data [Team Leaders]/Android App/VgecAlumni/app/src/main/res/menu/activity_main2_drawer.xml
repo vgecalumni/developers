@@ -62,13 +62,13 @@
             <item
                 android:id="@+id/nav_qrcode"
                 android:checkable="true"
-                android:icon="@drawable/my_post"
+                android:icon="@drawable/coupon"
                 android:title="" />
             <item
                 android:id="@+id/nav_qrcode1"
                 android:checkable="true"
                 android:visible="false"
-                android:icon="@drawable/my_post"
+                android:icon="@drawable/coupon"
                 android:title="" />
 
         </menu>
@@ -81,7 +81,7 @@
             <item
                 android:id="@+id/nav_vrutant"
                 android:checkable="true"
-                android:icon="@drawable/my_post"
+                android:icon="@drawable/magazine"
                 android:title="VAA VRUTANT" />
         </menu>
     </item>

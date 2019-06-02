@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static String BASE_URL="https://admin.vgecalumni.org";
+    private static String BASE_URL="https://admin.vgecalumni.org/android/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 

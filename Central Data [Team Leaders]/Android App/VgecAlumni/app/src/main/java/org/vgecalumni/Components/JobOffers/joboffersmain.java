@@ -2,7 +2,9 @@ package org.vgecalumni.Components.JobOffers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -13,16 +15,12 @@ import android.net.MailTo;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
-import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.SslErrorHandler;
@@ -37,17 +35,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.sdsmdg.tastytoast.TastyToast;
-
-import org.vgecalumni.Components.JobOffers.MyJobApplications;
-import org.vgecalumni.Components.SharingPlatform.sharingmain;
 import org.vgecalumni.ErrorActivity;
-import org.vgecalumni.Main2Activity;
-import org.vgecalumni.OfflineActivity;
 import org.vgecalumni.R;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -255,14 +244,71 @@ public class joboffersmain extends AppCompatActivity implements BottomNavigation
 
         }
 
-            @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            // ignore ssl error
-            if (handler != null) {
-                handler.proceed();
-            } else {
-                super.onReceivedSslError(view, null, error);
+        @Override
+        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(joboffersmain.this);
+            String message = "SSL Certificate error.";
+            Intent error_intent = new Intent(joboffersmain.this,ErrorActivity.class);
+
+            String errorname;
+            switch (error.getPrimaryError()) {
+                case SslError.SSL_UNTRUSTED:
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate authority is not trusted.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+
+                    break;
+                case SslError.SSL_EXPIRED:
+
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate has expired.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_IDMISMATCH:
+                    message = "The certificate Hostname mismatch.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_NOTYETVALID:
+                    message = "The certificate is not yet valid.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
             }
+            message += " Do you want to continue anyway?";
+
+            builder.setTitle("SSL Certificate Error");
+            builder.setMessage(message);
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.proceed();
+                }
+            });
+            builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.cancel();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         @Override

@@ -35,23 +35,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/swipe_to_edit"/>
 
         <TextView
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="start"
+            android:textColor="@color/colorRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/swipe_to_delete"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:gravity="end"
+            android:textColor="@color/colorGreen"
+            android:layout_height="wrap_content"
+            android:text="@string/swipe_to_edit"/>
+
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_margin="10dp"
         android:id="@+id/recyler_education"
+        android:paddingBottom="@dimen/fab_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

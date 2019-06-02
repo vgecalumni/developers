@@ -809,13 +809,70 @@ public class Main2Activity extends AppCompatActivity
         }
 
         @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            // ignore ssl error
-            if (handler != null){
-                handler.proceed();
-            } else {
-                super.onReceivedSslError(view, null, error);
+        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+            String message = "SSL Certificate error.";
+            Intent error_intent = new Intent(Main2Activity.this,ErrorActivity.class);
+
+            String errorname;
+            switch (error.getPrimaryError()) {
+                case SslError.SSL_UNTRUSTED:
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate authority is not trusted.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+
+                    break;
+                case SslError.SSL_EXPIRED:
+
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate has expired.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_IDMISMATCH:
+                    message = "The certificate Hostname mismatch.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_NOTYETVALID:
+                    message = "The certificate is not yet valid.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
             }
+            message += " Do you want to continue anyway?";
+
+            builder.setTitle("SSL Certificate Error");
+            builder.setMessage(message);
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.proceed();
+                }
+            });
+            builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.cancel();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         @Override

@@ -73,7 +73,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (Math.abs(verticalOffset)==appBarLayout.getTotalScrollRange()){
-                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(),R.drawable.pr_back));
+                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(),R.color.colorBlueDark));
                 }
             }
         });

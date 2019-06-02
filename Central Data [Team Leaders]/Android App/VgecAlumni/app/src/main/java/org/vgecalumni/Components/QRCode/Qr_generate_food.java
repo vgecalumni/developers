@@ -82,6 +82,7 @@ public class Qr_generate_food extends AppCompatActivity {
         desc = (TextView)findViewById(R.id.qr_generate_desc);
         qrimage = (ImageView)findViewById(R.id.qr_image);
 
+        
         Call<RegEventResponse> RegEventResponsecall = RetrofitClient.getInstance().getInterPreter().getRegEvents(uname);
         RegEventResponsecall.enqueue(new Callback<RegEventResponse>() {
             @Override

@@ -24,7 +24,7 @@
                 android:paddingTop="?actionBarSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/pr_back"
+                android:background="@color/colorBlueDark"
                 app:layout_collapseMode="pin">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/email"
-                        android:text="metaliyanaxxxx@gmail.com"
+                        android:text="Loading email......."
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                         android:textColor="@color/main_back" />
 
@@ -58,7 +58,7 @@
                         android:layout_marginTop="5dp"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/phone"
-                        android:text="+91901621****"
+                        android:text="Loading mobile......."
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                         android:textColor="@color/main_back" />
                 </LinearLayout>
@@ -68,7 +68,7 @@
                 android:id="@+id/tool"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:popupTheme="@style/AppTheme1"
                 app:elevation="0dp"
                 app:layout_collapseMode="pin"/>
 
@@ -79,7 +79,7 @@
             android:id="@+id/tablay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/pr_back"
+            android:background="@color/colorBlueDark"
             android:minHeight="?attr/actionBarSize"
             app:elevation="0dp"
             app:tabGravity="fill"
@@ -94,11 +94,12 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/back"
+        android:background="@color/colorLight"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab0"
+        android:backgroundTint="@color/colorBlueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -107,6 +108,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab1"
+        android:backgroundTint="@color/colorBlueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -115,6 +117,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
+        android:backgroundTint="@color/colorBlueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
