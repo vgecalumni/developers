@@ -35,12 +35,7 @@ public class UpdateDialog implements View.OnClickListener {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.update_dialog);
         am = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
-        WindowManager.LayoutParams lp= new WindowManager.LayoutParams();
-        lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width =  WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.gravity = Gravity.CENTER;
-        //dialog.getWindow().setAttributes(lp);
+
 
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
 
