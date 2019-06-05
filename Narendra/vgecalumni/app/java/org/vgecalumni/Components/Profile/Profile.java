@@ -105,27 +105,20 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         fab2 = findViewById(R.id.fab2);
         fab2.setOnClickListener(this);
 
-        getUser();
-
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new BasicInfo(), "Basic Info");
         viewPagerAdapter.addFragment(new EducationInfo(), "Education");
         viewPagerAdapter.addFragment(new ExperienceInfo(), "Experience");
 
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-
-        viewPager.addOnPageChangeListener(this);
-        onPageSelected(0);
+        getUser();
     }
 
-    private void getUser() {
+    private void getUser(){
         setProgress();
         Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_uname);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                unsetProgress();
                 UserResponse userResponse = response.body();
                 if (userResponse.isError()) {
                     Toast.makeText(Profile.this, userResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -133,7 +126,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
                     User user = userResponse.getUser();
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getmInstance(getApplicationContext());
                     sharedPrefManager.saveUser(user);
+
+                    viewPager.setAdapter(viewPagerAdapter);
+                    tabLayout.setupWithViewPager(viewPager);
+
+                    viewPager.addOnPageChangeListener(Profile.this);
+                    onPageSelected(0);
                 }
+                unsetProgress();
             }
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
@@ -163,9 +163,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
     @Override
     public void onPageSelected(int position) {
