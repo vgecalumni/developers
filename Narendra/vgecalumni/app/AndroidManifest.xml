@@ -59,7 +59,6 @@
             android:name=".ErrorActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
-
         </activity>
 
         <meta-data
@@ -123,8 +122,6 @@
         <activity
             android:name=".Components.QRCode.Qr_generate_food"
             android:theme="@style/AppTheme1" />
-
-
 
     </application>
 

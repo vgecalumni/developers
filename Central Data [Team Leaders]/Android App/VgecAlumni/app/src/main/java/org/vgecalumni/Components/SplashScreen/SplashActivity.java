@@ -36,8 +36,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vansuita.library.CheckNewAppVersion;
+
 import org.vgecalumni.Components.Login.Login2Activity;
 import org.vgecalumni.Main2Activity;
+import org.vgecalumni.Model.UpdateDialog;
 import org.vgecalumni.NetworkUtil;
 import org.vgecalumni.OfflineActivity;
 import org.vgecalumni.PrefManager;
@@ -111,7 +114,6 @@ public class SplashActivity extends AppCompatActivity{
                         finish();
                     }else{
 
-
                         splashweb = (WebView) findViewById(R.id.splashWeb);
                         WebSettings webSettings = splashweb.getSettings();
                         webSettings.setJavaScriptEnabled(true);
@@ -175,21 +177,40 @@ public class SplashActivity extends AppCompatActivity{
 
     private void launchHomeScreen() {
 
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String uname = prefs.getString("uname",null);
-        if (uname != null) {
-            String password = prefs.getString("password", null); //0 is the default value.
-            handleIntent = new Intent(SplashActivity.this, Main2Activity.class);
+        new CheckNewAppVersion(SplashActivity.this).setOnTaskCompleteListener(new CheckNewAppVersion.ITaskComplete() {
+            @Override
+            public void onTaskComplete(final CheckNewAppVersion.Result result) {
 
-            startActivity(handleIntent);
-            handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            finish();
-        }else{
-            handleIntent = new Intent(SplashActivity.this, Login2Activity.class);
-            handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(handleIntent);
-            finish();
-        }
+                //result.setNewVersionCode("4.0.5");
+                //Checks if there is a new version available on Google Play Store.
+                if(result.hasNewVersion()){
+                    UpdateDialog updateDialog = new UpdateDialog();
+                    updateDialog.showDialogAddRoute(SplashActivity.this, new UpdateDialog.UpdateDialogListener() {
+                        @Override
+                        public void onUpdateClick() {
+                            result.openUpdateLink();
+                        }
+                    });
+                }else {
+                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                    String uname = prefs.getString("uname",null);
+                    if (uname != null) {
+                        String password = prefs.getString("password", null); //0 is the default value.
+                        handleIntent = new Intent(SplashActivity.this, Main2Activity.class);
+
+                        startActivity(handleIntent);
+                        handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        finish();
+                    }else{
+                        handleIntent = new Intent(SplashActivity.this, Login2Activity.class);
+                        handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(handleIntent);
+                        finish();
+                    }
+                }
+
+            }
+        }).execute();
 
     }
     public class MyWebviewClient extends WebViewClient {

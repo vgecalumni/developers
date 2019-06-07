@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
 
     CollapsingToolbarLayout collapsingToolbarLayout;
     AppBarLayout appBarLayout;
+
+    LinearLayout linearLayout;
     Toolbar toolbar;
     private static final String MY_PREFS_NAME = "VgecAlumni";
 
@@ -66,6 +70,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         s_uname = prefs.getString("uname", null);
+
+        linearLayout=findViewById(R.id.progress_lay);
 
         toolbar=findViewById(R.id.tool);
         appBarLayout=findViewById(R.id.appbar);
@@ -99,21 +105,16 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         fab2 = findViewById(R.id.fab2);
         fab2.setOnClickListener(this);
 
-        getUser();
-
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new BasicInfo(), "Basic Info");
         viewPagerAdapter.addFragment(new EducationInfo(), "Education");
         viewPagerAdapter.addFragment(new ExperienceInfo(), "Experience");
 
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-
-        viewPager.addOnPageChangeListener(this);
-        onPageSelected(0);
+        getUser();
     }
 
-    private void getUser() {
+    private void getUser(){
+        setProgress();
         Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_uname);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
@@ -125,10 +126,18 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
                     User user = userResponse.getUser();
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getmInstance(getApplicationContext());
                     sharedPrefManager.saveUser(user);
+
+                    viewPager.setAdapter(viewPagerAdapter);
+                    tabLayout.setupWithViewPager(viewPager);
+
+                    viewPager.addOnPageChangeListener(Profile.this);
+                    onPageSelected(0);
                 }
+                unsetProgress();
             }
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
+                unsetProgress();
             }
         });
     }
@@ -154,9 +163,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
     @Override
     public void onPageSelected(int position) {
@@ -231,5 +238,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
 
     public TextView getT_email() {
         return t_email;
+    }
+
+    public void setProgress(){
+        linearLayout.setVisibility(View.VISIBLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    private void unsetProgress() {
+        linearLayout.setVisibility(View.INVISIBLE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

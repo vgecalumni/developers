@@ -124,4 +124,17 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/add" />
 
+    <LinearLayout
+        android:id="@+id/progress_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/black_overlay"
+        android:backgroundTintMode="src_over"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>
