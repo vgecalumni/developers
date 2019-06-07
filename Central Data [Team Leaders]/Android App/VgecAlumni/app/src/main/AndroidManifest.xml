@@ -123,7 +123,12 @@
         <activity
             android:name=".Components.QRCode.Qr_generate_food"
             android:theme="@style/AppTheme1" />
-
+        <activity
+            android:name=".Components.Events.EventsActivity"
+            android:theme="@style/EventTheme" />
+        <activity
+            android:name=".Components.Events.EventDetailsActivity"
+            android:theme="@style/EventTheme" />
 
 
     </application>

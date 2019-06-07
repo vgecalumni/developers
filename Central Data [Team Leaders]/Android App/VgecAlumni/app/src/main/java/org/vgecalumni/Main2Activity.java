@@ -97,6 +97,7 @@ import android.widget.Toast;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import org.vgecalumni.Components.Events.EventsActivity;
 import org.vgecalumni.Components.JobOffers.joboffersmain;
 import org.vgecalumni.Components.Login.Login2Activity;
 import org.vgecalumni.Components.Magazine.MagazineActivity;
@@ -627,7 +628,9 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
         }else if (id == R.id.nav_events) {
-            myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+//            myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+            Intent intent = new Intent(this, EventsActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_portfolio) {
             myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
         }else if (id == R.id.nav_job) {

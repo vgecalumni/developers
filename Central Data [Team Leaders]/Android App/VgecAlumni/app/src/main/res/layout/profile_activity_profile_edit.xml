@@ -77,6 +77,37 @@
                     style="@style/TextEdit" />
             </android.support.design.widget.TextInputLayout>
 
+            <!--  <android.support.design.widget.TextInputLayout
+                  style="@style/TextInput"
+                  android:hint="@string/hint_enroll"
+                  app:errorEnabled="true"
+                  android:id="@+id/lay_enroll">
+
+                  <android.support.v7.widget.AppCompatEditText
+                      android:id="@+id/user_enroll"
+                      style="@style/TextEdit"
+                      android:inputType="number"/>
+              </android.support.design.widget.TextInputLayout>
+
+              <android.support.v7.widget.AppCompatSpinner
+                  android:id="@+id/user_program"
+                  style="@style/Spinner"
+                  android:entries="@array/program"
+                  android:layout_marginBottom="10dp"/>
+
+              <android.support.v7.widget.AppCompatSpinner
+                  android:id="@+id/user_degree"
+                  style="@style/Spinner"
+                  android:entries="@array/branch"
+                  android:layout_marginBottom="10dp"/>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:weightSum="2"
+                  android:baselineAligned="true"> -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +146,31 @@
                         android:focusable="false" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
+
+
+            <!-- <android.support.v7.widget.AppCompatSpinner
+                 android:id="@+id/user_gender"
+                 style="@style/Spinner"
+                 android:layout_weight="1"
+                 android:entries="@array/gender"/>
+
+             <android.support.design.widget.TextInputLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlineBox"
+                 android:layout_marginEnd="15dp"
+                 android:layout_weight="1"
+                 android:hint="@string/hint_dob"
+                 app:errorEnabled="true"
+                 android:id="@+id/lay_dob">
+
+                 <android.support.v7.widget.AppCompatEditText
+                     android:id="@+id/user_dob"
+                     style="@style/TextEdit"
+                     android:inputType="number"/>
+             </android.support.design.widget.TextInputLayout>
+
+         </LinearLayout> -->
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/lay_address"
