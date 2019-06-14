@@ -17,17 +17,6 @@
 			<br><br>
 			
 			<input type="password" placeholder="Password" name="password" class="input" required /><br><br>
-			Role:  <select name="role">
-			    <option value="principal">principal</option>
-			    <option value="faculty">faculty</option>
-			    <option value="core Member">Core Member</option>
-			    <option value="Volunteer">Volunteer</option>
-			  </select><br><br>
-			<input type="name" placeholder="Full Name" name="name" class="input" required /><br><br>
-			<input type="email" placeholder="Email" name="email" class="input" required /><br><br>
-			<input type="number" placeholder="Mobile No." name="mobile" class="input" required /><br><br>
-			upload profile picture:<input type="file" placeholder="Upload Profile Picture" name="profile" class="input" required /><br><br>
-
 			<input type="submit" id="register" name="register" value="register"/>
 			<a href="login.php">Login Here</a>
 		</form>
@@ -36,17 +25,9 @@
 {
 	$user_name=$_POST['user_name'];
 	$password=$_POST['password'];
-	$role=$_POST['role'];
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$mobile=$_POST['mobile'];
-	$profile=$_POST['profile'];
 
-
-
-
-	$q="INSERT INTO `users` (`id`,`user_name`,`password`,`role`,`status`,`name`,`email`,`mobile`,`profile_pic`,`last_logged`,`role_id`)
-	VALUES ('','".$user_name."','".$password."','".$role."','','".$name."','".$email."','".$mobile."','".$profile."','','') ";
+	$q="INSERT INTO `users` (`id`,`user_name`,`password`)
+	VALUES ('','".$user_name."','".$password."') ";
 	$r=mysqli_query($con,$q);
 
 	if($r)

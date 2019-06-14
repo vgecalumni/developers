@@ -41,7 +41,7 @@ $q='SELECT DISTINCT `reciver_name`,`sender_name`FROM `message` WHERE `sender_nam
 				 	<div class="grey-back">
 		<img src="images/profile.jpg" class="images" />
 
-					<?php echo'<a href="?user='.$sender_name.'">'.$sender_name.'</a>'; ?>
+					<?php echo'<a href="?user='.$sender_name.'">'.$sender_name.'</a>'; ?></div>
 				 	<?php
 				 	$added_user =array($counter => $sender_name);  
 				 	$counter++;

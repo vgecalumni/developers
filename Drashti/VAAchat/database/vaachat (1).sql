@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2019 at 07:31 PM
+-- Generation Time: Jun 14, 2019 at 09:08 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -59,7 +59,29 @@ INSERT INTO `message` (`id`, `sender_name`, `reciver_name`, `message_text`, `dat
 (16, 'user3', 'user1', 'meet me soon at college', '2019-06-13 10:54:31'),
 (17, 'vaa user', 'Drashti', 'hello how are you??\r\n', '2019-06-14 08:01:17'),
 (18, 'vaa user', 'user1', 'please change your name so that we can identify you...\r\n', '2019-06-14 08:01:45'),
-(19, 'vaa user', 'user1', 'who are you??', '2019-06-14 08:34:02');
+(19, 'vaa user', 'user1', 'who are you??', '2019-06-14 08:34:02'),
+(20, 'Drashti', 'admin', 'dxcdxv', '2019-06-14 19:01:28'),
+(21, 'xyz', 'admin', 'admin???\r\n', '2019-06-14 19:01:09'),
+(22, 'xyz', 'user1', 'vd,mbn', '2019-06-14 19:01:29'),
+(23, 'vaa user', 'xyz', 'hello hows you?', '2019-06-14 20:01:52'),
+(24, 'vaa user', 'vaa', 'HII m also vaa member', '2019-06-14 20:01:16'),
+(25, 'vaa', 'vaa', 'hiiiii', '2019-06-14 20:01:53'),
+(26, 'xyz', 'vaa', 'vaa', '2019-06-14 20:01:22'),
+(27, 'xyz', 'vaa user', 'hii', '2019-06-14 20:01:37'),
+(28, 'vaa user', 'vaa', 'hi', '2019-06-14 20:01:53'),
+(29, 'vaa user', 'drashti', 'hii d', '2019-06-14 20:01:53'),
+(30, 'Drashti', 'vaa user', 'hii who are you?', '2019-06-14 08:39:42'),
+(31, 'Drashti', 'vaa user', 'hiiiiiiiiiiiiii', '2019-06-14 20:01:02'),
+(32, 'user', 'Drashti', 'hi', '2019-06-14 20:01:04'),
+(33, 'user', 'vaa', 'hi', '2019-06-14 20:01:15'),
+(34, 'user', 'vaa user', 'hi user', '2019-06-14 20:01:29'),
+(35, 'user', 'xyz', 'xyz', '2019-06-14 20:01:38'),
+(36, 'user', 'vaa user', 'who are you?', '2019-06-14 08:45:54'),
+(37, 'xyz', 'user', 'who are you??', '2019-06-14 08:46:45'),
+(38, 'xyz', 'user', 'how you know me?', '2019-06-14 08:46:59'),
+(39, 'vaa', 'user', 'hii', '2019-06-14 08:47:30'),
+(40, 'Drashti', 'user', '.....', '2019-06-14 08:47:59'),
+(41, 'vaa user', 'user', '....', '2019-06-14 08:48:25');
 
 -- --------------------------------------------------------
 
@@ -86,14 +108,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `role`, `status`, `name`, `email`, `mobile`, `profile_pic`, `last_logged`, `role_id`) VALUES
-(1, 'Drashti', 'drashti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'user1', 'user1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'dhyey', 'dhyey', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'user2', 'user2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'user3', 'user3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'vaa user', 'vaavaa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'vaa', 'vaa', 'core Member', 0, 'vaa leader', 'vaa@gmail.com', 9909909909, 'sci-fi-artistic-wallpapers-30848-430884.jpg', '0000-00-00 00:00:00', 0);
+(11, 'vaa user', 'vaavaa', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
+(12, 'vaa', 'vaa', 'core Member', 0, 'vaa leader', 'vaa@gmail.com', 9909909909, 'sci-fi-artistic-wallpapers-30848-430884.jpg', '0000-00-00 00:00:00', 0),
+(13, 'xyz', 'xyz', 'Volunteer', 0, 'xyzz', 'xyz@xyz.xyz', 9909989989, 'Tulips.jpg', '0000-00-00 00:00:00', 0),
+(14, 'Drashti', 'drashti', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
+(15, 'user', 'user', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -119,13 +138,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

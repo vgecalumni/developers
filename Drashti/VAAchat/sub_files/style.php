@@ -32,6 +32,7 @@ html,body{
 			position: relative;
 			float: left;
 			height: 90%;
+			overflow:auto;
 		}
 		#left-col
 		{
