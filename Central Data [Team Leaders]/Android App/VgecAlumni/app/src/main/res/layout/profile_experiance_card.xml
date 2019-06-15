@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_org2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+
+            <TextView
+                android:id="@+id/expr_company"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="Engineering"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_desig2" />
+
+            <TextView
+                android:id="@+id/expr_designation"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="(Computer Engineering)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_description2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
+            <TextView
+                android:id="@+id/expr_desc"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="its my job."
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/expr_date"
+            style="@style/Text"
+            android:text="From:21-08-2018 To: 21-5-2021"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
