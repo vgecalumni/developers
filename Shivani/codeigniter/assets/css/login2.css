@@ -1,0 +1,864 @@
+/*.form{
+	-webkit-box-shadow: 1px 1px  2px 2px #d3d3d3;
+	box-shadow: 1px 1px 2px 2px #d3d3d3;
+	top:50%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding-top: 4%;/*.form{
+	-webkit-box-shadow: 1px 1px  2px 2px #d3d3d3;
+	box-shadow: 1px 1px 2px 2px #d3d3d3;
+	top:50%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding-top: 4%;
+	padding-bottom: 4%;
+	padding-left: 2%;
+	padding-right: 2%;
+}*/
+.title
+{
+	text-align: center;
+}
+.d {
+    line-height: 400%;
+}
+.c
+{
+	line-height:300%;
+}
+.rig
+{
+     margin-right: 50%;
+}
+.mainlogin 
+{
+	top:46%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+	border: 1px;
+	border-color: #d3d3d3;
+	box-shadow: 1px 1px 2px 2px #d3d3d3;
+    padding: 1px;
+    margin: 25px;
+
+    cursor: ;
+    opacity:1;
+    background-color: #ffffff;
+
+    -webkit-transition: background-color 3s, cursor 3s; /* Safari */
+    transition: background-color 3s, cursor 3s;
+    transition-timing-function: ease;
+}
+.padding{
+	padding-top: 5%;
+    padding-right: 3%;
+    padding-bottom: 4%;
+    padding-left:3% ;
+}
+.hidden{
+	display: none;
+}
+.loading{
+	background-color: #FAFAFA;
+	cursor : auto;
+}
+.btn:focus { outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;}
+.loadingline {
+    width: 40%;
+    height: 3px;
+    background: #FFB38A;
+    position: relative;
+    -webkit-animation: loadinganimation 5s 2; /* Safari 4.0 - 8.0 */
+    -webkit-animation-direction: normal; /* Safari 4.0 - 8.0 */
+    animation: loadinganimation 5s 2;
+    animation-direction: normal;
+}
+
+@keyframes loadinganimation {
+    0%   {left: 0px; }
+    25%  {left: 60%;} 
+    50%  {left: 0px; }
+    75%  {left: 60%; }
+    100% {left: 0px; }
+}
+input.log[type="email"]{
+	border-radius: 0;
+	margin-top: 1%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #d3d3d3; 
+	overflow: visible;
+}
+input.log[type="email"]:focus{
+	outline: none;
+	box-shadow: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #4285F4; 
+	overflow: visible;
+	padding-left: 0.6%;
+}
+.emaillabel{
+	cursor: auto;
+	top: 62%;
+	left:6%;
+	color:#000000;
+	position: absolute;
+	 -webkit-transition: top 0.3s,color 0.3s; 
+    transition: top 0.3s,color 0.3s;
+    transition-timing-function: ease-in-out;
+}
+input.log[type="password"]{
+	border-radius: 0;
+	margin-top: 5%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #d3d3d3; 
+	overflow: visible;
+}
+input.log[type="password"]:focus{
+	outline: none;
+	box-shadow: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #4285F4; 
+	overflow: visible;
+	padding-left: 0.6%;
+}
+.passwordlabel{
+	cursor: auto;
+	top: 62%;
+	left:6%;
+	color:#000000;
+	position: absolute;
+	 -webkit-transition: top 0.3s,color 0.3s; 
+    transition: top 0.3s,color 0.3s;
+    transition-timing-function: ease-in-out;
+}
+.margin{
+	margin-left: 3%;
+}
+.image
+{
+	width:35%;
+	margin-left: 32%;
+}
+
+.colour
+{
+	color: grey;
+}
+.thick
+{
+	width: 94%;
+}
+.para
+{
+	color:red;
+	margin-left: 3%;
+}
+
+.new3
+{
+	margin-top:-8.7%;
+	margin-left: 15.2%;
+	font-size: 22px;
+	color:white;
+}
+.new2
+{
+	margin-top:-8.5%;
+	font-size:initial;
+	text-align:center;
+}
+.margin2
+{
+	margin-top: 5%;
+}
+
+.top
+{
+	margin-top: 11%;
+}
+.bottom-button
+{
+	margin-bottom: 3%;
+}
+.goto
+{
+	margin-top:-8.5%;
+	margin-left:72%;
+}
+
+/* Registration CSS -----------------------------*/
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:5%; 
+}
+input.reg[type="text"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:35%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+input.reg[type="email"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:80%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+input.reg[type="password"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:35%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+
+input.reg:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0%;
+  top:0%;
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+
+/* active state */
+input.reg:focus ~ label, input.reg:valid ~ label 		{
+  top:-30%;
+  font-size:80%;
+  color:#4285F4;
+}
+
+/* BOTTOM BARS ================================= */
+.tbar 	{ position:relative; display:block; width:35%; }
+.tbar:before, .tbar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.tbar:before {
+  left:50%;
+}
+.tbar:after {
+  right:50%; 
+}
+
+/*for email*/
+.ebar 	{ position:relative; display:block; width:80%; }
+.ebar:before, .ebar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.ebar:before {
+  left:50%;
+}
+.ebar:after {
+  right:50%; 
+}
+
+/*for password */
+.pbar 	{ position:relative; display:block; width:35%; }
+.pbar:before, .pbar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.pbar:before {
+  left:50%;
+}
+.pbar:after {
+  right:50%; 
+}
+
+/* active state */
+input.reg:focus ~ .tbar:before, input.reg:focus ~ .tbar:after {
+  width:50%;
+}
+input.reg:focus ~ .ebar:before, input.reg:focus ~ .ebar:after {
+  width:50%;
+}
+input.reg:focus ~ .pbar:before, input.reg:focus ~ .pbar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:30%; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input.reg:focus ~ .highlight {
+  -webkit-animation:input.regHighlighter 0.3s ease;
+  -moz-animation:input.regHighlighter 0.3s ease;
+  animation:input.regHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+.avtar{
+	width: 10%;
+	height: 10%; 
+	background-color: grey;
+}
+.image
+{
+	width:35%;
+	margin-left: 32%;
+}
+.title
+{
+	text-align: center;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+hr {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 320px) {
+   div.bot
+	{
+		margin-top: 18%;
+	}	
+	.mainlogin{top:0;
+	left:0;
+	right: 0;
+height:100vh;
+width:100%;
+text-align: center;
+align-items: center;
+transform: translate(0%,0%);
+}
+.image {
+	margin-right: 50%;
+}
+.rectangle {
+	width: 54%;
+}
+.username {
+	overflow-x: -100px;
+	overflow-y: -10px;
+}
+.passwordlabel{
+	margin-top: -40%;
+}
+.goto{
+	margin-top: -15%;
+}
+}
+@media only screen and (max-width: 1920px) {
+    div.bot
+	{
+		margin-top: 100%;
+	}
+	div.bottom
+	{
+/*		position: absolute;*/
+		left: 36%;
+	}
+	div.bottom1
+	{
+/*		position: absolute;*/
+		left: 57.4%;
+	}
+	div.bottom2
+	{
+/*		position: absolute;*/
+		left: 63%;
+	}
+	rect.rectangle
+	{
+		width:320;
+		height:38; 
+		fill:white;
+		stroke:grey;
+		stroke-width:0.5;
+	}
+}
+	padding-bottom: 4%;
+	padding-left: 2%;
+	padding-right: 2%;
+}*/
+.title
+{
+	text-align: center;
+}
+.d {
+    line-height: 400%;
+}
+.c
+{
+	line-height:300%;
+}
+.rig
+{
+     margin-right: 50%;
+}
+.mainlogin 
+{
+	top:46%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+	border: 1px;
+	border-color: #d3d3d3;
+	box-shadow: 1px 1px 2px 2px #d3d3d3;
+    padding: 1px;
+    margin: 25px;
+
+    cursor: ;
+    opacity:1;
+    background-color: #ffffff;
+
+    -webkit-transition: background-color 3s, cursor 3s; /* Safari */
+    transition: background-color 3s, cursor 3s;
+    transition-timing-function: ease;
+}
+.padding{
+	padding-top: 5%;
+    padding-right: 3%;
+    padding-bottom: 4%;
+    padding-left:3% ;
+}
+.hidden{
+	display: none;
+}
+.loading{
+	background-color: #FAFAFA;
+	cursor : auto;
+}
+.btn:focus { outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;}
+.loadingline {
+    width: 40%;
+    height: 3px;
+    background: #FFB38A;
+    position: relative;
+    -webkit-animation: loadinganimation 5s 2; /* Safari 4.0 - 8.0 */
+    -webkit-animation-direction: normal; /* Safari 4.0 - 8.0 */
+    animation: loadinganimation 5s 2;
+    animation-direction: normal;
+}
+
+@keyframes loadinganimation {
+    0%   {left: 0px; }
+    25%  {left: 60%;} 
+    50%  {left: 0px; }
+    75%  {left: 60%; }
+    100% {left: 0px; }
+}
+input.log[type="email"]{
+	border-radius: 0;
+	margin-top: 1%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #d3d3d3; 
+	overflow: visible;
+}
+input.log[type="email"]:focus{
+	outline: none;
+	box-shadow: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #4285F4; 
+	overflow: visible;
+	padding-left: 0.6%;
+}
+.emaillabel{
+	cursor: auto;
+	top: 62%;
+	left:6%;
+	color:#000000;
+	position: absolute;
+	 -webkit-transition: top 0.3s,color 0.3s; 
+    transition: top 0.3s,color 0.3s;
+    transition-timing-function: ease-in-out;
+}
+input.log[type="password"]{
+	border-radius: 0;
+	margin-top: 5%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #d3d3d3; 
+	overflow: visible;
+}
+input.log[type="password"]:focus{
+	outline: none;
+	box-shadow: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #4285F4; 
+	overflow: visible;
+	padding-left: 0.6%;
+}
+.passwordlabel{
+	cursor: auto;
+	top: 62%;
+	left:6%;
+	color:#000000;
+	position: absolute;
+	 -webkit-transition: top 0.3s,color 0.3s; 
+    transition: top 0.3s,color 0.3s;
+    transition-timing-function: ease-in-out;
+}
+.margin{
+	margin-left: 3%;
+}
+.image
+{
+	width:35%;
+	margin-left: 32%;
+}
+
+.colour
+{
+	color: grey;
+}
+.thick
+{
+	width: 94%;
+}
+.para
+{
+	color:red;
+	margin-left: 3%;
+}
+
+.new3
+{
+	margin-top:-8.7%;
+	margin-left: 15.2%;
+	font-size: 22px;
+	color:white;
+}
+.new2
+{
+	margin-top:-8.5%;
+	font-size:initial;
+	text-align:center;
+}
+.margin2
+{
+	margin-top: 5%;
+}
+
+.top
+{
+	margin-top: 11%;
+}
+.bottom-button
+{
+	margin-bottom: 3%;
+}
+.goto
+{
+	margin-top:-8.5%;
+	margin-left:72%;
+}
+
+/* Registration CSS -----------------------------*/
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:5%; 
+}
+input.reg[type="text"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:35%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+input.reg[type="email"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:80%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+input.reg[type="password"] 			{
+  padding:2% 2% 0% 1%;
+  display:block;
+  width:35%;
+  border:none;
+  border-bottom:2px solid #d3d3d3;
+}
+
+input.reg:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0%;
+  top:0%;
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+
+/* active state */
+input.reg:focus ~ label, input.reg:valid ~ label 		{
+  top:-30%;
+  font-size:80%;
+  color:#4285F4;
+}
+
+/* BOTTOM BARS ================================= */
+.tbar 	{ position:relative; display:block; width:35%; }
+.tbar:before, .tbar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.tbar:before {
+  left:50%;
+}
+.tbar:after {
+  right:50%; 
+}
+
+/*for email*/
+.ebar 	{ position:relative; display:block; width:80%; }
+.ebar:before, .ebar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.ebar:before {
+  left:50%;
+}
+.ebar:after {
+  right:50%; 
+}
+
+/*for password */
+.pbar 	{ position:relative; display:block; width:35%; }
+.pbar:before, .pbar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4285F4; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.pbar:before {
+  left:50%;
+}
+.pbar:after {
+  right:50%; 
+}
+
+/* active state */
+input.reg:focus ~ .tbar:before, input.reg:focus ~ .tbar:after {
+  width:50%;
+}
+input.reg:focus ~ .ebar:before, input.reg:focus ~ .ebar:after {
+  width:50%;
+}
+input.reg:focus ~ .pbar:before, input.reg:focus ~ .pbar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:30%; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input.reg:focus ~ .highlight {
+  -webkit-animation:input.regHighlighter 0.3s ease;
+  -moz-animation:input.regHighlighter 0.3s ease;
+  animation:input.regHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes input.regHighlighter {
+	from { background:#4285F4; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+.avtar{
+	width: 10%;
+	height: 10%; 
+	background-color: grey;
+}
+.image
+{
+	width:35%;
+	margin-left: 32%;
+}
+.title
+{
+	text-align: center;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+hr {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 320px) {
+	
+	.mainlogin{top:0;
+	left:0;
+	right: 0;
+height:100vh;
+width:100%;
+text-align: center;
+align-items: center;
+transform: translate(0%,0%);
+}
+.image {
+	margin-right: 50%;
+}
+.rectangle {
+	width: 54%;
+}
+.username {
+	overflow-x: -100px;
+	overflow-y: -10px;
+}
+.passwordlabel{
+	margin-top: -40%;
+}
+.goto{
+	margin-top: -15%;
+}
+}
+@media only screen and (max-width: 1920px) {
+    div.bot
+	{
+		margin-top: 38%;
+	}
+	div.bottom
+	{
+/*		position: absolute;*/
+		left: 36%;
+	}
+	div.bottom1
+	{
+/*		position: absolute;*/
+		left: 57.4%;
+	}
+	div.bottom2
+	{
+/*		position: absolute;*/
+		left: 63%;
+	}
+	rect.rectangle
+	{
+		width:320;
+		height:38; 
+		fill:white;
+		stroke:grey;
+		stroke-width:0.5;
+	}
+}
