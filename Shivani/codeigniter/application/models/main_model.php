@@ -31,4 +31,54 @@ class Main_model extends CI_Model {
 		}
 		return $output;
 	}
+	public function can_login($username, $password)
+	{
+		$this->db->where('user_name',$username);
+		$this->db->where('password',$password);
+		$query = $this->db->get('admin_users');
+
+		if($query->num_rows()>0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function forgot_pass_retrive($username)
+   {
+
+		$this->db->select('password');
+		$this->db->from('admin_users');
+		$this->db->where('user_name',$username);
+		$query=$this->db->get();
+		    if ($query->num_rows() == 1)
+		    {
+		    $val = $query->row();
+			return $val->password;     
+		    }
+		    else
+		    {
+		      return FALSE;
+   			}
+   	}
+   	public function user_email($username)
+   {
+
+		$this->db->select('email');
+		$this->db->from('admin_users');
+		$this->db->where('user_name',$username);
+		$query=$this->db->get();
+		    if ($query->num_rows() == 1)
+		    {
+		    $val = $query->row();
+			return $val->email;     
+		    }
+		    else
+		    {
+		      return FALSE;
+   			}
+   	}
 }	

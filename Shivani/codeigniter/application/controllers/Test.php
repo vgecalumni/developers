@@ -67,5 +67,116 @@ class Test extends CI_Controller {
 		}
 	}
 	
+	public function login()
+	{
+		$data['title'] = 'codeigniter simple login form with sessions';
+		$this->load->view("login",$data);
+	}
+
+	public function login_validation()
+	{
+		$this->load->library('form_validation');
+		$this->load->helper('form');
+		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('password','Password','required');
+		if($this->form_validation->run())
+		{
+			//true
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			//model function
+			$this->load->model('main_model');
+			if($this->main_model->can_login($username,$password))
+			{
+				$session_data = array(
+					'username' => $username
+				);
+				$this->session->set_userdata($session_data);
+				redirect('http://127.0.0.1/codeigniter/test/enter');
+			}
+			else
+			{
+				$this->session->set_flashdata('error','Invalid Username and Password');	
+				redirect('http://127.0.0.1/codeigniter/test/login');
+			}
+		}
+		else
+		{
+			//false
+			$this->login();
+		}
+	}
+
+	public function enter()
+	{
+		if($this->session->userdata('username') != '')
+		{
+			echo '<h2>Welcome '.$this->session->userdata('username').'</h2>';
+			echo '<a href="http://127.0.0.1/codeigniter/test/logout">Logout</a>';
+		}
+		else
+		{
+			redirect('http://127.0.0.1/codeigniter/test/login');
+		}
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('username');
+		redirect('http://127.0.0.1/codeigniter/test/login');
+	}
+
+	public function ForgetPassword()
+	{
+		$data['title'] = 'FORGOT YOUR PASSWORD?';
+		$this->load->view('ForgetPassword',$data);
+	}
+
+	public function resetlink()
+	{
+		$username = $this->input->post('username');
+		// $this->db->select("email");
+		// $this->db->from("admin_users");
+		// $this->db->where('user_name',$username);
+		//$query = $this->db->get();
+		//$query = $this->db->select('email')->from('admin_users')->where('user_name',$username)->get();
+
+		// if($query->num_rows()>0)
+		// {
+		
+		//  $row = $query->row_array();	
+		 $from_email = "shivanibalwani3@gmail.com"; 
+		 // $this->load->model('main_model');
+   //       $pass = $this->main_model->forgot_pass_retrive($username);
+         $this->load->model('main_model');
+         $email = $this->main_model->user_email($username);
+
+
+		      
+         $this->load->library('email'); 
+         
+   
+         $this->email->from($from_email, 'Shivani'); 
+         $this->email->to($email);
+         $this->email->subject('Email Test'); 
+         $this->email->message("xcb"); 
+   
+         //Send mail 
+         if($this->email->send()) 
+         //$this->session->set_flashdata("email_sent","Email sent successfully."); 
+         	echo "email has been sent";
+         else 
+         {
+         	 show_error($this->email->print_debugger());
+         }
+         //$this->session->set_flashdata("email_sent","Error in sending Email."); 
+         //$this->load->view('email_form'); 
+		
+	// }
+	// 	else
+	// 	{
+	// 		redirect('http://127.0.0.1/codeigniter/test/ForgetPassword');
+	// 	}
+	}
 }
 ?>
