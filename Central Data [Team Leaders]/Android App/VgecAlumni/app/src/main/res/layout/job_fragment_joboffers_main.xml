@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/fragment_joboffers_main"
+    android:layout_marginBottom="@dimen/mtrl_bottomappbar_height">
+
+    <WebView
+        android:id="@+id/myWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLight"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" >
+
+
+    </WebView>
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/GifView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:src="@drawable/ajaxloader" />
+
+</RelativeLayout>

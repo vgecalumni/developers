@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/cv_central_event"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:id="@+id/ll_department_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/iv_event_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_event_image"
+                android:background="#80000000"
+                android:padding="10dp"
+                android:text="Event Name"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:text="Description :"
+            android:textSize="17sp"
+            android:textColor="#90000000"/>
+
+        <TextView
+            android:id="@+id/tv_event_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="Event Date :"
+            android:textSize="17sp"
+            android:textColor="#90000000"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
