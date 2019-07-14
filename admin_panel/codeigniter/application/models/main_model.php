@@ -22,4 +22,23 @@ class Main_model extends CI_Model {
 			return false;
 		}
 	}
+	public function fetch_image()
+	{
+		$output = '';
+		$this->db->select("e_images");
+		$this->db->from("event_photos");
+		$this->db->order_by("id","DESC");
+		$query = $this->db->get();
+		foreach($query->result() as $row)
+		{
+			$output .= '
+				<img src="'.base_url().'upload/'.$row->e_images.'"/>
+			';
+		}
+		return $output;
+	}
+	public function insert_image($data)
+	{
+		$this->db->insert("event_photos",$data);
+	}
 }

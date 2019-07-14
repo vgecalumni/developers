@@ -19,24 +19,24 @@
 <div class="row custom_btn" style="margin-top:3rem;">
 	
 		<a href="<?php echo base_url().'main/events/farewell2019/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">1. FAREWELL 2019</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">2. INDUSTRIAL VISIT</a>
-		<a href="ref_eventattributes.asp" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">3. DESIGN THINKING AND PROJECT MANAGEMENT</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">4. VISHWA SMRUTI 2.0</a>
-		<a href="ref_eventattributes.asp" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">5. WEB DEVELOPMENT THROUGH PYTHON</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">6. GRAPHIC DESIGNING</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">7. CARRER COUNSELLING</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">8. ALUMNI MEET</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">9. VAA GREETZ</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">10. VAA-RECRUITZ</a>
-		<a href="ref_eventattributes.asp" class="col-43 w3-btn w3-white w3-border" title="HTML Event Attributes">11. VAA CLICKS</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">12. VAA KALAM</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">2.INDUSTRIAL VISIT</a>
+		<a href="<?php echo base_url().'main/events/design_thinking_project_management/'.$event_op; ?>" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">3. DESIGN THINKING AND PROJECT MANAGEMENT</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">4. VISHWA SMRUTI 2.0</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">5. WEB DEVELOPMENT THROUGH PYTHON</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">6. GRAPHIC DESIGNING</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">7. CARRER COUNSELLING</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">8. ALUMNI MEET</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">9. VAA GREETZ</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">10. VAA-RECRUITZ</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-43 w3-btn w3-white w3-border" title="HTML Event Attributes">11. VAA CLICKS</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">12. VAA KALAM</a>
 
-		<a href="ref_eventattributes.asp" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">13. VAA MECHANICAL EXPERT TALK</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">14. TREE DONATION</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">15. ABROAD DREAMERS</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">16. FAREWELL 2018</a>
-		<a href="ref_eventattributes.asp" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">17. WEB VISHWA SMRUTI</a>
-		<a href="ref_eventattributes.asp" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">18. EXPERT TALK ON CAREER OPPORTUNITIES IN EC</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">13. VAA MECHANICAL EXPERT TALK</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">14. TREE DONATION</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">15. ABROAD DREAMERS</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">16. FAREWELL 2018</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-3 w3-btn w3-white w3-border" title="HTML Event Attributes">17. WEB VISHWA SMRUTI</a>
+		<a href="<?php echo base_url().'main/events/industrial_visit/'.$event_op; ?>" class="col-4 w3-btn w3-white w3-border" title="HTML Event Attributes">18. EXPERT TALK ON CAREER OPPORTUNITIES IN EC</a>
 		
 	
 </div>

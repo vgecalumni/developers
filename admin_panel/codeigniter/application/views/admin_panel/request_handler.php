@@ -177,7 +177,7 @@ if($request == "dashboard"){
   $user = "<?php echo $designation; ?>";
   jQuery.ajax({
     type: "POST",
-    url: "<?php echo base_url(); ?>" + "alumni/alumni_registrations/load_data",
+    url: "<?php echo base_url(); ?>" + "alumni/alumni_registrations",
     // dataType: 'json',
     data: {user: $user},
     success: function(res){
