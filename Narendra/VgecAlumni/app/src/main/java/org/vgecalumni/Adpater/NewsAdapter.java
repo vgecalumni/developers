@@ -39,7 +39,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.date.setText(n.getDate());
         if(n.getLink().isEmpty()){
             holder.link.setVisibility(View.GONE);
-        }if(position==newsList.size()-1){
+        }/*if(position==newsList.size()-1){
             RecyclerView.LayoutParams params= (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
             params.bottomMargin = 140;
             holder.itemView.setLayoutParams(params);
@@ -47,7 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             RecyclerView.LayoutParams params= (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
             params.topMargin = 140;
             holder.itemView.setLayoutParams(params);
-        }
+        }*/
     }
 
     @Override

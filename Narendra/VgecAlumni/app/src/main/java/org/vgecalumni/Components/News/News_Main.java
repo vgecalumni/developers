@@ -16,6 +16,7 @@ import org.vgecalumni.Api.RetrofitClient;
 import org.vgecalumni.Model.AutoScroll;
 import org.vgecalumni.Model.News;
 import org.vgecalumni.Model.NewsResponse;
+import org.vgecalumni.Model.PaddingItemDecoration;
 import org.vgecalumni.R;
 
 import java.util.ArrayList;
@@ -75,6 +76,7 @@ public class News_Main extends AppCompatActivity {
         setProgress();
         for (int i=0; i<recyclerViewList.size();i++){
             recyclerViewList.get(i).setLayoutManager(new LinearLayoutManager(this));
+            recyclerViewList.get(i).addItemDecoration(new PaddingItemDecoration(this));
             recyclerViewList.get(i).addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         }
 
