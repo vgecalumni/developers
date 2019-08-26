@@ -5,16 +5,29 @@
     <color name="colorAccent">#2D3090</color>
 
 
-    <color name="colorLight">#E5E5E5</color>
+    <color name="colorLight">#f7f3f3</color>
     <color name="colorBlueDark">#2D3090</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGreen">#005E5A</color>
+    <color name="colorRed">#F08080</color>
+
+    <color name="white">#ffffff</color>
+    <color name="red">#ff0000</color>
+    <color name="back">#6aa4a4a4</color>
+    <color name="black">#000000</color>
+    <color name="main_back">#e8e8e8</color>
+
+    <color name="start">#125baa</color>
+    <color name="center">#025867</color>
+    <color name="tabtext">#4a9cfa</color>
+    <color name="notext">#525252</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>
     <color name="bg_screen2">#20d2bb</color>
     <color name="bg_screen3">#3395ff</color>
     <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen5">#c5f1ff</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#2278d4</color>
@@ -43,4 +56,14 @@
     </array>
 
     <color name="black_overlay">#66000000</color>
+    <color name="android_app_upd_window_background_color">#FFFFFFFF</color>
+    <color name="android_app_upd_title_bar_color">#FF3F51B5</color>
+    <color name="android_app_upd_info_txt_color">#FF3F51B5</color>
+
+    <color name="android_app_upd_restricter_dlg_btn_pressed_color">#a33F51B5</color>
+    <color name="android_app_upd_restricter_dlg_btn_dark_state_color">#ff3F51B5</color>
+    <color name="android_app_upd_restricter_dlg_btn_light_state_color">#ffffffff</color>
+
+    <color name="android_app_upd_upd_dlg_btn_text_color">#ffFF4081</color>
+
 </resources>

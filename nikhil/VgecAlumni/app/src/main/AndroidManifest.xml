@@ -38,25 +38,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login2Activity"
+            android:name=".Components.Login.Login2Activity"
             android:saveEnabled="true"
             android:screenOrientation="portrait" />
         <activity
-            android:theme="@style/SettingsTheme"
-            android:name=".SettingsActivity"
+            android:name=".Components.Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@style/SettingsTheme" />
         <activity
             android:name=".OfflineActivity"
-
             android:screenOrientation="portrait">
             <intent-filter>
-
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ErrorActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
         </activity>
 
         <meta-data
@@ -64,35 +67,72 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".Components.SplashScreen.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".reveal"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:name=".Components.Temp.reveal"
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:theme="@style/AppTheme1"
-            android:name=".joboffersmain"
+            android:name=".Components.Magazine.MagazineActivity"
+            android:label="Magazines"
+            android:theme="@style/AppTheme1"></activity>
+        <activity
+            android:name=".Components.JobOffers.joboffersmain"
             android:label="Job Offers"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
         <activity
-            android:theme="@style/AppTheme1"
-            android:name=".sharingmain"
+            android:name=".Components.SharingPlatform.sharingmain"
             android:label="Sharing Platform"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.QRCode.Qr_scan_photo"
+            android:label="Photo Coupon Scan"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.QRCode.Qr_scan_food"
+            android:label="Food Coupon Scan"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.Profile.Profile_Edit"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.Profile.Add_Education"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.Profile.Add_Experience"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.Profile.Profile"
+            android:theme="@style/ProfileTheme">
+        </activity>
+        <activity
+            android:name=".Components.QRCode.Qr_generate_photo"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.QRCode.Qr_generate_food"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".Components.Events.EventsActivity"
+            android:theme="@style/EventTheme" />
+        <activity
+            android:name=".Components.Events.EventDetailsActivity"
+            android:theme="@style/EventTheme" />
+        <activity
+            android:name=".Components.Portfolio.PortfolioActivity"
+            android:theme="@style/EventTheme" />
 
-        <activity android:name=".TicketActivity" />
-
-        <activity android:name=".QRCodeActivity" />
 
     </application>
 

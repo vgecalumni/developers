@@ -1,6 +1,7 @@
 package org.vgecalumni;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -56,6 +57,9 @@ import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -93,9 +97,26 @@ import android.widget.Toast;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import org.vgecalumni.Components.Events.EventsActivity;
+import org.vgecalumni.Components.JobOffers.joboffersmain;
+import org.vgecalumni.Components.Login.Login2Activity;
+import org.vgecalumni.Components.Magazine.MagazineActivity;
+import org.vgecalumni.Components.Portfolio.PortfolioActivity;
+import org.vgecalumni.Components.Profile.Profile;
+import org.vgecalumni.Components.QRCode.Qr_generate_food;
+import org.vgecalumni.Components.QRCode.Qr_generate_photo;
+import org.vgecalumni.Components.QRCode.Qr_scan_food;
+import org.vgecalumni.Components.QRCode.Qr_scan_photo;
+import org.vgecalumni.Components.Settings.SettingsActivity;
+import org.vgecalumni.Components.SharingPlatform.sharingmain;
+import org.vgecalumni.Components.SplashScreen.SplashActivity;
+import org.vgecalumni.Components.Temp.ErrorCheck;
+
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
 import pl.droidsonroids.gif.GifImageView;
+
+import static android.icu.lang.UCharacter.toUpperCase;
 
 
 public class Main2Activity extends AppCompatActivity
@@ -146,14 +167,16 @@ public class Main2Activity extends AppCompatActivity
         );
         return imageFile;
     }
+    public static boolean isEqual(Object o1, Object o2) {
+        return o1 == o2 || (o1 != null && o1.equals(o2));
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.main_activity_main);
 
         overridePendingTransition(R.transition.slide_in,R.transition.slide_out);
         AppRate.with(this)
@@ -230,10 +253,29 @@ public class Main2Activity extends AppCompatActivity
 
         // find MenuItem you want to change
         MenuItem nav_userTitle = menu.findItem(R.id.nav_userTitle);
+        MenuItem nav_qrcode = menu.findItem(R.id.nav_qrcode);
+        MenuItem nav_qrcode1 = menu.findItem(R.id.nav_qrcode1);
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String name = prefs.getString("name", null);
+        String account = prefs.getString("account", null);
         // set new title to the MenuItem
-        nav_userTitle.setTitle("Hello, " + name );
+        nav_userTitle.setTitle("Hello, " + name);
+
+        if(isEqual("admin",account)){
+            nav_qrcode.setTitle("View Photo Coupons");
+            nav_qrcode1.setTitle("View Food Coupons");
+            nav_qrcode1.setVisible(true);
+        }else if(isEqual("food volunteer",account)){
+            nav_qrcode.setTitle("Scan Food Coupon");
+        }else if(isEqual("photograph volunteer",account)){
+            nav_qrcode.setTitle("Scan Photo Coupon");
+        }else{
+            nav_qrcode.setTitle("Generate Photo Coupon");
+            nav_qrcode1.setTitle("Generate Food Coupon");
+            nav_qrcode1.setVisible(true);
+        }
+
+
         setTitle("VGEC ALUMNI");
 
         //WebView
@@ -264,12 +306,12 @@ public class Main2Activity extends AppCompatActivity
             myWebView.restoreState(savedInstanceState);
         }
         else{
-            myWebView.loadUrl("https://vgecalumni.org/index.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/index.jsp");
         }
 
-        list = new String[]{"Create Blog", "View Blog", "Create Profile", "View Profile",
+        list = new String[]{"create post", "view post", "create profile", "view profile",
                 "Vishwasmruti 2.0", "View All Events", "Events","Contact Us","About Us","Home","Portfolio",
-                "Event Portfolio","My Profile","My Blog","Search ALumni","Success Stories","Alumni Committe",
+                "Event Portfolio","My Profile","My Post","Search Alumni","Success Stories","Alumni Committee",
                 "Share","Settings","Rate Us","Application Developer(Prahar)","Contact Application Developer(Prahar)",
                 "App Team","Vishwakarma Government Engineering College" };
 
@@ -284,39 +326,55 @@ public class Main2Activity extends AppCompatActivity
                 String name = prefs.getString("name", null);
                 String pw = prefs.getString("password", null);
 
-                //Here Create your filtering
-//                if(query.contains("search")){
-//                    myWebView.loadUrl("https://vgecalumni.org/srchalumni.jsp");
-//
-//                }else if (query.contains("home")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/index.jsp");
-//                } else if (query.contains("about")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
-//                }else if (query.contains("events")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/events.jsp");
-//                }else if (query.contains("portfolio")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/portfolio.jsp");
-//                }else if (query.contains("job offers")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_joboffers.jsp");
-//                }else if (query.contains("posts") || query.contains("share")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_discuss.jsp");
-//                }else if (query.contains("post job")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_postjob.jsp");
-//                }else if (query.contains("my post")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_mypost.jsp");
-//                }else if (query.contains("success")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/successStories.jsp");
-//                }else if (query.contains("alumni")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/alumnicommitee.jsp");
-//                }else if (query.contains("about")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
-//                }else if (query.contains("contact")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/contact.jsp");
-//                }else if (query.contains("developer")) {
-//                    myWebView.loadUrl("https://vgecalumni.org/app_developers.jsp");
 
-                    TastyToast.makeText(getApplicationContext(), "This feature is under maintenance !", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                if(query.contains("search")){
+                    myWebView.loadUrl("https://www.vgecalumni.org/srchalumni.jsp");
 
+                }else if (query.contains("home")) {
+                    myWebView.loadUrl("https://www..vgecalumni.org/index.jsp");
+                } else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                }else if (query.contains("events")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+                }else if (query.contains("portfolio") || query.contains("photos")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
+                }else if (query.contains("job")) {
+                    Intent joboffers = new Intent(Main2Activity.this,joboffersmain.class);
+                    startActivity(joboffers);
+                    return true;
+                }else if (query.contains("post") || query.contains("share")) {
+                    Intent sharing = new Intent(Main2Activity.this,sharingmain.class);
+                    startActivity(sharing);
+                    return true;
+                }else if (query.contains("success")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/successStories.jsp");
+                }else if (query.contains("alumni") || query.contains("developers") ) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/alumnicommitee.jsp");
+                }else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                }else if (query.contains("contact")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
+                }else if (query.contains("developer")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_developers.jsp");
+                }else if (query.contains("education") || query.contains("profile") || query.contains("experience")) {
+                    Intent profile = new Intent(Main2Activity.this,Profile.class);
+                    startActivity(profile);
+                    return true;
+                }else if (query.contains("magazine") || query.contains("vrutant")) {
+                    Intent magintent = new Intent(Main2Activity.this, MagazineActivity.class);
+                    startActivity(magintent);
+                    return true;
+                }else if (query.contains("setting")) {
+                    Intent settingsintent = new Intent(Main2Activity.this, SettingsActivity.class);
+                    startActivity(settingsintent);
+                    return true;
+                }else if (query.contains("rate")){
+                    try{startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));}catch(Exception e){}
+                }else if (query.contains("logout")){
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_logout.jsp");
+                }else {
+                    TastyToast.makeText(getApplicationContext(), "Sorry ! No result found !", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                }
                 return false;
             }
 
@@ -453,8 +511,7 @@ public class Main2Activity extends AppCompatActivity
                         result = data == null ? mCapturedImageURI : data.getData();
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "activity :" + e,
-                            Toast.LENGTH_LONG).show();
+
                 }
 
                 mUploadMessage.onReceiveValue(result);
@@ -530,16 +587,55 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+
+        String account = prefs.getString("account", null);
+
+        if(account.equals("admin")){
+            if (id == R.id.nav_qrcode) {
+                Intent photoscanintent = new Intent(this, Qr_scan_photo.class);
+                startActivity(photoscanintent);
+                return true;
+            }else if(id == R.id.nav_qrcode1){
+                Intent foodscanintent = new Intent(this, Qr_scan_food.class);
+                startActivity(foodscanintent);
+                return true;
+            }
+        }else if(account.equals("food volunteer")){
+            if(id == R.id.nav_qrcode){
+                Intent foodscanintent = new Intent(this, Qr_scan_food.class);
+                startActivity(foodscanintent);
+                return true;
+            }
+        }else if(account.equals("photo volunteer")){
+            if (id == R.id.nav_qrcode) {
+                Intent photoscanintent = new Intent(this, Qr_scan_photo.class);
+                startActivity(photoscanintent);
+                return true;
+            }
+        }else{
+            if (id == R.id.nav_qrcode) {
+                Intent generatePhotoIntent = new Intent(this, Qr_generate_photo.class);
+                startActivity(generatePhotoIntent);
+                return true;
+            }else if(id == R.id.nav_qrcode1){
+                Intent generateFoodIntent = new Intent(this, Qr_generate_food.class);
+                startActivity(generateFoodIntent);
+                return true;
+            }
+        }
         if (id == R.id.nav_home) {
-            myWebView.loadUrl("https://vgecalumni.org/index.jsp");
-        } else if (id == R.id.nav_ticket) {
-            startActivity(new Intent(this, TicketActivity.class));
+            myWebView.loadUrl("https://www.vgecalumni.org/index.jsp");
         } else if (id == R.id.nav_about) {
-            myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
         }else if (id == R.id.nav_events) {
-            myWebView.loadUrl("https://vgecalumni.org/events.jsp");
+//            myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+            Intent intent = new Intent(this, EventsActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_portfolio) {
-            myWebView.loadUrl("https://vgecalumni.org/portfolio.jsp");
+//            myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
+            Intent intent = new Intent(this, PortfolioActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_job) {
             //myWebView.loadUrl("https://vgecalumni.org/app_joboffers.jsp");
             jobIntent = new Intent(Main2Activity.this, joboffersmain.class);
@@ -552,19 +648,28 @@ public class Main2Activity extends AppCompatActivity
             return true;
             //myWebView.loadUrl("https://vgecalumni.org/app_discuss.jsp");
         }else if (id == R.id.nav_postjob) {
-            myWebView.loadUrl("https://vgecalumni.org/app_postjob.jsp");
-        }else if (id == R.id.nav_mypost) {
-            myWebView.loadUrl("https://vgecalumni.org/app_mypost.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/app_postjob.jsp");
+        }else if (id == R.id.nav_myprofile) {
+
+            Intent myprofile = new Intent(this, Profile.class);
+            startActivity(myprofile);
+            return true;
+
+
         }else if (id == R.id.nav_search) {
-            myWebView.loadUrl("https://vgecalumni.org/srchalumni.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/srchalumni.jsp");
         }else if (id == R.id.nav_success) {
-            myWebView.loadUrl("https://vgecalumni.org/successStories.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/successStories.jsp");
         }else if (id == R.id.nav_committee) {
-            myWebView.loadUrl("https://vgecalumni.org/alumnicommitee.jsp");
-        }else if (id == R.id.nav_about) {
-            myWebView.loadUrl("https://vgecalumni.org/aboutUs.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/alumnicommitee.jsp");
+        }else if (id == R.id.nav_vrutant) {
+            Intent magintent = new Intent(this, MagazineActivity.class);
+            startActivity(magintent);
+            return true;
+        } else if (id == R.id.nav_about) {
+            myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
         }else if (id == R.id.nav_contact) {
-            myWebView.loadUrl("https://vgecalumni.org/contact.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
         }else if (id == R.id.nav_settings) {
             Intent settingsintent = new Intent(this, SettingsActivity.class);
             startActivity(settingsintent);
@@ -572,9 +677,9 @@ public class Main2Activity extends AppCompatActivity
         }else if (id == R.id.nav_rate) {
             try{startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));}catch(Exception e){}
         }else if (id == R.id.nav_appteam) {
-            myWebView.loadUrl("https://vgecalumni.org/app_developers.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/app_developers.jsp");
         }else if (id == R.id.nav_logout) {
-            myWebView.loadUrl("https://vgecalumni.org/app_logout.jsp");
+            myWebView.loadUrl("https://www.vgecalumni.org/app_logout.jsp");
         }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -710,12 +815,89 @@ public class Main2Activity extends AppCompatActivity
         }
 
         @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            // ignore ssl error
-            if (handler != null){
-                handler.proceed();
-            } else {
-                super.onReceivedSslError(view, null, error);
+        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+            String message = "SSL Certificate error.";
+            Intent error_intent = new Intent(Main2Activity.this,ErrorActivity.class);
+
+            String errorname;
+            switch (error.getPrimaryError()) {
+                case SslError.SSL_UNTRUSTED:
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate authority is not trusted.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+
+                    break;
+                case SslError.SSL_EXPIRED:
+
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    message = "The certificate has expired.";
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_IDMISMATCH:
+                    message = "The certificate Hostname mismatch.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+                case SslError.SSL_NOTYETVALID:
+                    message = "The certificate is not yet valid.";
+                    myWebView.stopLoading();
+                    myWebView.setVisibility(View.INVISIBLE);
+                    error_intent.putExtra("errorname",message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(error_intent);
+                    finish();
+                    break;
+            }
+            message += " Do you want to continue anyway?";
+
+            builder.setTitle("SSL Certificate Error");
+            builder.setMessage(message);
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.proceed();
+                }
+            });
+            builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.cancel();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+        @Override
+        public void onReceivedHttpError(WebView view,
+                                        WebResourceRequest request, WebResourceResponse errorResponse) {
+
+
+            Intent error_intent = new Intent(Main2Activity.this,ErrorActivity.class);
+            Integer code = errorResponse.getStatusCode();
+
+            String headers = errorResponse.getResponseHeaders().toString();
+
+            if(headers.contains("Connection=close")){
+                myWebView.stopLoading();
+                myWebView.setVisibility(View.INVISIBLE);
+                error_intent.putExtra("errorcode",code.toString());
+                error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(error_intent);
+                finish();
             }
         }
 
@@ -738,6 +920,28 @@ public class Main2Activity extends AppCompatActivity
 
             }
 
+
+        }
+
+        @Override
+        @TargetApi(23)
+        public void onReceivedError(WebView view, WebResourceRequest request,
+                                    WebResourceError error) {
+
+
+            Intent error_intent = new Intent(Main2Activity.this,ErrorActivity.class);
+            Integer code = error.getErrorCode();
+            if(code == -2){
+                TastyToast.makeText(getApplicationContext(), "You are currently offline !", TastyToast.LENGTH_LONG, TastyToast.DEFAULT);
+
+            }else {
+                myWebView.stopLoading();
+                myWebView.setVisibility(View.INVISIBLE);
+                error_intent.putExtra("errorcode", code.toString());
+                error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(error_intent);
+                finish();
+            }
 
         }
 
@@ -789,11 +993,13 @@ public class Main2Activity extends AppCompatActivity
 
             SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
             if(editor.clear().commit()) {
-                TastyToast.makeText(getApplicationContext(), "Logout!", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+                TastyToast.makeText(getApplicationContext(), "Logout!", TastyToast.LENGTH_LONG, TastyToast.INFO);
                 splashintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(splashintent);
+                finish();
+
             }else{
-                TastyToast.makeText(getApplicationContext(), "Not Logout!", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+                TastyToast.makeText(getApplicationContext(), "Logout Error!", TastyToast.LENGTH_LONG, TastyToast.INFO);
             }
 
         }

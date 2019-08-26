@@ -10,10 +10,6 @@
             android:icon="@drawable/house"
             android:title="Home" />
         <item
-            android:id="@+id/nav_ticket"
-            android:icon="@drawable/house"
-            android:title="Ticket" />
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/calendar"
             android:title="Events" />
@@ -36,10 +32,10 @@
         android:id="@+id/nav_userTitle">
         <menu>
             <item
-                android:id="@+id/nav_mypost"
+                android:id="@+id/nav_myprofile"
                 android:checkable="true"
                 android:icon="@drawable/my_post"
-                android:title="My Posts" />
+                android:title="My Profile" />
             <item
                 android:id="@+id/nav_search"
                 android:checkable="true"
@@ -56,6 +52,37 @@
                 android:checkable="true"
                 android:icon="@drawable/trophy"
                 android:title="Success Stories" />
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="QR CODE"
+        android:id="@+id/nav_qr">
+        <menu>
+            <item
+                android:id="@+id/nav_qrcode"
+                android:checkable="true"
+                android:icon="@drawable/coupon"
+                android:title="" />
+            <item
+                android:id="@+id/nav_qrcode1"
+                android:checkable="true"
+                android:visible="false"
+                android:icon="@drawable/coupon"
+                android:title="" />
+
+        </menu>
+    </item>
+    <item
+        android:checkable="true"
+        android:title="Magazines"
+        android:id="@+id/nav_magTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_vrutant"
+                android:checkable="true"
+                android:icon="@drawable/magazine"
+                android:title="VAA VRUTANT" />
         </menu>
     </item>
     <item

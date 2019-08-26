@@ -14,6 +14,17 @@
         <item name="alertDialogStyle">@style/MyAlertDialogStyle</item>
 
     </style>
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ProfileTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#1f2161</item>
+        <item name="android:navigationBarColor">#1f2161</item>
+        <item name="background">@color/colorBlueDark</item>
+    </style>
 
     <style name="AppTheme1" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -84,4 +95,58 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <style name="Spinner" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorTextAppearance">@style/TextError</item>
+        <item name="hintTextAppearance">@style/TextHelper</item>
+    </style>
+
+    <style name="TextError" parent="@style/TextAppearance.Design.Error">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextHelper" parent="@style/TextAppearance.Design.HelperText">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextEditBig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:lines">2</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="EventTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#1f2161</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

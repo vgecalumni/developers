@@ -14,6 +14,8 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.vgecalumni.Components.SplashScreen.SplashActivity;
+
 import pl.droidsonroids.gif.GifImageView;
 
 public class OfflineActivity extends Activity {
@@ -24,7 +26,7 @@ public class OfflineActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offline);
+        setContentView(R.layout.offline_activity_offline);
 
         overridePendingTransition(R.transition.slide_in,R.transition.slide_out);
         mygif = findViewById(R.id.offlineGif);
