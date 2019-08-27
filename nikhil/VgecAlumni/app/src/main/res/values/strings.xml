@@ -211,5 +211,6 @@
     <string name="swipe_to_delete"><![CDATA[Swipe -> (to delete)]]></string>
     <string name="swipe_to_edit"><![CDATA[Swipe <- (to edit)]]></string>
     <string name="update_warning">New version of application is available\nYou must update your app to proceed further</string>
+    <string name="hint_news"><![CDATA[News & Highlights]]></string>
 
 </resources>

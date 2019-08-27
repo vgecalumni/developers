@@ -612,9 +612,6 @@ public class Main2Activity extends AppCompatActivity
             Intent news = new Intent(this, News_Main.class);
             startActivity(news);
             return true;
-        } else if (id == R.id.nav_events) {
-            Intent intent = new Intent(this, EventsActivity.class);
-            startActivity(intent);
         }
         else if (id == R.id.nav_postjob) {
             myWebView.loadUrl("https://www.vgecalumni.org/app_postjob.jsp");

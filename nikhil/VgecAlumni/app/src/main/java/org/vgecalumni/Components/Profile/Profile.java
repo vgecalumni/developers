@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
     private TabLayout tabLayout;
     private FloatingActionButton fab,fab1,fab2;
 
-    public CircleImageView imageView;
+    public ImageView imageView;
     public TextView t_mob, t_email;
     ViewPagerAdapter viewPagerAdapter;
 
@@ -228,7 +229,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         fab.show();
     }
 
-    public CircleImageView getImageView() {
+    public ImageView getImageView() {
         return imageView;
     }
 

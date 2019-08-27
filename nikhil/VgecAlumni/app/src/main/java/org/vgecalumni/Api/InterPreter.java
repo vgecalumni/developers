@@ -3,6 +3,7 @@ package org.vgecalumni.Api;
 import org.vgecalumni.Model.DefaultResponse;
 import org.vgecalumni.Model.EduResponse;
 import org.vgecalumni.Model.ExprResponse;
+import org.vgecalumni.Model.NewsResponse;
 import org.vgecalumni.Model.RegEventResponse;
 import org.vgecalumni.Model.UserResponse;
 
@@ -10,11 +11,15 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface InterPreter {
+
+    @GET("/android/getnews.php")
+    Call<NewsResponse> getNews();
 
     @FormUrlEncoded
     @POST("/android/getUser.php")

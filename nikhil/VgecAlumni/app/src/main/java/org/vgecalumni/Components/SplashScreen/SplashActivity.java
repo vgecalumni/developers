@@ -1,40 +1,21 @@
 package org.vgecalumni.Components.SplashScreen;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.MailTo;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.style.ImageSpan;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.vansuita.library.CheckNewAppVersion;
 
@@ -45,11 +26,6 @@ import org.vgecalumni.NetworkUtil;
 import org.vgecalumni.OfflineActivity;
 import org.vgecalumni.PrefManager;
 import org.vgecalumni.R;
-import org.w3c.dom.Text;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class SplashActivity extends AppCompatActivity{
 
@@ -75,8 +51,8 @@ public class SplashActivity extends AppCompatActivity{
         overridePendingTransition(R.transition.slide_in,R.transition.slide_out);
 
         offlineIntent = new Intent(SplashActivity.this, OfflineActivity.class);
-        progressText= (TextView) findViewById(R.id.progressText);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressText= findViewById(R.id.progressText);
+        progressBar = findViewById(R.id.progressBar);
 
         IntentFilter intentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
         this.registerReceiver(networkChangeReceiver, intentFilter);
@@ -149,7 +125,6 @@ public class SplashActivity extends AppCompatActivity{
         try{
             if(networkChangeReceiver!=null)
                 unregisterReceiver(networkChangeReceiver);
-
         }catch(Exception e){}
 
         super.onDestroy();

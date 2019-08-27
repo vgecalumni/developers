@@ -647,7 +647,13 @@ public class Main2Activity extends AppCompatActivity
             startActivity(sharingIntent);
             return true;
             //myWebView.loadUrl("https://vgecalumni.org/app_discuss.jsp");
-        }else if (id == R.id.nav_postjob) {
+        }
+        else if (id == R.id.nav_news) {
+            Intent news = new Intent(this, News_Main.class);
+            startActivity(news);
+            return true;
+        } 
+        else if (id == R.id.nav_postjob) {
             myWebView.loadUrl("https://www.vgecalumni.org/app_postjob.jsp");
         }else if (id == R.id.nav_myprofile) {
 
