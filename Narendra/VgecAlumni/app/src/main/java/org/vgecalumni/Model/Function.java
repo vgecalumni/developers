@@ -96,7 +96,7 @@ public class Function {
         String res=null;
         if(string.isEmpty()){
             res="Field Should Not be Empty";
-        }else if (!string.matches("^[\\s0-9a-zA-Z._'-,]*$")){
+        }else if (!string.matches("^[\\s0-9a-zA-Z._'-,\\\\/]*$")){
             res="Invalid Address Inputs";
         }
         return res;

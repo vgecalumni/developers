@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.CursorLoader;
@@ -176,10 +175,10 @@ public class Profile_Edit extends AppCompatActivity implements View.OnClickListe
                 DefaultResponse response1 = response.body();
                 endProgress();
                 if (response1.isError()) {
-                    Toast.makeText(Profile_Edit.this, "No Changes", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Profile_Edit.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(Profile_Edit.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Profile_Edit.this, "Profile updated", Toast.LENGTH_SHORT).show();
                     sharedPrefManager = SharedPrefManager.getmInstance(getApplicationContext());
                     SharedUser sharedUser = new SharedUser(s_id, s_fname, s_mname, s_lname, s_address, s_district,
                             s_pin, s_city, s_state, s_pic, s_intro, s_gen, s_dob);
@@ -405,10 +404,5 @@ public class Profile_Edit extends AppCompatActivity implements View.OnClickListe
             }
         }, y, m, d);
         datePickerDialog.show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

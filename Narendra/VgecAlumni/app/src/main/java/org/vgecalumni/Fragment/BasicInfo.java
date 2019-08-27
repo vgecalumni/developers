@@ -7,6 +7,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -19,15 +20,13 @@ import org.vgecalumni.SharedMemory.SharedPrefManager;
 
 import java.util.Objects;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class BasicInfo extends Fragment implements Myinterface {
 
     NestedScrollView scrollView;
     View v;
 
     TextView t_fullname, t_enroll, t_branch, t_gender, t_dob, t_mob, t_email, t_addr, t_addr2, t_addr3, t_intro;
-    CircleImageView imageView;
+    ImageView imageView;
 
     String s_fname, s_mname, s_lname, s_enroll, s_id, s_branch, s_gender, s_dob;
     String s_email, s_mob, s_address, s_district, s_pincode, s_city, s_state;
@@ -112,12 +111,11 @@ public class BasicInfo extends Fragment implements Myinterface {
                 setField();
             }
         });
-
     }
 
     private void setField() {
         if (!s_pic.isEmpty()) {
-            Glide.with(getContext()).load(s_pic).into(imageView);
+            Glide.with(getContext()).load(s_pic).placeholder(R.mipmap.vgec_applauncher_logo).dontAnimate().into(imageView);
         } else {
             imageView.setImageResource(R.mipmap.vgec_applauncher_logo);
         }
