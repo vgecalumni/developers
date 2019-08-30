@@ -33,7 +33,6 @@ import org.vgecalumni.SharedMemory.SharedPrefManager;
 
 import java.util.Objects;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,7 +79,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (Math.abs(verticalOffset)==appBarLayout.getTotalScrollRange()){
-                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(),R.color.colorBlueDark));
+                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(), R.color.colorBlueDark));
                 }
             }
         });

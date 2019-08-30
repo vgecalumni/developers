@@ -101,6 +101,7 @@ import org.vgecalumni.Components.Events.EventsActivity;
 import org.vgecalumni.Components.JobOffers.joboffersmain;
 import org.vgecalumni.Components.Login.Login2Activity;
 import org.vgecalumni.Components.Magazine.MagazineActivity;
+import org.vgecalumni.Components.News.News_Main;
 import org.vgecalumni.Components.Portfolio.PortfolioActivity;
 import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.Components.QRCode.Qr_generate_food;
