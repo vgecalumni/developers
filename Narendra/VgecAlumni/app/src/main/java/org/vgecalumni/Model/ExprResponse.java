@@ -7,6 +7,12 @@ public class ExprResponse {
     private String message;
     private List<Experience> data;
 
+    public ExprResponse(boolean error, String message, List<Experience> dat) {
+        this.error = error;
+        this.message = message;
+        this.data = data;
+    }
+
     public boolean isError() {
         return error;
     }
@@ -17,11 +23,5 @@ public class ExprResponse {
 
     public List<Experience> getExperience() {
         return data;
-    }
-
-    public ExprResponse(boolean error, String message, List<Experience> dat) {
-        this.error = error;
-        this.message = message;
-        this.data = data;
     }
 }

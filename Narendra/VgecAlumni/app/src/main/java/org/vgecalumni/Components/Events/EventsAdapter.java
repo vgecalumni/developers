@@ -7,17 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
+import org.vgecalumni.Model.Event;
 import org.vgecalumni.R;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import java.util.List;
 
@@ -41,7 +38,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         viewHolder.setData(eventsList.get(i), i);
         viewHolder.setListener();
-        viewHolder.performAnimation();
     }
 
     @Override
@@ -55,8 +51,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         private ImageView iv_event_image;
         private TextView tv_event_name;
 
-        private ScaleAnimation anim;
-
         private Event event;
         private int position;
 
@@ -67,12 +61,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             iv_event_image = itemView.findViewById(R.id.iv_event_image);
             tv_event_name = itemView.findViewById(R.id.tv_event_name);
 
-            anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            anim.setDuration(300);
+//            anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+//            anim.setDuration(300);
         }
 
         public void setData(Event event, int position) {
-            Glide.with(itemView.getContext()).load(event.getImageUrl()).placeholder(R.drawable.event).error(R.drawable.event).into(iv_event_image);
+            Glide.with(itemView.getContext()).load(event.getImageUrl()).placeholder(R.drawable.event).error(R.drawable.event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_event_image);
             tv_event_name.setText(event.getName());
 
             this.event = event;
@@ -83,15 +77,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             cv_event.setOnClickListener(this);
         }
 
-        public void performAnimation() {
-            this.itemView.startAnimation(anim);
-        }
-
         @Override
         public void onClick(View v) {
             int id = v.getId();
 
-            if(id == R.id.cv_event) {
+            if (id == R.id.cv_event) {
                 Intent intent = new Intent(v.getContext(), EventDetailsActivity.class);
                 intent.putExtra("e_id", event.getId());
                 v.getContext().startActivity(intent);
@@ -100,25 +90,3 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 }
 
-class Event {
-
-    private String id, name, imageUrl;
-
-    public Event(String id, String name, String imageUrl) {
-        this.id = id;
-        this.name = name;
-        this.imageUrl = imageUrl;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-}

@@ -3,6 +3,15 @@ package org.vgecalumni.Model;
 public class Experience {
     String company, desig, desc, join, end, tag;
 
+    public Experience(String company, String desig, String desc, String join, String end, String tag) {
+        this.company = company;
+        this.desig = desig;
+        this.desc = desc;
+        this.join = join;
+        this.end = end;
+        this.tag = tag;
+    }
+
     public String getCompany() {
         return company;
     }
@@ -25,14 +34,5 @@ public class Experience {
 
     public String getTag() {
         return tag;
-    }
-
-    public Experience(String company, String desig, String desc, String join, String end, String tag) {
-        this.company = company;
-        this.desig = desig;
-        this.desc = desc;
-        this.join = join;
-        this.end = end;
-        this.tag = tag;
     }
 }

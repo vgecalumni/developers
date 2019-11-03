@@ -1,6 +1,7 @@
 package org.vgecalumni.Components.Settings;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,21 +17,15 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 
 import org.vgecalumni.R;
 
 import java.util.List;
-
-import static android.icu.lang.UCharacter.toUpperCase;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -46,12 +41,12 @@ import static android.icu.lang.UCharacter.toUpperCase;
 public class SettingsActivity extends PreferenceActivity {
 
     private static final String MY_PREFS_NAME = "VgecAlumni";
-    static EditTextPreference settingname;
-    static EditTextPreference settinguname;
-    static EditTextPreference settingaccount;
     public static String name;
     public static String uname;
     public static String account;
+    static EditTextPreference settingname;
+    static EditTextPreference settinguname;
+    static EditTextPreference settingaccount;
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -98,9 +93,9 @@ public class SettingsActivity extends PreferenceActivity {
             } else {
 
 
-                    // For all other preferences, set the summary to the value's
-                    // simple string representation.
-                    preference.setSummary(stringValue);
+                // For all other preferences, set the summary to the value's
+                // simple string representation.
+                preference.setSummary(stringValue);
 
             }
             return true;
@@ -133,11 +128,11 @@ public class SettingsActivity extends PreferenceActivity {
         // current value.
 
 
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getString(preference.getKey(), "")
-            );
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                PreferenceManager
+                        .getDefaultSharedPreferences(preference.getContext())
+                        .getString(preference.getKey(), "")
+        );
 
     }
 
@@ -145,14 +140,12 @@ public class SettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
-
-        overridePendingTransition(R.transition.slide_in,R.transition.slide_out);
+        overridePendingTransition(R.transition.slide_in, R.transition.slide_out);
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         name = prefs.getString("name", null);
         uname = prefs.getString("uname", null);
         account = "VGEC Alumni Association : " + prefs.getString("account", null) + " LifeTime Membership";
-
     }
 
     /**
@@ -209,9 +202,9 @@ public class SettingsActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(false);
 
-            settingname = (EditTextPreference)findPreference("name");
-            settinguname = (EditTextPreference)findPreference("uname");
-            settingaccount = (EditTextPreference)findPreference("account");
+            settingname = (EditTextPreference) findPreference("name");
+            settinguname = (EditTextPreference) findPreference("uname");
+            settingaccount = (EditTextPreference) findPreference("account");
 
             settingname.setText(name);
             settinguname.setText(uname);

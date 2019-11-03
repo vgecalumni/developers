@@ -4,7 +4,6 @@
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <PreferenceCategory android:title="Account Details">
         <EditTextPreference
-            android:id="@+id/account"
             android:capitalize="words"
             android:clickable="false"
             android:editable="false"
@@ -20,8 +19,6 @@
             android:title="Account Type" />
 
         <EditTextPreference
-            android:id="@+id/uname"
-            android:selectable="false"
             android:capitalize="words"
             android:clickable="false"
             android:editable="false"
@@ -30,14 +27,13 @@
             android:key="uname"
             android:maxLines="1"
             android:selectAllOnFocus="true"
+            android:selectable="false"
             android:singleLine="true"
             android:title="Account ID" />
 
 
         <EditTextPreference
-            android:id="@+id/name"
             android:capitalize="words"
-            android:selectable="false"
             android:clickable="false"
             android:editable="false"
             android:focusable="false"
@@ -46,6 +42,7 @@
             android:key="name"
             android:maxLines="1"
             android:selectAllOnFocus="true"
+            android:selectable="false"
             android:singleLine="true"
             android:title="Name" />
     </PreferenceCategory>
@@ -55,32 +52,31 @@
         <EditTextPreference
             android:capitalize="words"
             android:clickable="false"
+            android:defaultValue="For storing and uploading images in sharing platform and other contents like resume for jobs"
             android:editable="false"
             android:focusable="false"
-            android:selectable="false"
             android:inputType="textCapWords"
             android:key="storage"
             android:maxLines="1"
-            android:defaultValue="For storing and uploading images in sharing platform and other contents like resume for jobs"
             android:selectAllOnFocus="true"
+            android:selectable="false"
             android:singleLine="true"
             android:title="Storage Permission" />
 
         <EditTextPreference
             android:capitalize="words"
             android:clickable="false"
+            android:defaultValue="To capture and share photos from both front and rear camera"
             android:editable="false"
             android:focusable="false"
             android:inputType="textCapWords"
             android:key="camera"
-            android:selectable="false"
             android:maxLines="1"
-            android:defaultValue="To capture and share photos from both front and rear camera"
             android:selectAllOnFocus="true"
+            android:selectable="false"
             android:singleLine="true"
             android:title="Camera Permission" />
     </PreferenceCategory>
-
 
 
 </PreferenceScreen>

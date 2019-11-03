@@ -3,18 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:id="@+id/cv_departmental_event"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp">
+    <!--android:layout_marginBottom="10dp"-->
 
     <LinearLayout
-        android:id="@+id/ll_department_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -23,9 +21,9 @@
             android:id="@+id/tv_department_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
             android:text="Department Name"
-            android:textColor="#90000000"
+            android:textColor="@android:color/black"
             android:textSize="17sp"
             android:textStyle="bold"
             android:maxLines="1"
@@ -35,17 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
             android:background="@android:color/darker_gray"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingStart="15dp"
-            android:paddingRight="0dp"
+            android:paddingStart="10dp"
             android:paddingEnd="0dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:clipToPadding="false"/>
 
     </LinearLayout>

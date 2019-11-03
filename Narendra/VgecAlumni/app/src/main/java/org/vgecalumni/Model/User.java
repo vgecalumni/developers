@@ -3,12 +3,12 @@ package org.vgecalumni.Model;
 public class User {
     String id, fname, mname, lname, enroll, branch, gender, dob;
     String email, mob, address, pincode, city, district, state;
-    String pic,intro;
+    String pic, intro;
 
-    public User(String id,String fname, String mname, String lname, String enroll, String branch,
+    public User(String id, String fname, String mname, String lname, String enroll, String branch,
                 String gender, String dob, String email, String mob, String address, String city,
                 String pincode, String district, String state, String pic, String intro) {
-        this.id=id;
+        this.id = id;
         this.fname = fname;
         this.mname = mname;
         this.lname = lname;
@@ -16,15 +16,15 @@ public class User {
         this.branch = branch;
         this.gender = gender;
         this.dob = dob;
-        this.email=email;
+        this.email = email;
         this.mob = mob;
         this.address = address;
         this.pincode = pincode;
         this.city = city;
-        this.district=district;
+        this.district = district;
         this.state = state;
-        this.pic=pic;
-        this.intro=intro;
+        this.pic = pic;
+        this.intro = intro;
     }
 
     public String getMob() {

@@ -1,18 +1,18 @@
 package org.vgecalumni.Model;
 
 public class EduHolder {
-    private Education education = null;
     private static final EduHolder eduHolder = new EduHolder();
+    private Education education = null;
 
-    public void setEducation(Education education) {
-        this.education = education;
+    public static EduHolder getInstance() {
+        return eduHolder;
     }
 
     public Education getEducation() {
         return education;
     }
 
-    public static EduHolder getInstance() {
-        return eduHolder;
+    public void setEducation(Education education) {
+        this.education = education;
     }
 }

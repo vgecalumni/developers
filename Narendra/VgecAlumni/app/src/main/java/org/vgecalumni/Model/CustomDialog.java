@@ -15,14 +15,14 @@ public class CustomDialog {
         this.listener = listener;
     }
 
-    public void showDialog(final int position){
+    public void showDialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(string);
         builder.setCancelable(false);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                listener.onPositiveClick(dialog,position);
+                listener.onPositiveClick(dialog, position);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -37,6 +37,7 @@ public class CustomDialog {
 
     public interface CustomDialogListener {
         void onPositiveClick(DialogInterface dialogInterface, int position);
+
         void onNegativeClick(DialogInterface dialogInterface);
     }
 }

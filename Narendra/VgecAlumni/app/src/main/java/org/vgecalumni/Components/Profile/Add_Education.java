@@ -36,15 +36,15 @@ import retrofit2.Response;
 
 public class Add_Education extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private AppCompatEditText degree, inst, joindate, enddate, stream;
-    private TextInputLayout l_degree, l_inst, l_joindate, l_enddate, l_stream;
-    private String s_degree, s_inst, s_joindate, s_enddate, s_stream;
     CheckBox curstudy;
     RelativeLayout layout;
     Intent intent;
+    Education education;
+    private AppCompatEditText degree, inst, joindate, enddate, stream;
+    private TextInputLayout l_degree, l_inst, l_joindate, l_enddate, l_stream;
+    private String s_degree, s_inst, s_joindate, s_enddate, s_stream;
     private String s_tag, s_id;
     private int i;
-    Education education;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         l_joindate = findViewById(R.id.lay_edu_join);
         l_enddate = findViewById(R.id.lay_edu_end);
 
-        curstudy =findViewById(R.id.chek_current);
+        curstudy = findViewById(R.id.chek_current);
         curstudy.setOnCheckedChangeListener(this);
 
         //joindate.setOnClickListener(this);
@@ -96,7 +96,7 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         s_joindate = education.getJoin();
         s_enddate = education.getEnd();
 
-        if(s_enddate.equals(getResources().getString(R.string.hint_present))){
+        if (s_enddate.equals(getResources().getString(R.string.hint_present))) {
             disableEdit();
             curstudy.setChecked(true);
         }
@@ -186,7 +186,7 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
         String er_stream = Function.checkAddress(s_stream);
         String er_join = Function.checkYr(s_joindate);
         //String er_end = Function.checkYr(s_enddate);
-        String er_end=null;
+        String er_end = null;
 
         if (er_degree != null) {
             l_degree.setError(er_degree);
@@ -208,7 +208,7 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
             l_stream.setError(er_stream);
             x = false;
         }
-        if(!curstudy.isChecked()){
+        if (!curstudy.isChecked()) {
             er_end = Function.checkYr(s_enddate);
             if (er_end != null) {
                 l_enddate.setError(er_end);
@@ -266,9 +266,9 @@ public class Add_Education extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
+        if (isChecked) {
             disableEdit();
-        }else {
+        } else {
             enableEdit();
         }
     }

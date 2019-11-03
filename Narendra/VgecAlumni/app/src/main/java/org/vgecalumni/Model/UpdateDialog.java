@@ -4,19 +4,13 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.vansuita.library.CheckNewAppVersion;
 
 import org.vgecalumni.R;
 
@@ -37,7 +31,7 @@ public class UpdateDialog implements View.OnClickListener {
         am = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
 
 
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         Button update = dialog.findViewById(R.id.but_update);
         TextView whatnew = dialog.findViewById(R.id.whats_new);
@@ -48,7 +42,7 @@ public class UpdateDialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.but_update:
                 listener.onUpdateClick();
                 break;

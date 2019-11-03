@@ -7,6 +7,12 @@ public class NewsResponse {
     private String message;
     private List<News> data;
 
+    public NewsResponse(boolean error, String message, List<News> data) {
+        this.error = error;
+        this.message = message;
+        this.data = data;
+    }
+
     public boolean isError() {
         return error;
     }
@@ -17,11 +23,5 @@ public class NewsResponse {
 
     public List<News> getNews() {
         return data;
-    }
-
-    public NewsResponse(boolean error, String message, List<News> data) {
-        this.error = error;
-        this.message = message;
-        this.data = data;
     }
 }

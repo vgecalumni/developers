@@ -15,9 +15,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        if(i == 0) {
+        if (i == 0) {
             return new CentralEventsFragment();
-        } else if(i == 1) {
+        } else if (i == 1) {
             return new DepartmentalEventsFragment();
         } else {
             return null;

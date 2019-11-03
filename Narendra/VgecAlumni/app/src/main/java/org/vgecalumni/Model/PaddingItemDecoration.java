@@ -13,7 +13,7 @@ public class PaddingItemDecoration extends RecyclerView.ItemDecoration {
 
     public PaddingItemDecoration(Context context) {
         this.context = context;
-        space= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,90,context.getResources().getDisplayMetrics());
+        space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, context.getResources().getDisplayMetrics());
     }
 
     @Override
@@ -25,7 +25,7 @@ public class PaddingItemDecoration extends RecyclerView.ItemDecoration {
             outRect.bottom = space;
             outRect.top = 0;
         }
-        if (isFirst&&state.getItemCount()-1!=0) {
+        if (isFirst && state.getItemCount() - 1 != 0) {
             outRect.top = space;
             if (isLast)
                 outRect.bottom = 0;

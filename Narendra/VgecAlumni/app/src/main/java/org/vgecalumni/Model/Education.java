@@ -1,7 +1,7 @@
 package org.vgecalumni.Model;
 
-public class Education{
-    String degree,stream,inst,join,end,tag;
+public class Education {
+    String degree, stream, inst, join, end, tag;
 
     public Education(String degree, String stream, String inst, String join, String end, String tag) {
         this.degree = degree;

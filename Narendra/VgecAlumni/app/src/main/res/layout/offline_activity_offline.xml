@@ -55,7 +55,6 @@
         android:text="Your internet connection is not good ! Please Try Again Later:)" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/offline_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/offline_desc"

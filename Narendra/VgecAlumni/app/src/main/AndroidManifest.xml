@@ -3,32 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.vgecalumni">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA2" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/vgec_applauncher_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/vgec_applauncher_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <!--
         <activity
-            android:name=".WelcomeActivity">
-
-        </activity>
-        -->
-        <activity
-            android:name=".Main2Activity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main2"
             android:permission="com.google.android.c2dm.permission.SEND"
             android:saveEnabled="true"
@@ -39,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Components.Login.Login2Activity"
+            android:name=".Components.Login.LoginActivity"
             android:saveEnabled="true"
             android:screenOrientation="portrait" />
         <activity
@@ -55,18 +41,10 @@
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ErrorActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Components.SplashScreen.SplashActivity"
             android:screenOrientation="portrait">
@@ -79,14 +57,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Components.Temp.reveal"
-            android:screenOrientation="portrait"></activity>
-        <activity
             android:name=".Components.Magazine.MagazineActivity"
             android:label="Magazines"
-            android:theme="@style/AppTheme1"></activity>
+            android:theme="@style/AppTheme1" />
         <activity
-            android:name=".Components.JobOffers.joboffersmain"
+            android:name=".Components.JobOffers.JobOffersMain"
             android:label="Job Offers"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1" />
@@ -116,8 +91,7 @@
             android:theme="@style/AppTheme1" />
         <activity
             android:name=".Components.Profile.Profile"
-            android:theme="@style/ProfileTheme">
-        </activity>
+            android:theme="@style/ProfileTheme" />
         <activity
             android:name=".Components.QRCode.Qr_generate_photo"
             android:theme="@style/AppTheme1" />
@@ -130,9 +104,30 @@
         <activity
             android:name=".Components.Events.EventDetailsActivity"
             android:theme="@style/EventTheme" />
-        <activity android:name=".Components.News.News_Main"
-            android:theme="@style/AppTheme1"/>
-
+        <activity
+            android:name=".Components.Portfolio.PortfolioActivity"
+            android:theme="@style/EventTheme" />
+        <activity
+            android:name=".Components.NewsAndHig.NewsActivity"
+            android:theme="@style/AppTheme1" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <service
+            android:name=".Api.MessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
-</manifest> <!-- android:noHistory="true" -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA2" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>

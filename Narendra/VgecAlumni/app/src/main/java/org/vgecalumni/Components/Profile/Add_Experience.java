@@ -34,12 +34,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Add_Experience extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    private AppCompatEditText company, designation, descri, joindate, enddate;
-    private TextInputLayout l_company, l_designation, l_descri, l_joindate, l_enddate;
-    private String s_company, s_designation, s_descri, s_joindate, s_enddate;
     CheckBox curwork;
     RelativeLayout layout;
     Intent intent;
+    private AppCompatEditText company, designation, descri, joindate, enddate;
+    private TextInputLayout l_company, l_designation, l_descri, l_joindate, l_enddate;
+    private String s_company, s_designation, s_descri, s_joindate, s_enddate;
     private String s_tag, s_id;
     private int i;
     private Experience experience;
@@ -53,28 +53,28 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        company=findViewById(R.id.user_expr_comp);
-        designation=findViewById(R.id.user_expr_desig);
-        joindate=findViewById(R.id.user_expr_join);
-        enddate=findViewById(R.id.user_expr_end);
-        descri =findViewById(R.id.user_expr_desc);
+        company = findViewById(R.id.user_expr_comp);
+        designation = findViewById(R.id.user_expr_desig);
+        joindate = findViewById(R.id.user_expr_join);
+        enddate = findViewById(R.id.user_expr_end);
+        descri = findViewById(R.id.user_expr_desc);
 
-        curwork =findViewById(R.id.chek_current);
+        curwork = findViewById(R.id.chek_current);
         curwork.setOnCheckedChangeListener(this);
 
-        l_company=findViewById(R.id.lay_expr_comp);
-        l_designation=findViewById(R.id.lay_expr_desig);
-        l_joindate=findViewById(R.id.lay_expr_join);
-        l_enddate=findViewById(R.id.lay_expr_end);
-        l_descri =findViewById(R.id.lay_expr_desc);
+        l_company = findViewById(R.id.lay_expr_comp);
+        l_designation = findViewById(R.id.lay_expr_desig);
+        l_joindate = findViewById(R.id.lay_expr_join);
+        l_enddate = findViewById(R.id.lay_expr_end);
+        l_descri = findViewById(R.id.lay_expr_desc);
 
-        layout=findViewById(R.id.lay_progress);
+        layout = findViewById(R.id.lay_progress);
 
         // joindate.setOnClickListener(this);
         // enddate.setOnClickListener(this);
 
         User user = SharedPrefManager.getmInstance(getApplicationContext()).getUser();
-        s_id=user.getId();
+        s_id = user.getId();
 
         intent = getIntent();
         i = intent.getIntExtra("for", 0);
@@ -92,7 +92,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
         s_joindate = experience.getJoin();
         s_enddate = experience.getEnd();
 
-        if(s_enddate.equals(getResources().getString(R.string.hint_present))){
+        if (s_enddate.equals(getResources().getString(R.string.hint_present))) {
             disableEdit();
             curwork.setChecked(true);
         }
@@ -106,7 +106,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.save,menu);
+        getMenuInflater().inflate(R.menu.save, menu);
         return true;
     }
 
@@ -120,7 +120,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
                 if (validate()) {
                     clearError();
                     showProgress();
-                    Call<DefaultResponse> responseCall=null;
+                    Call<DefaultResponse> responseCall = null;
                     if (i == 1) {
                         responseCall = RetrofitClient.getInstance()
                                 .getInterPreter().editExpr(s_id, s_tag, s_company, s_designation, s_descri, s_joindate, s_enddate);
@@ -138,7 +138,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
                                 Toast.makeText(Add_Experience.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Add_Experience.this, response1.getMessage(), Toast.LENGTH_SHORT).show();
-                                Experience nw = new Experience(s_company,s_designation,s_descri,s_joindate, s_enddate,s_tag);
+                                Experience nw = new Experience(s_company, s_designation, s_descri, s_joindate, s_enddate, s_tag);
                                 ExprHolder.getInstance().setExperience(nw);
                                 finish();
                             }
@@ -158,7 +158,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.user_expr_join:
                 getDate(joindate);
                 break;
@@ -189,7 +189,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
         String er_company = Function.checkAddress(s_company);
         String er_desig = Function.checkAddress(s_designation);
         String er_desc = Function.checkAddress(s_descri);
-        String er_end=null;
+        String er_end = null;
 
         String er_join = Function.checkYr(s_joindate);
 
@@ -210,7 +210,7 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
             x = false;
         }
 
-        if(!curwork.isChecked()){
+        if (!curwork.isChecked()) {
             er_end = Function.checkYr(s_enddate);
             if (er_end != null) {
                 l_enddate.setError(er_end);
@@ -256,9 +256,9 @@ public class Add_Experience extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
+        if (isChecked) {
             disableEdit();
-        }else {
+        } else {
             enableEdit();
         }
     }

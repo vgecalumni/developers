@@ -5,6 +5,12 @@ public class RegEventResponse {
     private String message;
     private RegEvents data;
 
+    public RegEventResponse(boolean error, String message, RegEvents re) {
+        this.error = error;
+        this.message = message;
+        this.data = re;
+    }
+
     public boolean isError() {
         return error;
     }
@@ -15,11 +21,5 @@ public class RegEventResponse {
 
     public RegEvents getRegEvents() {
         return data;
-    }
-
-    public RegEventResponse(boolean error, String message, RegEvents re) {
-        this.error = error;
-        this.message = message;
-        this.data = re;
     }
 }

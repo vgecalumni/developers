@@ -1,7 +1,7 @@
 package org.vgecalumni.Model;
 
-public class RegEvents{
-    String event,photo,food;
+public class RegEvents {
+    String event, photo, food;
 
     public RegEvents(String event, String photo, String food) {
         this.event = event;

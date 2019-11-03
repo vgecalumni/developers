@@ -12,6 +12,7 @@ import android.net.MailTo;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
@@ -20,7 +21,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.SslErrorHandler;
@@ -33,9 +33,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
 import com.sdsmdg.tastytoast.TastyToast;
+
 import org.vgecalumni.ErrorActivity;
 import org.vgecalumni.R;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -45,17 +48,15 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class sharingmain extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private static final String MY_PREFS_NAME = "VgecAlumni";
+    private static final int INPUT_FILE_REQUEST_CODE = 1;
+    private static final int FILECHOOSER_RESULTCODE = 1;
     private WebView myWebView;
     private GifImageView mygif;
-    private static final String MY_PREFS_NAME = "VgecAlumni";
-
     private ValueCallback<Uri> mUploadMessage;
     private Uri mCapturedImageURI = null;
     private ValueCallback<Uri[]> mFilePathCallback;
     private String mCameraPhotoPath;
-    private static final int INPUT_FILE_REQUEST_CODE = 1;
-    private static final int FILECHOOSER_RESULTCODE = 1;
-
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -79,7 +80,7 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         overridePendingTransition(R.transition.slide_in, R.transition.slide_out);
 
         mygif = findViewById(R.id.GifView);
-        myWebView = (WebView) findViewById(R.id.myWebView);
+        myWebView = findViewById(R.id.myWebView);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -166,6 +167,70 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         return true;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            if (requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
+                super.onActivityResult(requestCode, resultCode, data);
+                return;
+            }
+
+            Uri[] results = null;
+
+            // Check that the response is a good one
+            if (resultCode == Activity.RESULT_OK) {
+                if (data == null) {
+                    // If there is not data, then we may have taken a photo
+                    if (mCameraPhotoPath != null) {
+                        results = new Uri[]{Uri.parse(mCameraPhotoPath)};
+                    }
+                } else {
+                    String dataString = data.getDataString();
+                    if (dataString != null) {
+                        results = new Uri[]{Uri.parse(dataString)};
+                    }
+                }
+            }
+
+            mFilePathCallback.onReceiveValue(results);
+            mFilePathCallback = null;
+
+        } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            if (requestCode != FILECHOOSER_RESULTCODE || mUploadMessage == null) {
+                super.onActivityResult(requestCode, resultCode, data);
+                return;
+            }
+
+            if (requestCode == FILECHOOSER_RESULTCODE) {
+
+                if (null == this.mUploadMessage) {
+                    return;
+
+                }
+
+                Uri result = null;
+
+                try {
+                    if (resultCode != RESULT_OK) {
+
+                        result = null;
+
+                    } else {
+
+                        // retrieve from the private variable if the intent is null
+                        result = data == null ? mCapturedImageURI : data.getData();
+                    }
+                } catch (Exception e) {
+
+                }
+                mUploadMessage.onReceiveValue(result);
+                mUploadMessage = null;
+            }
+        }
+        return;
+    }
+
     public class ChromeClient extends WebChromeClient {
 
         // For Android 5.0
@@ -240,7 +305,7 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
             // Create camera captured image file path and name
             File file = new File(
                     imageStorageDir + File.separator + "IMG_"
-                            + String.valueOf(System.currentTimeMillis())
+                            + System.currentTimeMillis()
                             + ".jpg");
 
             mCapturedImageURI = Uri.fromFile(file);
@@ -260,7 +325,7 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
 
             // Set camera intent to file chooser
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS
-                    , new Parcelable[] { captureIntent });
+                    , new Parcelable[]{captureIntent});
 
             // On select image call onActivityResult method of activity
             startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
@@ -282,73 +347,6 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         }
 
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-            if (requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
-                super.onActivityResult(requestCode, resultCode, data);
-                return;
-            }
-
-            Uri[] results = null;
-
-            // Check that the response is a good one
-            if (resultCode == Activity.RESULT_OK) {
-                if (data == null) {
-                    // If there is not data, then we may have taken a photo
-                    if (mCameraPhotoPath != null) {
-                        results = new Uri[]{Uri.parse(mCameraPhotoPath)};
-                    }
-                } else {
-                    String dataString = data.getDataString();
-                    if (dataString != null) {
-                        results = new Uri[]{Uri.parse(dataString)};
-                    }
-                }
-            }
-
-            mFilePathCallback.onReceiveValue(results);
-            mFilePathCallback = null;
-
-        } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            if (requestCode != FILECHOOSER_RESULTCODE || mUploadMessage == null) {
-                super.onActivityResult(requestCode, resultCode, data);
-                return;
-            }
-
-            if (requestCode == FILECHOOSER_RESULTCODE) {
-
-                if (null == this.mUploadMessage) {
-                    return;
-
-                }
-
-                Uri result = null;
-
-                try {
-                    if (resultCode != RESULT_OK) {
-
-                        result = null;
-
-                    } else {
-
-                        // retrieve from the private variable if the intent is null
-                        result = data == null ? mCapturedImageURI : data.getData();
-                    }
-                } catch (Exception e) {
-
-                }
-
-                mUploadMessage.onReceiveValue(result);
-                mUploadMessage = null;
-
-            }
-        }
-
-        return;
-    }
-
 
     private class MyWebviewClient extends WebViewClient {
 
@@ -365,7 +363,7 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
             final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(sharingmain.this);
             String message = "SSL Certificate error.";
-            Intent error_intent = new Intent(sharingmain.this,ErrorActivity.class);
+            Intent error_intent = new Intent(sharingmain.this, ErrorActivity.class);
 
             String errorname;
             switch (error.getPrimaryError()) {
@@ -373,8 +371,8 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                     myWebView.stopLoading();
                     myWebView.setVisibility(View.INVISIBLE);
                     message = "The certificate authority is not trusted.";
-                    error_intent.putExtra("errorname",message);
-                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    error_intent.putExtra("errorname", message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(error_intent);
                     finish();
 
@@ -384,8 +382,8 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                     myWebView.stopLoading();
                     myWebView.setVisibility(View.INVISIBLE);
                     message = "The certificate has expired.";
-                    error_intent.putExtra("errorname",message);
-                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    error_intent.putExtra("errorname", message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(error_intent);
                     finish();
                     break;
@@ -393,8 +391,8 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                     message = "The certificate Hostname mismatch.";
                     myWebView.stopLoading();
                     myWebView.setVisibility(View.INVISIBLE);
-                    error_intent.putExtra("errorname",message);
-                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    error_intent.putExtra("errorname", message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(error_intent);
                     finish();
                     break;
@@ -402,8 +400,8 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                     message = "The certificate is not yet valid.";
                     myWebView.stopLoading();
                     myWebView.setVisibility(View.INVISIBLE);
-                    error_intent.putExtra("errorname",message);
-                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    error_intent.putExtra("errorname", message);
+                    error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(error_intent);
                     finish();
                     break;
@@ -433,16 +431,16 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                                         WebResourceRequest request, WebResourceResponse errorResponse) {
 
 
-            Intent error_intent = new Intent(sharingmain.this,ErrorActivity.class);
+            Intent error_intent = new Intent(sharingmain.this, ErrorActivity.class);
             Integer code = errorResponse.getStatusCode();
 
             String headers = errorResponse.getResponseHeaders().toString();
 
-            if(headers.contains("Connection=close")){
+            if (headers.contains("Connection=close")) {
                 myWebView.stopLoading();
                 myWebView.setVisibility(View.INVISIBLE);
-                error_intent.putExtra("errorcode",code.toString());
-                error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NEW_TASK);
+                error_intent.putExtra("errorcode", code.toString());
+                error_intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(error_intent);
                 finish();
             }
@@ -476,11 +474,11 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                                     WebResourceError error) {
 
 
-            Intent error_intent = new Intent(sharingmain.this,ErrorActivity.class);
+            Intent error_intent = new Intent(sharingmain.this, ErrorActivity.class);
             Integer code = error.getErrorCode();
-            if(code == -2){
+            if (code == -2) {
                 myWebView.loadUrl("https://www.vgecalumni.org/offline.jsp");
-            }else {
+            } else {
                 myWebView.stopLoading();
                 myWebView.setVisibility(View.INVISIBLE);
                 error_intent.putExtra("errorcode", code.toString());
@@ -494,7 +492,6 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         /*
           Added in API level 23
         */
-
 
 
         public boolean shouldOverrideUrlLoading(WebView view, String url) {

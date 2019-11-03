@@ -10,132 +10,132 @@ import java.util.Locale;
 
 public class Function {
 
-    public static String checkName(String string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (string.matches("[\\s]")){
-            res="Name Only have in One Word";
-        }else if (!string.matches("^[a-zA-Z]{3,12}$")){
-            res="Invalid Data";
+    public static String checkName(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (string.matches("[\\s]")) {
+            res = "No space allowed";
+        } else if (!string.matches("^[a-zA-Z]{3,15}$")) {
+            res = "Field is too long or short";
         }
         return res;
     }
 
-    public static String checkDOB(String string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not Be Empty";
+    public static String checkDOB(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
         } else {
             Date date = null;
             try {
-                date=new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(string);
+                date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(string);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Date date1= Calendar.getInstance().getTime();
-            if(date1.before(date)){
-                res="Date is Day Before Today";
+            Date date1 = Calendar.getInstance().getTime();
+            if (date1.before(date)) {
+                res = "Date is day before today";
             }
         }
         return res;
     }
 
-    public static String checkEnroll(String  string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (string.length()!=12){
-            res="Enrollment Length Must Be 12";
-        }else if (!string.matches("^[0-9]{12}$")){
-            res="Invalid Enrollment";
+    public static String checkEnroll(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (string.length() != 12) {
+            res = "Enrollment length must 12";
+        } else if (!string.matches("^[0-9]{12}$")) {
+            res = "Invalid enrollment";
         }
         return res;
     }
 
-    public static String checkpin(String  string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (string.length()!=6){
-            res="Pincode Length Must Be 6";
-        }else if (!string.matches("^[0-9]{6}$")){
-            res="Invalid Pincode";
+    public static String checkpin(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (string.length() != 6) {
+            res = "Pincode length must 6";
+        } else if (!string.matches("^[0-9]{6}$")) {
+            res = "Invalid pincode";
         }
         return res;
     }
 
-    public static String checkYr(String  string){
-        String res=null;
+    public static String checkYr(String string) {
+        String res = null;
         int yr = Calendar.getInstance().get(Calendar.YEAR);
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (string.length()!=4){
-            res="Year Length Must Be 4";
-        }else if(Integer.parseInt(string)>yr){
-            res="Year must not be greater than current year";
-        }else if (!string.matches("^[0-9]{4}$")){
-            res="Invalid Year";
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (string.length() != 4) {
+            res = "Year length must 4";
+        } else if (Integer.parseInt(string) > yr) {
+            res = "Year must not greater than current year";
+        } else if (!string.matches("^[0-9]{4}$")) {
+            res = "Invalid year";
         }
         return res;
     }
 
-    public static String checkMobile(String  string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (string.length()!=10){
-            res="Mobile No. Length Must Be 10";
-        }else if (!string.matches("^[0-9]{10}$")){
-            res="Invalid Mobile No.";
+    public static String checkMobile(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (string.length() != 10) {
+            res = "Mobile No. length must 10";
+        } else if (!string.matches("^[0-9]{10}$")) {
+            res = "Invalid mobile No.";
         }
         return res;
     }
 
-    public static String checkAddress(String  string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (!string.matches("^[\\s0-9a-zA-Z._'-,\\\\/]*$")){
-            res="Invalid Address Inputs";
+    public static String checkAddress(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (!string.matches("^[\\s0-9a-zA-Z._,\\\\/]*$")) {
+            res = "Some special symbols are not allowed";
         }
         return res;
     }
 
-    public static String empty(String  string){
-        String res=null;
-        if(string.isEmpty()){
-            res="Field Should Not be Empty";
-        }else if (!string.matches("^[\\s0-9a-zA-Z.]*$")){
-            res="Invalid Inputs";
+    public static String empty(String string) {
+        String res = null;
+        if (string.isEmpty()) {
+            res = "Field should not empty";
+        } else if (!string.matches("^[\\s0-9a-zA-Z.]*$")) {
+            res = "Invalid inputs";
         }
         return res;
     }
 
     public static String checkIntro(String string) {
-        String res=null;
-        if (!string.matches("^[\\s0-9a-zA-Z._'-,]*$")){
-            res="Invalid Inputs In Field";
+        String res = null;
+        if (!string.matches("^[\\s0-9a-zA-Z._,]*$")) {
+            res = "Some special symbols are not allowed";
         }
         return res;
     }
 
-    public static String setGender(int string){
-        String res=null;
-        if (string == R.id.user_gen_female){
-            res="Female";
-        }else {
-            res="Male";
+    public static String setGender(int string) {
+        String res;
+        if (string == R.id.user_gen_female) {
+            res = "Female";
+        } else {
+            res = "Male";
         }
         return res;
     }
 
-    public static int getGender(String string){
-        int res=R.id.user_gen_male;
-        if (string.equalsIgnoreCase("male")){
-            res=R.id.user_gen_male;
-        }else {
-            res=R.id.user_gen_female;
+    public static int getGender(String string) {
+        int res;
+        if (string.equalsIgnoreCase("male")) {
+            res = R.id.user_gen_male;
+        } else {
+            res = R.id.user_gen_female;
         }
         return res;
     }

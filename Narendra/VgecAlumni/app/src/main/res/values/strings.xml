@@ -1,55 +1,15 @@
 <resources>
     <string name="app_name">VGEC ALUMNI</string>
 
-    <string name="title_activity_welcome">Home Screen</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">START</string>
-
-    <string name="welcome">WELCOME</string>
     <string name="slide_1_title">VGEC ALUMNI</string>
     <string name="slide_1_desc">Dear VGECians, Greetings from the Vishwakarma Government Engineering College - Alumni Association (VGEC-AA)</string>
 
-    <string name="slide_2_title">ALUMNI EVENTS</string>
-    <string name="slide_2_desc">Our Mission Is To Provide Opportunities For VGEC Alumni To Participate In And Contribute To The Continued Growth And Development Of The College.</string>
-
-    <string name="slide_3_title">INSTANT UPDATES</string>
-    <string name="slide_3_desc">Push Notifications To Keep You In The Loop And Deliver The Instant Updates About Activities,Events And Many More.</string>
-
-    <string name="slide_4_title">CREATE YOUR OWN \n BLOG</string>
-    <string name="slide_4_desc">Manage Your Profile And Create Your Own Blog Now ! Share Your Thoughts, Feelings, Opinions or Experiences. </string>
-
-    <string name="slide_5_title">PLACEMENT DETAILS</string>
-    <string name="slide_5_desc">Manage Your Placement Details And Inform Others For Your Company\'s Recruitment.</string>
-
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
@@ -72,47 +32,23 @@
         <item>-1</item>
     </string-array>
 
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">VGEC ALUMNI</string>
     <string name="nav_header_subtitle">Vishwakarma Government Engineering College</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_main2">VGEC ALUMNI</string>
 
     <string name="user_agent_suffix">AlumniApp</string>
-
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
-    <string name="title_activity_login_acitivity">LoginAcitivity</string>
 
     <string name="new_rate_dialog_title">Rate Us !</string>
     <string name="new_rate_dialog_never">Never</string>
@@ -120,48 +56,22 @@
     <string name="new_rate_dialog_later">Later</string>
     <string name="new_rate_dialog_ok">Rate</string>
 
-    <string name="uploads_disabled">File uploads are disabled.</string>
-    <string name="choose_upload">Choose file for upload</string>
-
-    <string name="android_app_upd_dlg_btn_no_later_txt">Later</string>
     <!--command verb-->
-    <string name="cmnd_verb_android_app_upd_dlg_btn_no_close_txt">Close</string>
     <!--command verb-->
-    <string name="cmnd_verb_android_app_upd_dlg_btn_yes_update_txt">Update</string>
     <!--command verb-->
-    <string name="cmnd_verb_android_app_upd_dlg_btn_yes_install_txt">Install</string>
-    <string name="android_app_upd_dlg_btn_yes_open_new_txt">Open new version</string>
     <!--command verb-->
-    <string name="cmnd_verb_android_app_upd_dlg_btn_no_uninstall_old_txt">Uninstall old</string>
 
     <!-- Info texts-->
-    <string name="android_app_upd_updater_info_install">Application has moved to new address. Please install newer version</string>
-    <string name="android_app_upd_updater_info_update">New version is available. Please update application</string>
-    <string name="android_app_upd_restricter_info_install">This is old version and does not operate. An application has moved to new address. \nPlease install newer version</string>
-    <string name="android_app_upd_restricter_info_update">This is old version.Please update application.</string>
-    <string name="android_app_upd_restricter_info_open_new_version">This is old version and does not operate. Please open new version</string>
 
     <!-- Additional information-->
-    <string name="android_app_upd_internet_update_error">Check your internet connection</string>
-    <string name="android_app_upd_play_service_not_found">Install Google Play Services to update application</string>
-    <string name="android_app_upd_info_popup_text">VGEC ALUMNI ASSOCIATION</string>
-    <string name="title_activity_profile_main">profile_main</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin nibh. Euismod elementum nisi quis eleifend. Fames ac turpis egestas maecenas pharetra convallis. Vel orci porta non pulvinar neque laoreet suspendisse. Mattis pellentesque id nibh tortor id aliquet lectus proin. Cursus metus aliquam eleifend mi in nulla posuere. Mattis nunc sed blandit libero volutpat sed cras. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat. Sit amet facilisis magna etiam tempor orci eu lobortis. Ullamcorper malesuada proin libero nunc consequat interdum. Nulla malesuada pellentesque elit eget gravida cum. Turpis massa tincidunt dui ut ornare lectus sit amet. Pellentesque nec nam aliquam sem et tortor consequat id. Turpis egestas sed tempus urna. Magna ac placerat vestibulum lectus mauris ultrices. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Congue quisque egestas diam in arcu cursus euismod quis. In iaculis nunc sed augue lacus viverra vitae congue. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. In fermentum posuere urna nec. Interdum consectetur libero id faucibus nisl tincidunt eget. Aenean et tortor at risus viverra adipiscing. A cras semper auctor neque vitae tempus. Ullamcorper malesuada proin libero nunc. Vel risus commodo viverra maecenas accumsan.</string>
 
     <!-- Profile section-->
     <string name="hint_profile">Profile</string>
 
-    <string name="hint_basicinfo">Basic Info</string>
     <string name="hint_fname">First Name</string>
     <string name="hint_midle">MiddleName</string>
     <string name="hint_lname">Last Name</string>
-    <string name="hint_mobile">Mobile</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_enroll">Enrollment</string>
     <string name="hint_enroll2">Enrollment:</string>
-    <string name="hint_gen">Gender</string>
     <string name="hint_gen2">Gender:</string>
     <string name="hint_dob">DOB</string>
     <string name="hint_dob2">DOB:</string>
@@ -174,7 +84,6 @@
     <string name="hint_state">State</string>
 
     <string name="hint_intro">Introduction</string>
-    <string name="hint_intro2">No Introduction Found</string>
 
     <string name="hint_edu">Education</string>
     <string name="hint_degree">Degree</string>
@@ -197,7 +106,6 @@
     <string name="hint_description2">Description:</string>
 
     <string name="hint_save">Save</string>
-    <string name="hint_add">Add</string>
 
     <string name="hint_rmpic">Remove Profile Picture</string>
 
@@ -213,4 +121,6 @@
     <string name="update_warning">New version of application is available\nYou must update your app to proceed further</string>
     <string name="hint_news"><![CDATA[News & Highlights]]></string>
 
+    <string name="default_notification_channel_id">pushnotify</string>
+    <string name="msgtitle">VGEC ALUMNI</string>
 </resources>

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Main2Activity"
-    tools:showIn="@layout/main_app_bar_main">
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <WebView
         android:id="@+id/myWebView"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorLight"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" >
-
-
-    </WebView>
-
-</android.support.design.widget.CoordinatorLayout>
+        android:background="@color/colorLight"/>
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_gravity="center"
+        android:id="@+id/GifView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ajaxloader" />
+</FrameLayout>

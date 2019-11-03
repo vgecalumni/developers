@@ -55,7 +55,7 @@ public interface InterPreter {
     @Multipart
     @POST("/android/uploadImage.php")
     Call<DefaultResponse> uploadImage(
-            @Part("image\";filename=\"myfile.jpg\" ")RequestBody file,
+            @Part("image\";filename=\"myfile.jpg\" ") RequestBody file,
             @Part("id") RequestBody id
     );
 

@@ -20,11 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.vgecalumni.Adpater.ViewPagerAdapter;
 import org.vgecalumni.Api.RetrofitClient;
-import org.vgecalumni.Fragment.BasicInfo;
-import org.vgecalumni.Fragment.EducationInfo;
-import org.vgecalumni.Fragment.ExperienceInfo;
 import org.vgecalumni.Model.Myinterface;
 import org.vgecalumni.Model.User;
 import org.vgecalumni.Model.UserResponse;
@@ -33,31 +29,25 @@ import org.vgecalumni.SharedMemory.SharedPrefManager;
 
 import java.util.Objects;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
-    private String s_uname;
-
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private FloatingActionButton fab,fab1,fab2;
-
+    private static final String MY_PREFS_NAME = "VgecAlumni";
     public ImageView imageView;
     public TextView t_mob, t_email;
     ViewPagerAdapter viewPagerAdapter;
-
     CollapsingToolbarLayout collapsingToolbarLayout;
     AppBarLayout appBarLayout;
-
     LinearLayout linearLayout;
     Toolbar toolbar;
-    private static final String MY_PREFS_NAME = "VgecAlumni";
-
-    Myinterface myinterface,myinterface2,myinterface3;
+    Myinterface myinterface, myinterface2, myinterface3;
+    private String s_uname;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private FloatingActionButton fab, fab1, fab2;
 
     @Override
     protected void onStart() {
@@ -72,20 +62,20 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         s_uname = prefs.getString("uname", null);
 
-        linearLayout=findViewById(R.id.progress_lay);
+        linearLayout = findViewById(R.id.progress_lay);
 
-        toolbar=findViewById(R.id.tool);
-        appBarLayout=findViewById(R.id.appbar);
+        toolbar = findViewById(R.id.tool);
+        appBarLayout = findViewById(R.id.appbar);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset)==appBarLayout.getTotalScrollRange()){
-                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(),R.color.colorBlueDark));
+                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+                    toolbar.setBackground(ContextCompat.getDrawable(getBaseContext(), R.color.colorBlueDark));
                 }
             }
         });
-        collapsingToolbarLayout=findViewById(R.id.colltoolbar);
-        collapsingToolbarLayout.setExpandedTitleColor(Color.argb(0,0,0,0));
+        collapsingToolbarLayout = findViewById(R.id.colltoolbar);
+        collapsingToolbarLayout.setExpandedTitleColor(Color.argb(0, 0, 0, 0));
         setSupportActionBar(toolbar);
         setTitle(R.string.hint_profile);
 
@@ -114,7 +104,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         getUser();
     }
 
-    private void getUser(){
+    private void getUser() {
         setProgress();
         Call<UserResponse> userResponseCall = RetrofitClient.getInstance().getInterPreter().getUser(s_uname);
         userResponseCall.enqueue(new Callback<UserResponse>() {
@@ -136,6 +126,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
                 }
                 unsetProgress();
             }
+
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 unsetProgress();
@@ -148,35 +139,38 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         switch (v.getId()) {
             case R.id.fab0:
                 Intent intent = new Intent(this, Profile_Edit.class);
-                startActivityForResult(intent,300);
+                startActivityForResult(intent, 300);
                 break;
             case R.id.fab1:
                 Intent intent1 = new Intent(this, Add_Education.class);
-                intent1.putExtra("for",0);
-                startActivityForResult(intent1,100);
+                intent1.putExtra("for", 0);
+                startActivityForResult(intent1, 100);
                 break;
             case R.id.fab2:
                 Intent intent2 = new Intent(this, Add_Experience.class);
-                intent2.putExtra("for",0);
-                startActivityForResult(intent2,200);
+                intent2.putExtra("for", 0);
+                startActivityForResult(intent2, 200);
                 break;
         }
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
     public void onPageSelected(int position) {
-        if(position==0){
+        if (position == 0) {
             fab.setVisibility(View.VISIBLE);
             fab1.setVisibility(View.GONE);
             fab2.setVisibility(View.GONE);
-        } if(position==1) {
+        }
+        if (position == 1) {
             fab.setVisibility(View.GONE);
             fab1.setVisibility(View.VISIBLE);
             fab2.setVisibility(View.GONE);
-        } if(position==2) {
+        }
+        if (position == 2) {
             fab.setVisibility(View.GONE);
             fab1.setVisibility(View.GONE);
             fab2.setVisibility(View.VISIBLE);
@@ -190,35 +184,39 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==100){
+        if (requestCode == 100) {
             myinterface.myAction(requestCode);
-        }if (requestCode==200) {
+        }
+        if (requestCode == 200) {
             myinterface2.myAction(requestCode);
-        }if (requestCode==300){
+        }
+        if (requestCode == 300) {
             myinterface3.myAction(requestCode);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void setListner(Myinterface myinterface){
-        this.myinterface=myinterface;
-    }
-    public void setListner2(Myinterface myinterface){
-        this.myinterface2=myinterface;
-    }
-    public void setListner3(Myinterface myinterface){
-        this.myinterface3=myinterface;
+    public void setListner(Myinterface myinterface) {
+        this.myinterface = myinterface;
     }
 
-    public int getFabState(){
-        return fab.isShown()?fab.getId():fab1.isShown()?fab1.getId():fab2.getId();
+    public void setListner2(Myinterface myinterface) {
+        this.myinterface2 = myinterface;
+    }
+
+    public void setListner3(Myinterface myinterface) {
+        this.myinterface3 = myinterface;
+    }
+
+    public int getFabState() {
+        return fab.isShown() ? fab.getId() : fab1.isShown() ? fab1.getId() : fab2.getId();
     }
 
     public void hideFab() {
@@ -241,10 +239,11 @@ public class Profile extends AppCompatActivity implements View.OnClickListener, 
         return t_email;
     }
 
-    public void setProgress(){
+    public void setProgress() {
         linearLayout.setVisibility(View.VISIBLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
+
     private void unsetProgress() {
         linearLayout.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

@@ -1,10 +1,10 @@
 package org.vgecalumni.Components.Events;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -83,12 +83,12 @@ public class EventsActivity extends AppCompatActivity {
 
         @Override
         public void transformPage(@NonNull View view, float v) {
-            if(v < -1) {
+            if (v < -1) {
                 view.setAlpha(0);
-            } else if(v <= 1) {
-                view.setScaleX(Math.max(MIN_SCALE, 1-Math.abs(v)));
-                view.setScaleY(Math.max(MIN_SCALE, 1-Math.abs(v)));
-                view.setAlpha(Math.max(MIN_ALPHA, 1-Math.abs(v)));
+            } else if (v <= 1) {
+                view.setScaleX(Math.max(MIN_SCALE, 1 - Math.abs(v)));
+                view.setScaleY(Math.max(MIN_SCALE, 1 - Math.abs(v)));
+                view.setAlpha(Math.max(MIN_ALPHA, 1 - Math.abs(v)));
             } else {
                 view.setAlpha(0);
             }

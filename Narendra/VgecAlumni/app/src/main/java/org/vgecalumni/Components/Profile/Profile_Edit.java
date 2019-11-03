@@ -50,18 +50,18 @@ import retrofit2.Response;
 
 public class Profile_Edit extends AppCompatActivity implements View.OnClickListener {
 
+    RadioGroup gender;
+    TextView rem;
+    RelativeLayout layout;
+    File file = null;
+    String type = null;
+    SharedPrefManager sharedPrefManager;
     private AppCompatEditText fname, mname, lname, address, district, pin, city, state, intro, dob;
     private TextInputLayout l_fname, l_mname, l_lname, l_address, l_district, l_pin, l_city, l_state, l_intro, l_dob;
     private String s_id, s_fname, s_mname, s_lname, s_address, s_district, s_pin, s_city, s_state, s_pic, s_intro, s_gen, s_dob;
     private CircleImageView profile;
-    RadioGroup gender;
-    TextView rem;
-    RelativeLayout layout;
     private Uri fileuri;
     private String path = null;
-    File file = null;
-    String type = null;
-    SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

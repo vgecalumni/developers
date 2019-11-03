@@ -1,9 +1,26 @@
 package org.vgecalumni.Model;
 
 public class SharedUser {
-    String id ,fname, mname,lname;
+    String id, fname, mname, lname;
     String address, district, pincode, city, state;
-    String pic,intro,gen,dob;
+    String pic, intro, gen, dob;
+
+    public SharedUser(String id, String fname, String mname, String lname, String address,
+                      String district, String pincode, String city, String state, String pic, String intro, String gen, String dob) {
+        this.id = id;
+        this.fname = fname;
+        this.mname = mname;
+        this.lname = lname;
+        this.address = address;
+        this.district = district;
+        this.pincode = pincode;
+        this.city = city;
+        this.state = state;
+        this.pic = pic;
+        this.intro = intro;
+        this.gen = gen;
+        this.dob = dob;
+    }
 
     public String getFname() {
         return fname;
@@ -55,22 +72,5 @@ public class SharedUser {
 
     public String getDob() {
         return dob;
-    }
-
-    public SharedUser(String id, String fname, String mname, String lname, String address,
-                      String district, String pincode, String city, String state, String pic, String intro, String gen, String dob) {
-        this.id=id;
-        this.fname = fname;
-        this.mname = mname;
-        this.lname = lname;
-        this.address = address;
-        this.district = district;
-        this.pincode = pincode;
-        this.city = city;
-        this.state = state;
-        this.pic=pic;
-        this.intro=intro;
-        this.gen = gen;
-        this.dob = dob;
     }
 }

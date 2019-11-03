@@ -5,7 +5,13 @@ import java.util.List;
 public class EduResponse {
     private boolean error;
     private String message;
-    private List<Education> data=null;
+    private List<Education> data = null;
+
+    public EduResponse(boolean error, String message, List<Education> data) {
+        this.error = error;
+        this.message = message;
+        this.data = data;
+    }
 
     public boolean isError() {
         return error;
@@ -17,11 +23,5 @@ public class EduResponse {
 
     public List<Education> getEducation() {
         return data;
-    }
-
-    public EduResponse(boolean error, String message, List<Education> data) {
-        this.error = error;
-        this.message = message;
-        this.data = data;
     }
 }

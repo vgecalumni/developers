@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.vgecalumni.Model.EventDetails;
 import org.vgecalumni.R;
 
 import java.util.List;
@@ -38,12 +39,10 @@ public class EventDetailsAdapter extends RecyclerView.Adapter<EventDetailsAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private TextView tv_title, tv_description;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_description = itemView.findViewById(R.id.tv_description);
         }
@@ -55,20 +54,3 @@ public class EventDetailsAdapter extends RecyclerView.Adapter<EventDetailsAdapte
     }
 }
 
-class EventDetails {
-
-    private String title, description;
-
-    public EventDetails(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-}

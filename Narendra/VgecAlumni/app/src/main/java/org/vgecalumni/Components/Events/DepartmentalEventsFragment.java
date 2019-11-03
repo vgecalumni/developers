@@ -1,12 +1,8 @@
 package org.vgecalumni.Components.Events;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +11,8 @@ import org.vgecalumni.R;
 
 public class DepartmentalEventsFragment extends Fragment {
 
-    public DepartmentalEventsFragment() {}
+    public DepartmentalEventsFragment() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

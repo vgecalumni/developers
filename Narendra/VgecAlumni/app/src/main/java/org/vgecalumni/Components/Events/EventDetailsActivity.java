@@ -18,22 +18,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.vgecalumni.Model.EventDetails;
 import org.vgecalumni.R;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +57,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         initialize();
         setListener();
-        setData();
+        setData(this);
     }
 
     private void initialize() {
@@ -77,7 +76,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
-                if(Math.abs(i) - appBarLayout.getTotalScrollRange() == 0) {
+                if (Math.abs(i) - appBarLayout.getTotalScrollRange() == 0) {
                     collapsing_toolbar.setTitle(title);
                 } else {
                     collapsing_toolbar.setTitle(" ");
@@ -93,7 +92,10 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void setData() {
+    private void setData(final Activity activity) {
+        final ShimmerFrameLayout shimmerFrameLayout = activity.findViewById(R.id.shmr_events_details);
+        shimmerFrameLayout.startShimmer();
+
         final String e_id = getIntent().getExtras().getString("e_id");
 
         final List<EventDetails> eventDetailsList = new ArrayList<>();
@@ -120,65 +122,72 @@ public class EventDetailsActivity extends AppCompatActivity {
                                 String date = item.getString("e_date");
                                 String register_url = item.getString("e_url");
 
-                                title = name;
-                                Glide.with(EventDetailsActivity.this).load(imageURL).placeholder(R.drawable.event).error(R.drawable.event).into(iv_event_image);
+                                if (!activity.isDestroyed()) {
+                                    title = name;
+                                    Glide.with(EventDetailsActivity.this).load(imageURL).placeholder(R.drawable.event).error(R.drawable.event).into(iv_event_image);
 
-                                if(!date.equals("null")) {
-                                    String string = "Date : " + date;
-                                    tv_date.setText(string);
-                                } else {
-                                    tv_date.setVisibility(View.GONE);
-                                }
+                                    if (!date.equals("null")) {
+                                        String string = "Date : " + date;
+                                        tv_date.setText(string);
+                                    } else {
+                                        tv_date.setVisibility(View.GONE);
+                                    }
 
-                                if(!fees.equals("null")) {
-                                    String string = "Fees : " + fees;
-                                    tv_fees.setText(string);
-                                } else {
-                                    tv_fees.setVisibility(View.GONE);
-                                }
+                                    if (!fees.equals("null")) {
+                                        String string = "Fees : ₹" + fees;
+                                        tv_fees.setText(string);
+                                    } else {
+                                        tv_fees.setVisibility(View.GONE);
+                                    }
 
-                                if(!register_url.equals("null")) {
-                                    r_url = register_url;
-                                }
+                                    if (!register_url.equals("null")) {
+                                        r_url = register_url;
+                                    }
 
-                                if(!description.equals("null")) {
-                                    eventDetailsList.add(new EventDetails("Description", description));
-                                }
+                                    if (!description.equals("null")) {
+                                        eventDetailsList.add(new EventDetails("Description", description));
+                                    }
 
-                                if(!outcome.equals("null")) {
-                                    eventDetailsList.add(new EventDetails("Outcome", outcome));
-                                }
+                                    if (!outcome.equals("null")) {
+                                        eventDetailsList.add(new EventDetails("Outcome", outcome));
+                                    }
 
-                                if(!goal.equals("null")) {
-                                    eventDetailsList.add(new EventDetails("Goal", goal));
-                                }
+                                    if (!goal.equals("null")) {
+                                        eventDetailsList.add(new EventDetails("Goal", goal));
+                                    }
 
-                                if(!detail.equals("null")) {
-                                    eventDetailsList.add(new EventDetails("Details", detail));
+                                    if (!detail.equals("null")) {
+                                        eventDetailsList.add(new EventDetails("Details", detail));
+                                    }
                                 }
                             }
 
-                            RecyclerView rv_event_details = findViewById(R.id.rv_event_details);
+                            if (!activity.isDestroyed()) {
+                                shimmerFrameLayout.stopShimmer();
+                                shimmerFrameLayout.setVisibility(View.GONE);
 
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(EventDetailsActivity.this);
-                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                            rv_event_details.setLayoutManager(layoutManager);
+                                RecyclerView rv_event_details = findViewById(R.id.rv_event_details);
 
-                            EventDetailsAdapter eventDetailsAdapter = new EventDetailsAdapter(eventDetailsList);
-                            rv_event_details.setAdapter(eventDetailsAdapter);
-                            rv_event_details.setItemAnimator(new DefaultItemAnimator());
-                            rv_event_details.scheduleLayoutAnimation();
+                                LinearLayoutManager layoutManager = new LinearLayoutManager(EventDetailsActivity.this);
+                                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                                rv_event_details.setLayoutManager(layoutManager);
+
+                                EventDetailsAdapter eventDetailsAdapter = new EventDetailsAdapter(eventDetailsList);
+                                rv_event_details.setAdapter(eventDetailsAdapter);
+                                rv_event_details.setItemAnimator(new DefaultItemAnimator());
+                                rv_event_details.scheduleLayoutAnimation();
+                            }
                         } catch (JSONException e) {
 
                             new AlertDialog.Builder(EventDetailsActivity.this)
                                     .setTitle("No Internet Connection")
-                                    .setMessage("Cross check your internet connectivity and try again")
+                                    .setMessage("Please check your internet connectivity and try again")
                                     .setCancelable(false)
                                     .setPositiveButton("Try again", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.cancel();
-                                            setData();
+                                            setData(activity);
                                         }
                                     })
                                     .setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -198,13 +207,13 @@ public class EventDetailsActivity extends AppCompatActivity {
 
                         new AlertDialog.Builder(EventDetailsActivity.this)
                                 .setTitle("No Internet Connection")
-                                .setMessage("Cross check your internet connectivity and try again")
+                                .setMessage("Please check your internet connectivity and try again")
                                 .setCancelable(false)
                                 .setPositiveButton("Try again", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.cancel();
-                                        setData();
+                                        setData(activity);
                                     }
                                 })
                                 .setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -223,7 +232,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("e_id", e_id);
 
-                return  params;
+                return params;
             }
         };
 

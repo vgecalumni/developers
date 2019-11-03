@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Components.JobOffers.joboffersmain">
+    tools:context=".Components.JobOffers.JobOffersMain">
 
     <include layout="@layout/job_fragment_joboffers_main"/>
 

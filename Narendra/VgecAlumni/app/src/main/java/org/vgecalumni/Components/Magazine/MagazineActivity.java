@@ -3,6 +3,7 @@ package org.vgecalumni.Components.Magazine;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
@@ -13,9 +14,9 @@ import org.vgecalumni.R;
 
 import java.util.List;
 
-public class MagazineActivity extends Activity implements OnPageChangeListener,OnLoadCompleteListener{
-    private static final String TAG = MagazineActivity.class.getSimpleName();
+public class MagazineActivity extends Activity implements OnPageChangeListener, OnLoadCompleteListener {
     public static final String SAMPLE_FILE = "vrutant.pdf";
+    private static final String TAG = MagazineActivity.class.getSimpleName();
     PDFView pdfView;
     Integer pageNumber = 0;
     String pdfFileName;
@@ -24,9 +25,7 @@ public class MagazineActivity extends Activity implements OnPageChangeListener,O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.magazine_activity_magazine);
-
-
-        pdfView= (PDFView)findViewById(R.id.pdfView);
+        pdfView = findViewById(R.id.pdfView);
         displayFromAsset(SAMPLE_FILE);
     }
 
@@ -55,16 +54,13 @@ public class MagazineActivity extends Activity implements OnPageChangeListener,O
 
     @Override
     public void loadComplete(int nbPages) {
-        PdfDocument.Meta meta = pdfView.getDocumentMeta();
+        pdfView.getDocumentMeta();
         printBookmarksTree(pdfView.getTableOfContents(), "-");
-
     }
 
     public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
         for (PdfDocument.Bookmark b : tree) {
-
             Log.e(TAG, String.format("%s %s, p %d", sep, b.getTitle(), b.getPageIdx()));
-
             if (b.hasChildren()) {
                 printBookmarksTree(b.getChildren(), sep + "-");
             }

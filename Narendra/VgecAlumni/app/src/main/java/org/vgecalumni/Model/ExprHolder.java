@@ -1,18 +1,18 @@
 package org.vgecalumni.Model;
 
 public class ExprHolder {
-    private Experience experience = null;
     private static final ExprHolder exprHolder = new ExprHolder();
+    private Experience experience = null;
 
-    public void setExperience(Experience experience) {
-        this.experience = experience;
+    public static ExprHolder getInstance() {
+        return exprHolder;
     }
 
     public Experience getExperience() {
         return experience;
     }
 
-    public static ExprHolder getInstance() {
-        return exprHolder;
+    public void setExperience(Experience experience) {
+        this.experience = experience;
     }
 }
