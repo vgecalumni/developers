@@ -15,12 +15,16 @@ import android.support.v4.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.vgecalumni.Components.SplashScreen.SplashActivity;
 import org.vgecalumni.MainActivity;
 import org.vgecalumni.R;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 public class MessageService extends FirebaseMessagingService {
@@ -57,7 +61,7 @@ public class MessageService extends FirebaseMessagingService {
     }
 
     private void sendNotification(Map<String, String> messageBody, Bitmap bitmap) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -69,7 +73,6 @@ public class MessageService extends FirebaseMessagingService {
                 .setSmallIcon(R.drawable.vgec_logo)
                 .setContentTitle(messageBody.get("title"))
                 .setContentText(messageBody.get("body"))
-                .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
@@ -89,6 +92,6 @@ public class MessageService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(channel);
         }
 
-        notificationManager.notify(0, notificationBuilder.build());
+        notificationManager.notify(String.valueOf(System.currentTimeMillis()),0,notificationBuilder.build());
     }
 }

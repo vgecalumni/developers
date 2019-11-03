@@ -50,6 +50,14 @@
                     android:layout_marginStart="10dp"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Loading your name...."
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -118,15 +126,6 @@
                             android:layout_marginStart="5dp"
                             android:text="Loading your dob...." />
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/user_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Loading your name...."
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
-
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
