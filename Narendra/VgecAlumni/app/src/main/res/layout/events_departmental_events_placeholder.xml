@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
+    android:layout_marginTop="20dp"
     app:cardCornerRadius="0dp"
     app:cardElevation="0dp">
 
@@ -26,374 +25,374 @@
                 android:id="@+id/v1"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:background="#dddddd"/>
+                android:background="#dddddd" />
 
             <View
                 android:id="@+id/l1"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v1"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e1_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l1"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e1_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e1_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e1_1"
-                android:layout_alignBottom="@id/e1_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e1_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e1_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e1_2"
-                android:layout_alignBottom="@id/e1_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e1_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e1_3"
-                android:layout_alignBottom="@id/e1_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v2"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e1_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l2"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v2"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e2_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l2"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e2_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e2_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e2_1"
-                android:layout_alignBottom="@id/e2_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e2_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e2_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e2_2"
-                android:layout_alignBottom="@id/e2_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e2_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e2_3"
-                android:layout_alignBottom="@id/e2_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v3"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e2_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l3"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v3"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e3_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l3"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e3_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e3_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e3_1"
-                android:layout_alignBottom="@id/e3_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e3_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e3_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e3_2"
-                android:layout_alignBottom="@id/e3_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e3_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e3_3"
-                android:layout_alignBottom="@id/e3_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v4"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e3_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l4"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v4"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e4_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l4"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e4_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e4_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e4_1"
-                android:layout_alignBottom="@id/e4_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e4_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e4_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e4_2"
-                android:layout_alignBottom="@id/e4_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e4_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e4_3"
-                android:layout_alignBottom="@id/e4_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v5"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e4_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l5"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v5"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e5_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l5"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e5_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e5_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e5_1"
-                android:layout_alignBottom="@id/e5_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e5_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e5_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e5_2"
-                android:layout_alignBottom="@id/e5_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e5_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e5_3"
-                android:layout_alignBottom="@id/e5_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v6"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e5_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l6"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v6"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e6_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l6"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e6_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e6_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e6_1"
-                android:layout_alignBottom="@id/e6_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e6_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e6_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e6_2"
-                android:layout_alignBottom="@id/e6_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e6_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e6_3"
-                android:layout_alignBottom="@id/e6_3"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/v7"
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:layout_below="@id/e6_1"
+                android:layout_marginTop="30dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/l7"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/v7"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e7_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/l7"
+                android:layout_marginTop="10dp"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e7_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e7_1"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e7_1"
-                android:layout_alignBottom="@id/e7_1"
                 android:background="#dddddd" />
 
             <View
                 android:id="@+id/e7_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e7_2"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e7_2"
-                android:layout_alignBottom="@id/e7_2"
                 android:background="#dddddd" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignBottom="@id/e7_3"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/e7_3"
-                android:layout_alignBottom="@id/e7_3"
                 android:background="#dddddd" />
 
             <!--<View-->
-                <!--android:id="@+id/v2"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="250dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_below="@id/date1"-->
-                <!--android:background="#dddddd"/>-->
+            <!--android:id="@+id/v2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="250dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_below="@id/date1"-->
+            <!--android:background="#dddddd"/>-->
 
             <!--<View-->
-                <!--android:id="@+id/desc2"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginEnd="100dp"-->
-                <!--android:layout_below="@id/v2"-->
-                <!--android:background="#dddddd" />-->
+            <!--android:id="@+id/desc2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginEnd="100dp"-->
+            <!--android:layout_below="@id/v2"-->
+            <!--android:background="#dddddd" />-->
 
             <!--<View-->
-                <!--android:id="@+id/date2"-->
-                <!--android:layout_width="150dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_below="@id/desc2"-->
-                <!--android:background="#dddddd" />-->
+            <!--android:id="@+id/date2"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_below="@id/desc2"-->
+            <!--android:background="#dddddd" />-->
 
         </RelativeLayout>
 

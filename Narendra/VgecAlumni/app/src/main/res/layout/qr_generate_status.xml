@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Components.SplashScreen.SplashActivity"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    tools:context=".Components.SplashScreen.SplashActivity">
 
     <LinearLayout
         android:id="@+id/linear1"
@@ -17,10 +16,9 @@
 
         <ImageView
             android:id="@+id/qr_image"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
-            />
+            android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
         <TextView
             android:id="@+id/qr_generate_title"

@@ -18,24 +18,6 @@
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/user_profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/camera2" />
-
-            <TextView
-                android:id="@+id/rm_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:text="@string/hint_rmpic"
-                android:textColor="@color/colorPrimary" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,47 +48,6 @@
                         style="@style/TextEdit" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/lay_lastname"
-                style="@style/TextInput"
-                android:hint="@string/hint_lname">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/user_lastname"
-                    style="@style/TextEdit" />
-            </android.support.design.widget.TextInputLayout>
-
-            <!--  <android.support.design.widget.TextInputLayout
-                  style="@style/TextInput"
-                  android:hint="@string/hint_enroll"
-                  app:errorEnabled="true"
-                  android:id="@+id/lay_enroll">
-
-                  <android.support.v7.widget.AppCompatEditText
-                      android:id="@+id/user_enroll"
-                      style="@style/TextEdit"
-                      android:inputType="number"/>
-              </android.support.design.widget.TextInputLayout>
-
-              <android.support.v7.widget.AppCompatSpinner
-                  android:id="@+id/user_program"
-                  style="@style/Spinner"
-                  android:entries="@array/program"
-                  android:layout_marginBottom="10dp"/>
-
-              <android.support.v7.widget.AppCompatSpinner
-                  android:id="@+id/user_degree"
-                  style="@style/Spinner"
-                  android:entries="@array/branch"
-                  android:layout_marginBottom="10dp"/>
-
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:weightSum="2"
-                  android:baselineAligned="true"> -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -146,6 +87,92 @@
                         android:focusable="false" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_district"
+                    style="@style/TextInput"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_district">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/user_district"
+                        style="@style/TextEdit" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_pincode"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_pin"
+                    app:errorEnabled="true">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/user_pincode"
+                        style="@style/TextEdit"
+                        android:inputType="number" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rm_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:text="@string/hint_rmpic"
+                android:textColor="@color/colorPrimary" />
+
+            <!--  <android.support.design.widget.TextInputLayout
+                  style="@style/TextInput"
+                  android:hint="@string/hint_enroll"
+                  app:errorEnabled="true"
+                  android:id="@+id/lay_enroll">
+
+                  <android.support.v7.widget.AppCompatEditText
+                      android:id="@+id/user_enroll"
+                      style="@style/TextEdit"
+                      android:inputType="number"/>
+              </android.support.design.widget.TextInputLayout>
+
+              <android.support.v7.widget.AppCompatSpinner
+                  android:id="@+id/user_program"
+                  style="@style/Spinner"
+                  android:entries="@array/program"
+                  android:layout_marginBottom="10dp"/>
+
+              <android.support.v7.widget.AppCompatSpinner
+                  android:id="@+id/user_degree"
+                  style="@style/Spinner"
+                  android:entries="@array/branch"
+                  android:layout_marginBottom="10dp"/>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:weightSum="2"
+                  android:baselineAligned="true"> -->
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/lay_lastname"
+                style="@style/TextInput"
+                android:hint="@string/hint_lname">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/user_lastname"
+                    style="@style/TextEdit" />
+            </android.support.design.widget.TextInputLayout>
 
 
             <!-- <android.support.v7.widget.AppCompatSpinner
@@ -192,41 +219,6 @@
                     style="@style/TextEdit" />
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/lay_district"
-                    style="@style/TextInput"
-                    android:layout_weight="1"
-                    android:hint="@string/hint_district">
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/user_district"
-                        style="@style/TextEdit" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/lay_pincode"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    android:hint="@string/hint_pin"
-                    app:errorEnabled="true">
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/user_pincode"
-                        style="@style/TextEdit"
-                        android:inputType="number" />
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/lay_state"
                 style="@style/TextInput"
@@ -246,6 +238,14 @@
                     android:id="@+id/user_intro"
                     style="@style/TextEditBig" />
             </android.support.design.widget.TextInputLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/camera2" />
 
         </LinearLayout>
 

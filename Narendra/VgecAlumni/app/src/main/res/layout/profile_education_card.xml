@@ -3,63 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp"
-    android:layout_marginBottom="10dp">
+    app:cardElevation="5dp">
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_degree2"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_marginStart="5dp"
-            android:id="@+id/edu_degree"
-            style="@style/Text"
-            android:text="Engineering"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_degree2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
-        <TextView
+            <TextView
+                android:id="@+id/edu_degree"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="Engineering"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_field2"/>
-        <TextView
-            android:layout_marginStart="5dp"
-            android:id="@+id/edu_stream"
-            style="@style/Text"
-            android:text="(Computer Engineering)" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_field2" />
 
-        <TextView
+            <TextView
+                android:id="@+id/edu_stream"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="(Computer Engineering)" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_inst2"/>
-        <TextView
-            android:layout_marginStart="5dp"
-            android:id="@+id/edu_inst"
-            style="@style/Text"
-            android:text="VGEC" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_inst2" />
+
+            <TextView
+                android:id="@+id/edu_inst"
+                style="@style/Text"
+                android:layout_marginStart="5dp"
+                android:text="VGEC" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/edu_date"

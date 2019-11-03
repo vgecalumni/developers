@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/camera"/>
-    <item android:drawable="@android:drawable/ic_menu_camera" android:width="50dp" android:height="50dp"
-        android:gravity="center"/>
+    <item android:drawable="@drawable/camera" />
+    <item
+        android:width="50dp"
+        android:height="50dp"
+        android:drawable="@android:drawable/ic_menu_camera"
+        android:gravity="center" />
 </layer-list>

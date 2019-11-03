@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
-import org.vgecalumni.Components.Profile.NewsAdapter;
 import org.vgecalumni.Api.RetrofitClient;
+import org.vgecalumni.Components.Profile.NewsAdapter;
 import org.vgecalumni.Model.AutoScroll;
 import org.vgecalumni.Model.News;
 import org.vgecalumni.Model.NewsResponse;

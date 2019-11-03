@@ -134,7 +134,7 @@ public class SplashActivity extends AppCompatActivity {
         new CheckForUpdate(this).setOnTaskCompleteListener(new CheckForUpdate.isTaskComplete() {
             @Override
             public void onTaskComplete(final CheckForUpdate.Result result) {
-                if(result.hasUpdates()){
+                if (result.hasUpdates()) {
                     UpdateDialog updateDialog = new UpdateDialog();
                     updateDialog.showDialogAddRoute(SplashActivity.this, new UpdateDialog.UpdateDialogListener() {
                         @Override
@@ -142,7 +142,7 @@ public class SplashActivity extends AppCompatActivity {
                             result.openUpdateLink();
                         }
                     });
-                }else {
+                } else {
                     SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
                     String uname = prefs.getString("uname", null);
                     if (uname != null) {

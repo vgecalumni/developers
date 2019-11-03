@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="posts"
         android:id="@+id/nav_sharing_posts"
-        android:icon="@drawable/jobseeker">
-    </item>
+        android:icon="@drawable/jobseeker"
+        android:title="posts"></item>
     <item
-        android:title="search"
         android:id="@+id/nav_sharing_search"
-        android:icon="@drawable/customer">
-    </item>
+        android:icon="@drawable/customer"
+        android:title="search"></item>
     <item
-        android:title="add"
         android:id="@+id/nav_sharing_add"
-        android:icon="@drawable/jobseeker">
-    </item>
+        android:icon="@drawable/jobseeker"
+        android:title="add"></item>
     <item
-        android:title="my posts"
         android:id="@+id/nav_sharing_myposts"
-        android:icon="@drawable/customer">
-    </item>
+        android:icon="@drawable/customer"
+        android:title="my posts"></item>
 
 </menu>

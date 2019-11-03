@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="job offers"
         android:id="@+id/nav_post_job"
-        android:icon="@drawable/jobseeker">
-    </item>
+        android:icon="@drawable/jobseeker"
+        android:title="job offers"></item>
     <item
-        android:title="my applications"
         android:id="@+id/nav_posted_job"
-        android:icon="@drawable/customer">
-    </item>
+        android:icon="@drawable/customer"
+        android:title="my applications"></item>
 </menu>

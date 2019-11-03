@@ -90,10 +90,10 @@ public class MainActivity extends AppCompatActivity
     private static final String MY_PREFS_NAME = "VgecAlumni";
     MaterialSearchView materialSearchView;
     String[] list;
-    private WebView myWebView;
-    private GifImageView mygif;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    private WebView myWebView;
+    private GifImageView mygif;
     private ValueCallback<Uri> mUploadMessage;
     private Uri mCapturedImageURI = null;
     private ValueCallback<Uri[]> mFilePathCallback;
@@ -307,11 +307,11 @@ public class MainActivity extends AppCompatActivity
 
     private void requestPermission() {
         Dexter.withActivity(this).withPermissions(
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.INTERNET,
-                        Manifest.permission.ACCESS_NETWORK_STATE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                Manifest.permission.CAMERA,
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
@@ -319,16 +319,17 @@ public class MainActivity extends AppCompatActivity
                             showSettingsDialog();
                         }
                     }
+
                     @Override
                     public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
                         token.continuePermissionRequest();
                     }
                 }).withErrorListener(new PermissionRequestErrorListener() {
-                    @Override
-                    public void onError(DexterError error) {
-                        Toast.makeText(getApplicationContext(), "Error occurred! ", Toast.LENGTH_SHORT).show();
-                    }
-                }).onSameThread().check();
+            @Override
+            public void onError(DexterError error) {
+                Toast.makeText(getApplicationContext(), "Error occurred! ", Toast.LENGTH_SHORT).show();
+            }
+        }).onSameThread().check();
     }
 
     private void showSettingsDialog() {
@@ -469,7 +470,7 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String account = prefs.getString("account", null);
 
-        if (account.equals("admin")||account.equals("food volunteer")||account.equals("photo volunteer")) {
+        if (account.equals("admin") || account.equals("food volunteer") || account.equals("photo volunteer")) {
             if (id == R.id.nav_qrcode) {
                 Intent photoscanintent = new Intent(this, Qr_scan_photo.class);
                 startActivity(photoscanintent);
@@ -491,7 +492,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(photoscanintent);
                 return true;
             }*/
-        }else {
+        } else {
             if (id == R.id.nav_qrcode) {
                 Intent generatePhotoIntent = new Intent(this, Qr_generate_photo.class);
                 startActivity(generatePhotoIntent);
@@ -627,6 +628,7 @@ public class MainActivity extends AppCompatActivity
             startActivityForResult(chooserIntent, INPUT_FILE_REQUEST_CODE);
             return true;
         }
+
         // openFileChooser for Android 3.0+
         public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
             mUploadMessage = uploadMsg;
@@ -800,7 +802,8 @@ public class MainActivity extends AppCompatActivity
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_EMAIL, new String[]{mt.getTo()});
                 i.putExtra(Intent.EXTRA_SUBJECT, mt.getSubject());
-                i.putExtra(Intent.EXTRA_CC, mt.getCc());                i.putExtra(Intent.EXTRA_TEXT, mt.getBody());
+                i.putExtra(Intent.EXTRA_CC, mt.getCc());
+                i.putExtra(Intent.EXTRA_TEXT, mt.getBody());
                 startActivity(i);
                 view.reload();
                 return true;
@@ -812,6 +815,7 @@ public class MainActivity extends AppCompatActivity
 
     private class WebAppInterface {
         private static final String MY_PREFS_NAME = "VgecAlumni";
+
         @JavascriptInterface
         public void logout() {
             SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();

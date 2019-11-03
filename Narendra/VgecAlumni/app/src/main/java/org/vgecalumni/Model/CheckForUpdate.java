@@ -52,7 +52,7 @@ public class CheckForUpdate extends AsyncTask<Void, String, CheckForUpdate.Resul
 
 
     private String getCurrentVersion() {
-        String oldVersionCode=null;
+        String oldVersionCode = null;
         try {
             oldVersionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -61,8 +61,8 @@ public class CheckForUpdate extends AsyncTask<Void, String, CheckForUpdate.Resul
         return oldVersionCode;
     }
 
-    private String getPlayURL(){
-        return String.format(PLAY_STORE_LINK,context.getPackageName());
+    private String getPlayURL() {
+        return String.format(PLAY_STORE_LINK, context.getPackageName());
     }
 
     public CheckForUpdate setOnTaskCompleteListener(isTaskComplete listener) {
@@ -79,30 +79,6 @@ public class CheckForUpdate extends AsyncTask<Void, String, CheckForUpdate.Resul
         private String newVersionCode;
         private String oldVersionCode;
 
-        public boolean hasUpdates() {
-            return Float.valueOf(oldVersionCode) < Float.valueOf(newVersionCode);
-        }
-
-        public String getNewVersionCode() {
-            return newVersionCode;
-        }
-
-        public String getOldVersionCode() {
-            return oldVersionCode;
-        }
-
-        void setNewVersionCode(String newVersionCode) {
-            this.newVersionCode = newVersionCode;
-        }
-
-        void setOldVersionCode(String oldVersionCode) {
-            this.oldVersionCode = oldVersionCode;
-        }
-
-        public void openUpdateLink() {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getPlayURL())));
-        }
-
         Result(Context context, String newVersionCode, String oldVersionCode) {
             this.context = context;
             this.newVersionCode = newVersionCode;
@@ -111,6 +87,30 @@ public class CheckForUpdate extends AsyncTask<Void, String, CheckForUpdate.Resul
 
         Result(Context context) {
             this(context, "", "");
+        }
+
+        public boolean hasUpdates() {
+            return Float.valueOf(oldVersionCode) < Float.valueOf(newVersionCode);
+        }
+
+        public String getNewVersionCode() {
+            return newVersionCode;
+        }
+
+        void setNewVersionCode(String newVersionCode) {
+            this.newVersionCode = newVersionCode;
+        }
+
+        public String getOldVersionCode() {
+            return oldVersionCode;
+        }
+
+        void setOldVersionCode(String oldVersionCode) {
+            this.oldVersionCode = oldVersionCode;
+        }
+
+        public void openUpdateLink() {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getPlayURL())));
         }
     }
 }

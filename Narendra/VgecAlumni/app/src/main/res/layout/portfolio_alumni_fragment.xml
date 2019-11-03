@@ -1,8 +1,24 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_portfolio_soon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Coming Soon..."
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_portfolio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shmr_protfolio"
@@ -19,23 +35,6 @@
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <TextView
-        android:id="@+id/tv_portfolio_soon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Coming Soon..."
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:gravity="center"
-        android:visibility="gone"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_portfolio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="10dp"
-        android:clipToPadding="false"/>
     <!--android:paddingTop="10dp"-->
 
 </LinearLayout>

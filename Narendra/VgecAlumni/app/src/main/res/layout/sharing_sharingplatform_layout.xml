@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Components.SharingPlatform.sharingmain">
 
-    <include layout="@layout/sharing_platform"/>
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
@@ -16,7 +14,9 @@
         android:background="@color/colorBlueDark"
         app:itemIconTint="@color/colorLight"
         app:itemTextColor="@color/colorLight"
-        app:menu="@menu/sharing_menu"
-        app:labelVisibilityMode="labeled"/>
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/sharing_menu" />
+
+    <include layout="@layout/sharing_platform" />
 
 </FrameLayout>

@@ -3,61 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Components.Profile.ExperienceInfo"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Components.Profile.ExperienceInfo">
 
     <LinearLayout
+        android:id="@+id/no_expr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:id="@+id/no_expr"
         android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_note_add_black_24dp"/>
+            android:src="@drawable/ic_note_add_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/notext"
+            android:text="@string/hint_noexpr"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:text="@string/hint_noexpr"/>
+            android:textColor="@color/notext" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:weightSum="2">
-        <TextView
-            android:layout_weight="1"
-            android:gravity="start"
-            android:textColor="@color/colorRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/swipe_to_delete"/>
 
         <TextView
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:gravity="end"
-            android:textColor="@color/colorGreen"
             android:layout_height="wrap_content"
-            android:text="@string/swipe_to_edit"/>
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="@string/swipe_to_delete"
+            android:textColor="@color/colorRed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/swipe_to_edit"
+            android:textColor="@color/colorGreen" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_margin="10dp"
         android:id="@+id/recyler_experience"
-        android:paddingBottom="@dimen/fab_margin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:paddingBottom="@dimen/fab_margin" />
 
 </LinearLayout>

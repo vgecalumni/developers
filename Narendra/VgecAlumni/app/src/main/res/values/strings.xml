@@ -15,6 +15,98 @@
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">VGEC ALUMNI</string>
+    <string name="nav_header_subtitle">Vishwakarma Government Engineering College</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_main2">VGEC ALUMNI</string>
+    <string name="user_agent_suffix">AlumniApp</string>
+    <string name="new_rate_dialog_title">Rate Us !</string>
+
+    <string name="new_rate_dialog_never">Never</string>
+
+    <string name="new_rate_dialog_message">If you really like this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="new_rate_dialog_later">Later</string>
+    <string name="new_rate_dialog_ok">Rate</string>
+    <string name="hint_profile">Profile</string>
+    <string name="hint_fname">First Name</string>
+
+    <!--command verb-->
+    <!--command verb-->
+    <!--command verb-->
+    <!--command verb-->
+
+    <!-- Info texts-->
+
+    <!-- Additional information-->
+
+    <!-- Profile section-->
+    <string name="hint_midle">MiddleName</string>
+
+    <string name="hint_lname">Last Name</string>
+    <string name="hint_enroll2">Enrollment:</string>
+    <string name="hint_gen2">Gender:</string>
+    <string name="hint_dob">DOB</string>
+    <string name="hint_dob2">DOB:</string>
+    <string name="hint_city">City</string>
+    <string name="hint_city2">City:</string>
+
+    <string name="hint_address">Address</string>
+    <string name="hint_district">District</string>
+    <string name="hint_pin">Pincode</string>
+    <string name="hint_state">State</string>
+    <string name="hint_intro">Introduction</string>
+    <string name="hint_edu">Education</string>
+
+    <string name="hint_degree">Degree</string>
+
+    <string name="hint_degree2">Degree:</string>
+    <string name="hint_field">Field of Education</string>
+    <string name="hint_field2">Field of Education:</string>
+    <string name="hint_inst">Institute</string>
+    <string name="hint_inst2">Institute:</string>
+    <string name="date_from">From: </string>
+    <string name="hint_join">Join Year</string>
+    <string name="date_to">\u0020To: </string>
+    <string name="hint_end">End Year</string>
+    <string name="hint_expr">Experience</string>
+    <string name="hint_org">Organization</string>
+
+    <string name="hint_org2">Organization:</string>
+    <string name="hint_desig">Designation</string>
+    <string name="hint_desig2">Designation:</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_description2">Description:</string>
+    <string name="hint_save">Save</string>
+    <string name="hint_rmpic">Remove Profile Picture</string>
+
+    <string name="hint_curwork">Currently working</string>
+
+    <string name="hint_curstudy">Currently pursuing</string>
+
+    <string name="hint_present">Present</string>
+    <string name="hint_noexpr">No experience found</string>
+    <string name="hint_noedu">No education found</string>
+
+    <string name="swipe_to_delete"><![CDATA[Swipe -> (to delete)]]></string>
+    <string name="swipe_to_edit"><![CDATA[Swipe <- (to edit)]]></string>
+
+    <string name="update_warning">New version of application is available\nYou must update your app to proceed further</string>
+    <string name="hint_news"><![CDATA[News & Highlights]]></string>
+    <string name="default_notification_channel_id">pushnotify</string>
+    <string name="msgtitle">VGEC ALUMNI</string>
+
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
@@ -31,96 +123,4 @@
         <item>360</item>
         <item>-1</item>
     </string-array>
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">VGEC ALUMNI</string>
-    <string name="nav_header_subtitle">Vishwakarma Government Engineering College</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="title_activity_main2">VGEC ALUMNI</string>
-
-    <string name="user_agent_suffix">AlumniApp</string>
-
-    <string name="new_rate_dialog_title">Rate Us !</string>
-    <string name="new_rate_dialog_never">Never</string>
-    <string name="new_rate_dialog_message">If you really like this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
-    <string name="new_rate_dialog_later">Later</string>
-    <string name="new_rate_dialog_ok">Rate</string>
-
-    <!--command verb-->
-    <!--command verb-->
-    <!--command verb-->
-    <!--command verb-->
-
-    <!-- Info texts-->
-
-    <!-- Additional information-->
-
-    <!-- Profile section-->
-    <string name="hint_profile">Profile</string>
-
-    <string name="hint_fname">First Name</string>
-    <string name="hint_midle">MiddleName</string>
-    <string name="hint_lname">Last Name</string>
-    <string name="hint_enroll2">Enrollment:</string>
-    <string name="hint_gen2">Gender:</string>
-    <string name="hint_dob">DOB</string>
-    <string name="hint_dob2">DOB:</string>
-
-    <string name="hint_city">City</string>
-    <string name="hint_city2">City:</string>
-    <string name="hint_address">Address</string>
-    <string name="hint_district">District</string>
-    <string name="hint_pin">Pincode</string>
-    <string name="hint_state">State</string>
-
-    <string name="hint_intro">Introduction</string>
-
-    <string name="hint_edu">Education</string>
-    <string name="hint_degree">Degree</string>
-    <string name="hint_degree2">Degree:</string>
-    <string name="hint_field">Field of Education</string>
-    <string name="hint_field2">Field of Education:</string>
-    <string name="hint_inst">Institute</string>
-    <string name="hint_inst2">Institute:</string>
-    <string name="date_from">From: </string>
-    <string name="hint_join">Join Year</string>
-    <string name="date_to">\u0020To: </string>
-    <string name="hint_end">End Year</string>
-
-    <string name="hint_expr">Experience</string>
-    <string name="hint_org">Organization</string>
-    <string name="hint_org2">Organization:</string>
-    <string name="hint_desig">Designation</string>
-    <string name="hint_desig2">Designation:</string>
-    <string name="hint_description">Description</string>
-    <string name="hint_description2">Description:</string>
-
-    <string name="hint_save">Save</string>
-
-    <string name="hint_rmpic">Remove Profile Picture</string>
-
-    <string name="hint_curwork">Currently working</string>
-    <string name="hint_curstudy">Currently pursuing</string>
-    <string name="hint_present">Present</string>
-
-    <string name="hint_noexpr">No experience found</string>
-    <string name="hint_noedu">No education found</string>
-
-    <string name="swipe_to_delete"><![CDATA[Swipe -> (to delete)]]></string>
-    <string name="swipe_to_edit"><![CDATA[Swipe <- (to edit)]]></string>
-    <string name="update_warning">New version of application is available\nYou must update your app to proceed further</string>
-    <string name="hint_news"><![CDATA[News & Highlights]]></string>
-
-    <string name="default_notification_channel_id">pushnotify</string>
-    <string name="msgtitle">VGEC ALUMNI</string>
 </resources>

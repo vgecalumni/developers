@@ -47,7 +47,7 @@ public class MessageService extends FirebaseMessagingService {
                 connection.connect();
                 InputStream input = connection.getInputStream();
                 Bitmap bitmap = BitmapFactory.decodeStream(input);
-                sendNotification(remoteMessage.getData(),bitmap);
+                sendNotification(remoteMessage.getData(), bitmap);
             } catch (Exception e) {
                 //
             }
@@ -77,7 +77,7 @@ public class MessageService extends FirebaseMessagingService {
         if (bitmap != null) {
             notificationBuilder.setLargeIcon(bitmap)
                     .setStyle(new NotificationCompat.BigPictureStyle()
-                    .bigPicture(bitmap));
+                            .bigPicture(bitmap));
         }
 
         NotificationManager notificationManager =

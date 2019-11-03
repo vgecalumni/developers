@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import org.vgecalumni.Components.Profile.Profile;
 import org.vgecalumni.Model.Myinterface;
 import org.vgecalumni.Model.User;
 import org.vgecalumni.R;

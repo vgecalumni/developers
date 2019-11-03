@@ -2,53 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@color/colorRed"
-        android:src="@drawable/vgec_black"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:src="@drawable/vgec_black" />
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="New Update Available !"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textStyle="bold" />
 
     <TextView
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/update_warning"/>
+        android:text="@string/update_warning"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
     <TextView
         android:id="@+id/whats_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="10dp"
         android:clickable="true"
+        android:focusable="true"
         android:text="What's New?"
-        android:focusable="true" />
+        android:textColor="@color/colorPrimary" />
 
     <android.support.design.button.MaterialButton
         android:id="@+id/but_update"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:text="Update Now" />
 </LinearLayout>

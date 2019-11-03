@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Components.QRCode.RegisteredEventList"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    tools:context=".Components.QRCode.RegisteredEventList">
 
     <LinearLayout
         android:id="@+id/linear1"
@@ -17,10 +16,9 @@
 
         <ImageView
             android:id="@+id/qr_image"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
-            />
+            android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
         <TextView
             android:id="@+id/qr_scan_total"
@@ -49,13 +47,13 @@
             android:id="@+id/scan_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/offline_desc"
-            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="@dimen/desc_padding"
-            android:layout_marginRight="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/offline_desc"
             android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="@dimen/desc_padding"
             android:background="@drawable/button"
             android:backgroundTintMode="screen"
             android:gravity="center"
