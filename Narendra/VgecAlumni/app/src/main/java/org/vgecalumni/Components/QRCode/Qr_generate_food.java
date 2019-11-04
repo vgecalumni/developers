@@ -38,8 +38,7 @@ public class Qr_generate_food extends AppCompatActivity {
     Bitmap bitmap;
     String TAG = "GenerateQRCode";
 
-    static String getAlphaNumericString(int n) {
-
+    /*static String getAlphaNumericString(int n) {
         // chose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
@@ -60,9 +59,8 @@ public class Qr_generate_food extends AppCompatActivity {
             sb.append(AlphaNumericString
                     .charAt(index));
         }
-
         return sb.toString();
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +72,12 @@ public class Qr_generate_food extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         overridePendingTransition(R.transition.slide_in, R.transition.slide_out);
 
-        showProgress();
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         final String uname = prefs.getString("uname", null);
 
         title = findViewById(R.id.qr_generate_title);
         desc = findViewById(R.id.qr_generate_desc);
         qrimage = findViewById(R.id.qr_image);
-
 
         Call<RegEventResponse> RegEventResponsecall = RetrofitClient.getInstance().getInterPreter().getRegEvents(uname);
         RegEventResponsecall.enqueue(new Callback<RegEventResponse>() {
@@ -112,7 +108,7 @@ public class Qr_generate_food extends AppCompatActivity {
                         smallerDimension = smallerDimension * 3 / 4;
 
                         // Format : event , food , uname  ....
-                        String qrcode = s_event + ",food," + uname + ",id," + getAlphaNumericString(5);
+                        String qrcode = s_event + ",food," + uname + ",id," + System.currentTimeMillis() ;
                         QRGEncoder qrgEncoder = new QRGEncoder(qrcode, null, QRGContents.Type.TEXT, smallerDimension);
 
                         try {
@@ -134,9 +130,7 @@ public class Qr_generate_food extends AppCompatActivity {
                         desc.setText("Your food coupon has been applied ! Thanks for your co-operation. Now enjoy " + s_event + " 's dinner !");
 
                     }
-
                 }
-
             }
 
             @Override
@@ -150,12 +144,9 @@ public class Qr_generate_food extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
-        return true;
-    }
-
-    private void showProgress() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

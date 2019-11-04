@@ -57,7 +57,6 @@ public class SplashActivity extends AppCompatActivity {
                     );
                 } else {
                     if (status == NetworkUtil.NETWORK_STATUS_NOT_CONNECTED) {
-
                         Intent offlineIntent = new Intent(SplashActivity.this, OfflineActivity.class);
                         startActivity(offlineIntent);
                         finish();
@@ -95,9 +94,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity_splash);
-
         overridePendingTransition(R.transition.slide_in, R.transition.slide_out);
-
         progressText = findViewById(R.id.progressText);
         progressBar = findViewById(R.id.progressBar);
 
@@ -131,36 +128,40 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        new CheckForUpdate(this).setOnTaskCompleteListener(new CheckForUpdate.isTaskComplete() {
-            @Override
-            public void onTaskComplete(final CheckForUpdate.Result result) {
-                if (result.hasUpdates()) {
-                    UpdateDialog updateDialog = new UpdateDialog();
-                    updateDialog.showDialogAddRoute(SplashActivity.this, new UpdateDialog.UpdateDialogListener() {
-                        @Override
-                        public void onUpdateClick() {
-                            result.openUpdateLink();
-                        }
-                    });
-                } else {
-                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                    String uname = prefs.getString("uname", null);
-                    if (uname != null) {
-                        String password = prefs.getString("password", null); //0 is the default value.
-                        handleIntent = new Intent(SplashActivity.this, MainActivity.class);
-
-                        startActivity(handleIntent);
-                        handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        finish();
+        if (NetworkUtil.getConnectivityStatusString(this) == NetworkUtil.NETWORK_STATUS_NOT_CONNECTED) {
+            Intent offlineIntent = new Intent(SplashActivity.this, OfflineActivity.class);
+            startActivity(offlineIntent);
+            finish();
+        }else {
+            new CheckForUpdate(this).setOnTaskCompleteListener(new CheckForUpdate.isTaskComplete() {
+                @Override
+                public void onTaskComplete(final CheckForUpdate.Result result) {
+                    if (result.hasUpdates()) {
+                        UpdateDialog updateDialog = new UpdateDialog();
+                        updateDialog.showDialogAddRoute(SplashActivity.this, new UpdateDialog.UpdateDialogListener() {
+                            @Override
+                            public void onUpdateClick() {
+                                result.openUpdateLink();
+                            }
+                        });
                     } else {
-                        handleIntent = new Intent(SplashActivity.this, LoginActivity.class);
-                        handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(handleIntent);
-                        finish();
+                        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                        String uname = prefs.getString("uname", null);
+                        if (uname != null) {
+                            handleIntent = new Intent(SplashActivity.this, MainActivity.class);
+                            handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(handleIntent);
+                            finish();
+                        } else {
+                            handleIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                            handleIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(handleIntent);
+                            finish();
+                        }
                     }
                 }
-            }
-        }).execute();
+            }).execute();
+        }
     }
 
     public class MyWebviewClient extends WebViewClient {

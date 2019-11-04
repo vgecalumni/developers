@@ -1,4 +1,4 @@
-package org.vgecalumni.Components.Profile;
+package org.vgecalumni.Components.NewsAndHig;
 
 import android.content.Context;
 import android.content.Intent;

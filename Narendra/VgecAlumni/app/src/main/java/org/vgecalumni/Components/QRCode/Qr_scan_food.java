@@ -52,14 +52,12 @@ public class Qr_scan_food extends AppCompatActivity implements View.OnClickListe
         qr_last = findViewById(R.id.qr_gscan_last);
         qrimage = findViewById(R.id.qr_image);
 
-
         qrimage.setImageResource(R.mipmap.qrscan);
         qr_total.setText("Coupon Scanner Initiated !");
         qr_last.setText("Scanner is ready to scan food coupons !");
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
-
         //attaching onclick listener
         buttonScan.setOnClickListener(this);
     }
@@ -92,7 +90,6 @@ public class Qr_scan_food extends AppCompatActivity implements View.OnClickListe
                                 qr_total.setText("Coupon Error !");
                                 qr_last.setText("Coupon may applied already or wrong coupon !");
 
-
                             } else {
 
                                 qrimage.setImageResource(R.mipmap.tickmark);
@@ -100,17 +97,14 @@ public class Qr_scan_food extends AppCompatActivity implements View.OnClickListe
                                 qr_last.setText("Last Scan Result : " + uname);
 
                             }
-
                         }
 
                         @Override
                         public void onFailure(Call<DefaultResponse> call, Throwable t) {
-
                             Intent generateFoodIntent = new Intent(Qr_scan_food.this, OfflineActivity.class);
                             startActivity(generateFoodIntent);
                         }
                     });
-
 
                 } else {
                     qrimage.setImageResource(R.mipmap.not_found);
@@ -131,8 +125,9 @@ public class Qr_scan_food extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
-        return true;
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

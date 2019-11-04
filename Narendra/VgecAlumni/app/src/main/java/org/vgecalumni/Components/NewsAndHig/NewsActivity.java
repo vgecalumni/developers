@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import org.vgecalumni.Api.RetrofitClient;
-import org.vgecalumni.Components.Profile.NewsAdapter;
 import org.vgecalumni.Model.AutoScroll;
 import org.vgecalumni.Model.News;
 import org.vgecalumni.Model.NewsResponse;
@@ -37,7 +36,7 @@ public class NewsActivity extends AppCompatActivity {
     List<News> list1 = new ArrayList<>();
     List<News> list2 = new ArrayList<>();
     List<News> list3 = new ArrayList<>();
-    List<News> list4 = new ArrayList<>();
+    //List<News> list4 = new ArrayList<>();
     private ProgressBar progressBar;
 
     @Override
@@ -55,19 +54,19 @@ public class NewsActivity extends AppCompatActivity {
         rec_notice = findViewById(R.id.rec_notice_news);
         rec_imp = findViewById(R.id.rec_imp_news);
         rec_mag = findViewById(R.id.rec_mag_news);
-        rec_meeting = findViewById(R.id.rec_meeting_news);
+        //rec_meeting = findViewById(R.id.rec_meeting_news);
 
         cr_event = findViewById(R.id.card_event);
         cr_notice = findViewById(R.id.card_notice);
         cr_imp = findViewById(R.id.card_imp);
         cr_mag = findViewById(R.id.card_mag);
-        cr_meeting = findViewById(R.id.card_meeting);
+        //cr_meeting = findViewById(R.id.card_meeting);
 
         recyclerViewList.add(rec_event);
         recyclerViewList.add(rec_notice);
         recyclerViewList.add(rec_imp);
         recyclerViewList.add(rec_mag);
-        recyclerViewList.add(rec_meeting);
+        //recyclerViewList.add(rec_meeting);
 
         setRecAdp();
     }
@@ -103,9 +102,9 @@ public class NewsActivity extends AppCompatActivity {
                         case 3:
                             list3.add(n);
                             break;
-                        case 4:
+                        /*case 4:
                             list4.add(n);
-                            break;
+                            break;*/
                     }
                 }
 
@@ -133,12 +132,12 @@ public class NewsActivity extends AppCompatActivity {
                     new AutoScroll(rec_mag);
                     cr_mag.setVisibility(View.VISIBLE);
                 }
-                if (list4.size() != 0) {
+                /*if (list4.size() != 0) {
                     newsAdapter4 = new NewsAdapter(list4, NewsActivity.this);
                     rec_meeting.setAdapter(newsAdapter4);
                     new AutoScroll(rec_meeting);
                     cr_meeting.setVisibility(View.VISIBLE);
-                }
+                }*/
                 unsetProgress();
             }
 

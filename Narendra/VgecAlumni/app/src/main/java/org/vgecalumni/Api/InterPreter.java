@@ -28,13 +28,13 @@ public interface InterPreter {
     );
 
     @FormUrlEncoded
-    @POST("/android/getRegisteredEvents.php")
+    @POST("/android/getRegEvent.php")
     Call<RegEventResponse> getRegEvents(
             @Field("uname") String uname
     );
 
     @FormUrlEncoded
-    @POST("/android/updatecoupon.php")
+    @POST("/android/updateCo.php")
     Call<DefaultResponse> updatecoupon(
             @Field("uname") String uname,
             @Field("coupon") String coupon

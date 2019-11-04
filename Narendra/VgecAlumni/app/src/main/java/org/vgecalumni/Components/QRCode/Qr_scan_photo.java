@@ -99,7 +99,6 @@ public class Qr_scan_photo extends AppCompatActivity implements View.OnClickList
                                 qr_last.setText("Last Scan Result : " + uname);
 
                             }
-
                         }
 
                         @Override
@@ -130,8 +129,9 @@ public class Qr_scan_photo extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
-        return true;
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
