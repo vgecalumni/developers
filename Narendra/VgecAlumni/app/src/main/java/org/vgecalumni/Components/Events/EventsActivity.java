@@ -31,9 +31,7 @@ public class EventsActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Events");
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
