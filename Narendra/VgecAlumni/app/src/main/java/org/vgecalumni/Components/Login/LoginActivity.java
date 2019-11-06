@@ -257,7 +257,6 @@ public class LoginActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public void show(String msg) {
-
             String data = msg;
             List<String> result = Arrays.asList(data.split("\\s*,\\s*"));
             String name = result.get(0);

@@ -23,6 +23,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -36,7 +37,10 @@ import android.widget.Toast;
 
 import com.sdsmdg.tastytoast.TastyToast;
 
+import org.vgecalumni.Api.RetrofitClient;
 import org.vgecalumni.ErrorActivity;
+import org.vgecalumni.Model.DefaultResponse;
+import org.vgecalumni.Model.UserResponse;
 import org.vgecalumni.R;
 
 import java.io.File;
@@ -45,6 +49,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import pl.droidsonroids.gif.GifImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class sharingmain extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -123,7 +131,29 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        //sharingpost();
         displayFrag(new SharingPost());
+    }
+
+    @JavascriptInterface
+    public void sharingpost(String title, String pic, String detail, String author){
+        Call<DefaultResponse> call = RetrofitClient.getInstance().getInterPreter().notifyUsers(title,pic,detail);
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse response1 = response.body();
+                if(response1.isError()){
+                    Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     private void displayFrag(Fragment fragment) {

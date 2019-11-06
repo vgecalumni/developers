@@ -1,5 +1,7 @@
 package org.vgecalumni.Api;
 
+import com.bumptech.glide.annotation.Excludes;
+
 import org.vgecalumni.Model.DefaultResponse;
 import org.vgecalumni.Model.EduResponse;
 import org.vgecalumni.Model.ExprResponse;
@@ -25,6 +27,14 @@ public interface InterPreter {
     @POST("/android/getUser.php")
     Call<UserResponse> getUser(
             @Field("uname") String uname
+    );
+
+    @FormUrlEncoded
+    @POST("/android/notify.php")
+    Call<DefaultResponse> notifyUsers(
+            @Field("title") String title,
+            @Field("body") String body,
+            @Field("url") String url
     );
 
     @FormUrlEncoded
