@@ -46,7 +46,9 @@ import org.vgecalumni.R;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
 import retrofit2.Call;
@@ -108,6 +110,7 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         myWebView.setWebViewClient(new MyWebviewClient());
 
         myWebView.setWebChromeClient(new sharingmain.ChromeClient());
+        myWebView.addJavascriptInterface(new WebInterface(),"Android");
 
         if (savedInstanceState != null) {
             myWebView.restoreState(savedInstanceState);
@@ -133,27 +136,6 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
 
         //sharingpost();
         displayFrag(new SharingPost());
-    }
-
-    @JavascriptInterface
-    public void sharingpost(String title, String pic, String detail, String author){
-        Call<DefaultResponse> call = RetrofitClient.getInstance().getInterPreter().notifyUsers(title,pic,detail);
-        call.enqueue(new Callback<DefaultResponse>() {
-            @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse response1 = response.body();
-                if(response1.isError()){
-                    Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
-
-            }
-        });
     }
 
     private void displayFrag(Fragment fragment) {
@@ -312,12 +294,10 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
             startActivityForResult(chooserIntent, INPUT_FILE_REQUEST_CODE);
 
             return true;
-
         }
 
         // openFileChooser for Android 3.0+
         public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-
             mUploadMessage = uploadMsg;
             // Create AndroidExampleFolder at sdcard
             // Create AndroidExampleFolder at sdcard
@@ -459,8 +439,6 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         @Override
         public void onReceivedHttpError(WebView view,
                                         WebResourceRequest request, WebResourceResponse errorResponse) {
-
-
             Intent error_intent = new Intent(sharingmain.this, ErrorActivity.class);
             Integer code = errorResponse.getStatusCode();
 
@@ -494,8 +472,6 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
                 myWebView.loadUrl("javascript:check('" + uname + "','" + pw + "','" + name + "');");
 
             }
-
-
         }
 
         @Override
@@ -542,5 +518,37 @@ public class sharingmain extends AppCompatActivity implements BottomNavigationVi
         }
 
 
+    }
+
+    private class WebInterface {
+        @JavascriptInterface
+        public void sharingpost(String msg){
+            //String data = msg;
+            String pic = null;
+            List<String> result = Arrays.asList(msg.split("\\s*,\\s*"));
+            String title = result.get(0);
+            if(!result.get(1).equals("null")) {
+                pic = result.get(1);
+            }
+            String detail = result.get(2);
+            String author = result.get(3);
+            Call<DefaultResponse> call = RetrofitClient.getInstance().getInterPreter().notifyUsers(title,pic,detail);
+            call.enqueue(new Callback<DefaultResponse>() {
+                @Override
+                public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                    DefaultResponse response1 = response.body();
+                    if(response1.isError()){
+                        Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(sharingmain.this,response1.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<DefaultResponse> call, Throwable t) {
+
+                }
+            });
+        }
     }
 }

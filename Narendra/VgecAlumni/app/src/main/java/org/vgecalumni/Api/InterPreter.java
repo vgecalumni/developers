@@ -33,8 +33,8 @@ public interface InterPreter {
     @POST("/android/notify.php")
     Call<DefaultResponse> notifyUsers(
             @Field("title") String title,
-            @Field("body") String body,
-            @Field("url") String url
+            @Field("url") String pic,
+            @Field("body") String detail
     );
 
     @FormUrlEncoded
