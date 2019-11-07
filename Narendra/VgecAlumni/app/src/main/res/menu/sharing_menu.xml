@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_sharing_posts"
-        android:icon="@drawable/jobseeker"
-        android:title="posts"></item>
+        android:icon="@drawable/ic_posttall"
+        android:title="Posts"></item>
     <item
         android:id="@+id/nav_sharing_search"
-        android:icon="@drawable/customer"
-        android:title="search"></item>
+        android:icon="@drawable/ic_postsearch"
+        android:title="Search"></item>
     <item
         android:id="@+id/nav_sharing_add"
-        android:icon="@drawable/jobseeker"
-        android:title="add"></item>
+        android:icon="@drawable/ic_postadd"
+        android:title="Add"></item>
     <item
         android:id="@+id/nav_sharing_myposts"
-        android:icon="@drawable/customer"
-        android:title="my posts"></item>
+        android:icon="@drawable/ic_mypost"
+        android:title="My Posts"></item>
 
 </menu>

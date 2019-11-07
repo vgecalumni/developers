@@ -34,13 +34,6 @@
         <item name="alertDialogStyle">@style/MyAlertDialogStyle</item>
     </style>
 
-    <style name="SettingsTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">#1f2161</item>
-        <item name="android:navigationBarColor">#1f2161</item>
-        <item name="background">@color/colorBlueDark</item>
-    </style>
-
 
     <style name="MyProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressBackgroundTint">#E5E5E5</item>

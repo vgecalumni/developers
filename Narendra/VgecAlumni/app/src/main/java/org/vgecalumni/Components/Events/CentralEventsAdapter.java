@@ -66,7 +66,7 @@ public class CentralEventsAdapter extends RecyclerView.Adapter<CentralEventsAdap
         }
 
         public void setData(CentralEvent centralEvent, int position) {
-            Glide.with(itemView.getContext()).load(centralEvent.getImageURL()).placeholder(R.drawable.event).error(R.drawable.event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_event_image);
+            Glide.with(itemView.getContext()).load(centralEvent.getImageURL()).placeholder(R.drawable.ic_place_event).error(R.drawable.ic_place_event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_event_image);
             tv_event_name.setText(centralEvent.getName());
             tv_event_description.setText(Html.fromHtml(centralEvent.getDescription()));
             tv_event_date.setText(Html.fromHtml(centralEvent.getDate()));

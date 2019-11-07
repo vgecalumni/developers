@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_post_job"
-        android:icon="@drawable/jobseeker"
-        android:title="job offers"></item>
+        android:icon="@drawable/ic_jobs"
+        android:title="Job Offers"></item>
     <item
         android:id="@+id/nav_posted_job"
-        android:icon="@drawable/customer"
-        android:title="my applications"></item>
+        android:icon="@drawable/ic_mypost"
+        android:title="My Applications"></item>
 </menu>

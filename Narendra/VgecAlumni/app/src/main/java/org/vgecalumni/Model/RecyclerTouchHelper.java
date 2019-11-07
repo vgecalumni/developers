@@ -24,8 +24,8 @@ public class RecyclerTouchHelper extends ItemTouchHelper.SimpleCallback {
         this.listener = listener;
         colorDrawableRed = new ColorDrawable(Color.parseColor("#FF0000"));
         colorDrawableGreen = new ColorDrawable(Color.parseColor("#2E7D32"));
-        delete = ContextCompat.getDrawable(context, R.drawable.delete);
-        edit = ContextCompat.getDrawable(context, R.drawable.editwhite);
+        delete = ContextCompat.getDrawable(context, R.drawable.ic_delete);
+        edit = ContextCompat.getDrawable(context, R.drawable.ic_editwhite);
     }
 
     @Override

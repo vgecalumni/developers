@@ -22,11 +22,10 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ShareActionProvider;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -54,7 +53,6 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import org.vgecalumni.Components.Events.EventsActivity;
@@ -67,7 +65,6 @@ import org.vgecalumni.Components.QRCode.Qr_generate_food;
 import org.vgecalumni.Components.QRCode.Qr_generate_photo;
 import org.vgecalumni.Components.QRCode.Qr_scan_food;
 import org.vgecalumni.Components.QRCode.Qr_scan_photo;
-import org.vgecalumni.Components.Settings.SettingsActivity;
 import org.vgecalumni.Components.SharingPlatform.sharingmain;
 import org.vgecalumni.Components.SplashScreen.SplashActivity;
 
@@ -88,7 +85,6 @@ public class MainActivity extends AppCompatActivity
     private static final int INPUT_FILE_REQUEST_CODE = 1;
     private static final int FILECHOOSER_RESULTCODE = 1;
     private static final String MY_PREFS_NAME = "VgecAlumni";
-    MaterialSearchView materialSearchView;
     String[] list;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
@@ -220,76 +216,11 @@ public class MainActivity extends AppCompatActivity
         list = new String[]{"create post", "view post", "create profile", "view profile",
                 "Vishwasmruti 2.0", "View All Events", "Events", "Contact Us", "About Us", "Home", "Portfolio",
                 "Event Portfolio", "My Profile", "My Post", "Search Alumni", "Success Stories", "Alumni Committee",
-                "Share", "Settings", "Rate Us", "Application Developer(Prahar)", "Contact Application Developer(Prahar)",
+                "Share", "Rate Us", "Application Developer(Prahar)", "Contact Application Developer(Prahar)",
                 "App Team", "Vishwakarma Government Engineering College"};
 
-        materialSearchView = findViewById(R.id.mysearch);
-        materialSearchView.clearFocus();
-        materialSearchView.setSuggestions(list);
-        materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (query.contains("search")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/srchalumni.jsp");
-                } else if (query.contains("home")) {
-                    myWebView.loadUrl("https://www..vgecalumni.org/index.jsp");
-                } else if (query.contains("about")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
-                } else if (query.contains("events")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
-                } else if (query.contains("portfolio") || query.contains("photos")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
-                } else if (query.contains("job")) {
-                    Intent joboffers = new Intent(MainActivity.this, JobOffersMain.class);
-                    startActivity(joboffers);
-                    return true;
-                } else if (query.contains("post") || query.contains("share")) {
-                    Intent sharing = new Intent(MainActivity.this, sharingmain.class);
-                    startActivity(sharing);
-                    return true;
-                } else if (query.contains("success")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/successStories.jsp");
-                } else if (query.contains("alumni") || query.contains("developers")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/alumnicommitee.jsp");
-                } else if (query.contains("about")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
-                } else if (query.contains("contact")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
-                } else if (query.contains("developer")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/app_developers.jsp");
-                } else if (query.contains("education") || query.contains("profile") || query.contains("experience")) {
-                    Intent profile = new Intent(MainActivity.this, Profile.class);
-                    startActivity(profile);
-                    return true;
-                } else if (query.contains("magazine") || query.contains("vrutant")) {
-                    Intent magintent = new Intent(MainActivity.this, MagazineActivity.class);
-                    startActivity(magintent);
-                    return true;
-                } else if (query.contains("setting")) {
-                    Intent settingsintent = new Intent(MainActivity.this, SettingsActivity.class);
-                    startActivity(settingsintent);
-                    return true;
-                } else if (query.contains("rate")) {
-                    try {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
-                    } catch (Exception e) {
-                        //
-                    }
-                } else if (query.contains("logout")) {
-                    myWebView.loadUrl("https://www.vgecalumni.org/app_logout.jsp");
-                } else {
-                    TastyToast.makeText(getApplicationContext(), "Sorry ! No result found !", TastyToast.LENGTH_LONG, TastyToast.INFO);
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //You can make change realtime if you typing here
-                //See my tutorials for filtering with ListView
-                return false;
-            }
-        });
+        /*materialSearchView = findViewById(R.id.mysearch);
+        materialSearchView.clearFocus();*/
         requestPermission();
     }
 
@@ -413,16 +344,70 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem item = menu.findItem(R.id.menu_item_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setQueryHint("search");
+        searchView.setFocusable(false);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.contains("search")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/srchalumni.jsp");
+                } else if (query.contains("home")) {
+                    myWebView.loadUrl("https://www..vgecalumni.org/index.jsp");
+                } else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                } else if (query.contains("events")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/events.jsp");
+                } else if (query.contains("portfolio") || query.contains("photos")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/portfolio.jsp");
+                } else if (query.contains("job")) {
+                    Intent joboffers = new Intent(MainActivity.this, JobOffersMain.class);
+                    startActivity(joboffers);
+                    return true;
+                } else if (query.contains("post") || query.contains("share")) {
+                    Intent sharing = new Intent(MainActivity.this, sharingmain.class);
+                    startActivity(sharing);
+                    return true;
+                } else if (query.contains("success")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/successStories.jsp");
+                } else if (query.contains("alumni") || query.contains("developers")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/alumnicommitee.jsp");
+                } else if (query.contains("about")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
+                } else if (query.contains("contact")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
+                } else if (query.contains("developer")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_developers.jsp");
+                } else if (query.contains("education") || query.contains("profile") || query.contains("experience")) {
+                    Intent profile = new Intent(MainActivity.this, Profile.class);
+                    startActivity(profile);
+                    return true;
+                } else if (query.contains("magazine") || query.contains("vrutant")) {
+                    Intent magintent = new Intent(MainActivity.this, MagazineActivity.class);
+                    startActivity(magintent);
+                    return true;
+                }else if (query.contains("rate")) {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
+                    } catch (Exception e) {
+                        //
+                    }
+                } else if (query.contains("ic_logout")) {
+                    myWebView.loadUrl("https://www.vgecalumni.org/app_logout.jsp");
+                } else {
+                    TastyToast.makeText(getApplicationContext(), "Sorry ! No result found !", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                }
+                return false;
+            }
 
-        MenuItem item = menu.findItem(R.id.search);
-        materialSearchView.setMenuItem(item);
-
-        MenuItem shareitem = menu.findItem(R.id.menu_item_share);
-        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareitem);
-        Intent myShareIntent = new Intent(Intent.ACTION_SEND);
-        myShareIntent.setType("text/plain");
-        myShareIntent.putExtra(Intent.EXTRA_TEXT, "Install VGEC ALUMNI APP now. https://play.google.com/store/apps/details?id=org.vgecalumni");
-        mShareActionProvider.setShareIntent(myShareIntent);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //You can make change realtime if you typing here
+                //See my tutorials for filtering with ListView
+                return false;
+            }
+        });
         return true;
     }
 
@@ -451,15 +436,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.settings) {
-            overridePendingTransition(R.transition.slide_in, R.transition.slide_out);
-            Intent settingsintent = new Intent(this, SettingsActivity.class);
-            startActivity(settingsintent);
-            return true;
+        if(item.getItemId()==R.id.menu_item_share){
+            Intent myShareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            myShareIntent.setType("text/plain");
+            myShareIntent.putExtra(Intent.EXTRA_SUBJECT,"INSTALL VGEC ALUMNI APP");
+            myShareIntent.putExtra(Intent.EXTRA_TEXT, "INSTALL VGEC ALUMNI APP. https://play.google.com/store/apps/details?id=org.vgecalumni");
+            startActivity(Intent.createChooser(myShareIntent,"Share to..."));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -519,7 +501,7 @@ public class MainActivity extends AppCompatActivity
             jobIntent = new Intent(MainActivity.this, JobOffersMain.class);
             startActivity(jobIntent);
             return true;
-        } else if (id == R.id.nav_discuss) {
+        } else if (id == R.id.nav_sharing) {
             sharingIntent = new Intent(MainActivity.this, sharingmain.class);
             startActivity(sharingIntent);
             return true;
@@ -547,10 +529,6 @@ public class MainActivity extends AppCompatActivity
             myWebView.loadUrl("https://www.vgecalumni.org/aboutUs.jsp");
         } else if (id == R.id.nav_contact) {
             myWebView.loadUrl("https://www.vgecalumni.org/contact.jsp");
-        } else if (id == R.id.nav_settings) {
-            Intent settingsintent = new Intent(this, SettingsActivity.class);
-            startActivity(settingsintent);
-            return true;
         } else if (id == R.id.nav_rate) {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_house"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_event"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_portfolio"
+            android:icon="@drawable/ic_profolio"
+            android:title="Portfolio" />
+        <item
+            android:id="@+id/nav_job"
+            android:icon="@drawable/ic_jobsoff"
+            android:title="Job Offers" />
+        <item
+            android:id="@+id/nav_sharing"
+            android:icon="@drawable/ic_share"
+            android:title="Sharing Platform" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_news"
+            android:title="@string/hint_news" />
+    </group>
+    <item
+        android:id="@+id/nav_userTitle"
+        android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_myprofile"
+                    android:icon="@drawable/ic_profile"
+                    android:title="My Profile" />
+                <item
+                    android:id="@+id/nav_search"
+                    android:icon="@drawable/ic_group"
+                    android:title="Search Alumni" />
+                <item
+                    android:id="@+id/nav_postjob"
+                    android:icon="@drawable/ic_customer"
+                    android:title="Post Job Offers" />
+
+                <item
+                    android:id="@+id/nav_success"
+                    android:icon="@drawable/ic_trophy"
+                    android:title="Success Stories" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="QR CODE">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_qrcode"
+                    android:icon="@drawable/ic_qr"
+                    android:title="" />
+                <item
+                    android:id="@+id/nav_qrcode1"
+                    android:icon="@drawable/ic_qr"
+                    android:title=""
+                    android:visible="false" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Magazines">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_vrutant"
+                    android:icon="@drawable/ic_magazine"
+                    android:title="VAA VRUTANT" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Our Committee">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_committee"
+                    android:icon="@drawable/ic_committe"
+                    android:title="Alumni Committee" />
+                <item
+                    android:id="@+id/nav_appteam"
+                    android:icon="@drawable/ic_devel"
+                    android:title="Developers" />
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/ic_aboutus"
+                    android:title="About Us" />
+                <item
+                    android:id="@+id/nav_contact"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Contact Us" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_rate"
+                    android:icon="@drawable/ic_star"
+                    android:title="Rate Us" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
+</menu>

@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="5dp"
-                        android:drawableStart="@drawable/email"
+                        android:drawableStart="@drawable/ic_email"
                         android:text="Loading email......."
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                         android:textColor="@color/main_back" />
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:drawablePadding="5dp"
-                        android:drawableStart="@drawable/phone"
+                        android:drawableStart="@drawable/ic_phone"
                         android:text="Loading mobile......."
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                         android:textColor="@color/main_back" />
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/editwhite" />
+        android:src="@drawable/ic_editwhite" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab1"
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/add" />
+        android:src="@drawable/ic_add" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/add" />
+        android:src="@drawable/ic_add" />
 
     <LinearLayout
         android:id="@+id/progress_lay"

@@ -34,14 +34,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/person" />
+                    android:src="@drawable/ic_person" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/divide" />
+                    android:src="@drawable/ic_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,14 +151,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/home" />
+                    android:src="@drawable/ic_address" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/divide" />
+                    android:src="@drawable/ic_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -245,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/divide" />
+                    android:src="@drawable/ic_divider" />
 
 
                 <LinearLayout

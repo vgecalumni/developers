@@ -64,7 +64,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.View
         }
 
         public void setData(Portfolio portfolio, int position) {
-            Glide.with(itemView.getContext()).load(portfolio.getEvent_image_url()).placeholder(R.drawable.event).error(R.drawable.event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_portfolio);
+            Glide.with(itemView.getContext()).load(portfolio.getEvent_image_url()).placeholder(R.drawable.ic_profolio).error(R.drawable.ic_profolio).transition(DrawableTransitionOptions.withCrossFade()).into(iv_portfolio);
             tv_portfolio.setText(portfolio.getEvent_name());
 
             this.portfolio = portfolio;

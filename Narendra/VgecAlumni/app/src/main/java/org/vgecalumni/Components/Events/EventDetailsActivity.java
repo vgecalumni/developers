@@ -124,7 +124,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
                                 if (!activity.isDestroyed()) {
                                     title = name;
-                                    Glide.with(EventDetailsActivity.this).load(imageURL).placeholder(R.drawable.event).error(R.drawable.event).into(iv_event_image);
+                                    Glide.with(EventDetailsActivity.this).load(imageURL).placeholder(R.drawable.ic_place_event).error(R.drawable.ic_place_event).into(iv_event_image);
 
                                     if (!date.equals("null")) {
                                         String string = "Date : " + date;

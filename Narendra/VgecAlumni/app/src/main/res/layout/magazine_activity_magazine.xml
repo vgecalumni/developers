@@ -11,7 +11,7 @@
         android:gravity="center"
         android:text="VAA MAGAZINES"
         android:textColor="#ffffff"
-        android:textSize="18dp"></TextView>
+        android:textSize="18dp"/>
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"

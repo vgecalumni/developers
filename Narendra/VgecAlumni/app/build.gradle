@@ -7,8 +7,8 @@ android {
         applicationId "org.vgecalumni"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 22
-        versionName "5.0"
+        versionCode 23
+        versionName "5.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

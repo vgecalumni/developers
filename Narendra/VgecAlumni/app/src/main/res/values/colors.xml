@@ -13,6 +13,7 @@
 
     <color name="white">#ffffff</color>
     <color name="red">#ff0000</color>
+    <color name="DarRed">#A03030</color>
     <color name="black">#000000</color>
     <color name="main_back">#e8e8e8</color>
 

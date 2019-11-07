@@ -4,26 +4,14 @@
     <string name="slide_1_title">VGEC ALUMNI</string>
     <string name="slide_1_desc">Dear VGECians, Greetings from the Vishwakarma Government Engineering College - Alumni Association (VGEC-AA)</string>
 
-    <string name="title_activity_settings">Settings</string>
-
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
 
     <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_ringtone_silent">Silent</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
 
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -107,20 +95,4 @@
     <string name="default_notification_channel_id">pushnotify</string>
     <string name="msgtitle">VGEC ALUMNI</string>
 
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
 </resources>

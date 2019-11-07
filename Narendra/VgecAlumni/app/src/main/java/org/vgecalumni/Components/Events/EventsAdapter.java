@@ -66,7 +66,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         }
 
         public void setData(Event event, int position) {
-            Glide.with(itemView.getContext()).load(event.getImageUrl()).placeholder(R.drawable.event).error(R.drawable.event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_event_image);
+            Glide.with(itemView.getContext()).load(event.getImageUrl()).placeholder(R.drawable.ic_place_event).error(R.drawable.ic_place_event).transition(DrawableTransitionOptions.withCrossFade()).into(iv_event_image);
             tv_event_name.setText(event.getName());
 
             this.event = event;
